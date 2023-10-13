@@ -4,7 +4,7 @@ public class Ejemplo14 {
 
         n = Utils.leerEntero("\nPorfavor Ingrese un numero entero Positivo: ");
 
-        System.out.println("\nLos números pares entre 1 y 10 son:");
+        System.out.println("\nLos números pares entre 1 y " + n + " son:");
 
         for (int i = 1; i <= n; i++) {
             if (i % 2 == 0) {
