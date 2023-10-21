@@ -21,6 +21,7 @@ public class practica1 {
         double impuestoRenta = 0;
 
         double montoImpuestoRentaB = 0;
+
         double montoImpuestoRentaA = 0;
 
         double pagoImpuestoRenta = 0;
@@ -81,21 +82,6 @@ public class practica1 {
         String str6 = "Monto de impuesto de renta después de retenciones";
         String str7 = "Monto total de deducciones";
         String str8 = "Monto de impuesto a pagar por renta";
-
-        // System.out.println("\nTotal de ingresos por facturación" + "\t\t : " +
-        // montoTotalFacturas);
-        // System.out.println("Total de gastos deducibles" + "\t\t\t : " + deducciones);
-        // System.out.println("Utilidad" + "\t\t\t\t\t: " + utilidad);
-        // System.out.println("Monto de impuesto de renta antes de retenciones \t: " +
-        // montoImpuestoRentaB);
-        // System.out.println("Total acumulado de retenciones" + "\t\t\t: " +
-        // retenciones);
-        // System.out.println("Monto de impuesto de renta después de retenciones : " +
-        // montoImpuestoRentaA);
-        // System.out.println("Monto total de deducciones" + "\t\t\t\t: " + retenciones
-        // + deducciones);
-        // System.out.println("Monto de impuesto a pagar por renta" + "\t\t: " +
-        // pagoImpuestoRenta);
 
         System.out.printf("\n%-50s: %s\n", str1, montoTotalFacturas);
         System.out.printf("%-50s: %s\n", str2, deducciones);
