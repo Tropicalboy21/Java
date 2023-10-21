@@ -76,8 +76,8 @@ public class practica1 {
 
         String str1 = "Total de ingresos por facturación";
         String str2 = "Total de gastos deducibles";
-        String str3 = "Monto de impuesto de renta antes de retenciones";
-        String str4 = "Total de ingresos por facturación";
+        String str3 = "Utilidad";
+        String str4 = "Monto de impuesto de renta antes de retenciones";
         String str5 = "Total acumulado de retenciones";
         String str6 = "Monto de impuesto de renta después de retenciones";
         String str7 = "Monto total de deducciones";
