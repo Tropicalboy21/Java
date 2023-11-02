@@ -22,7 +22,13 @@ public class Ejemplo18 {
         System.out.println("\nBienvenido al nuevo edificio universitario");
 
         do {
-            System.out.println("piso " + i);
+            System.out.println("\npiso " + i);
+            int j = 1;
+            do {
+                System.out.println("aula " + j);
+                j++;
+            } while (j < 5);
+
             i++;
 
         } while (i < 4);
