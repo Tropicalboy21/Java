@@ -2,10 +2,10 @@ public class Ejemplo18 {
     public static void main(String[] args) {
         int numPapitas = 0;
         int numPlatanitos = 0;
-        int precioPapitasCompra = 500;
-        int precioPlatanitosCompra = 600;
-        int precioPapitasVenta = 0;
-        int precioPlatanitosVenta = 0;
+        int precioPapitasCompra = 250;
+        int precioPlatanitosCompra = 400;
+        int precioPapitasVenta = 500;
+        int precioPlatanitosVenta = 600;
         int numPapitasVenta = 0;
         int numPlatanitosVenta = 0;
         boolean guarda = false;
@@ -35,8 +35,8 @@ public class Ejemplo18 {
                 numInteresados = Utils.leerEntero("\nCuantos interesados en comprar hay?: ");
 
                 for (int y = 1; y <= numInteresados; y++) {
-                    numPapitas = Utils.leerEntero("\ncuantas papitas desea el interesado  #" + y + " : ");
-                    numPlatanitos = Utils.leerEntero("cuantos platatinos desea el interesado  #" + y + " : ");
+                    numPapitasVenta = Utils.leerEntero("\ncuantas papitas desea el interesado  #" + y + " : ");
+                    numPlatanitosVenta = Utils.leerEntero("cuantos platatinos desea el interesado  #" + y + " : ");
                 }
                 guarda = Utils.leerBoolean("\nhay algun guarda al salir del aula " + j);
 
@@ -51,8 +51,10 @@ public class Ejemplo18 {
 
         } while (i < 4 && guarda == false);
 
-        System.out.println("\n numero de papitas vendidas: " + numPapitasVenta + "\n numero de platanitos vendidos: "
-                + numPlatanitosVenta + "\n Ganancias totales: ");
+        ganancias = (numPapitasVenta * precioPapitasVenta) + (numPlatanitosVenta * precioPlatanitosVenta);
+
+        System.out.println("\nnumero de papitas vendidas: " + numPapitasVenta + "\nnumero de platanitos vendidos: "
+                + numPlatanitosVenta + "\nGanancias totales: " + ganancias);
 
     }
 }
