@@ -11,6 +11,7 @@ public class Ejemplo18 {
         boolean guarda = false;
         int promo = 0;
         int i = 1;
+        int ganancias = 0;
 
         numPapitas = Utils.leerEntero("\nPorfavo ingrese el numero de papitas a comprar: ");
         numPlatanitos = Utils.leerEntero("\nPorfavo ingrese el numero de platanitos a comprar: ");
@@ -35,7 +36,7 @@ public class Ejemplo18 {
 
                 for (int y = 1; y <= numInteresados; y++) {
                     numPapitas = Utils.leerEntero("\ncuantas papitas desea el interesado  #" + y + " : ");
-                    numPapitas = Utils.leerEntero("cuantos platatinos desea el interesado  #" + y + " : ");
+                    numPlatanitos = Utils.leerEntero("cuantos platatinos desea el interesado  #" + y + " : ");
                 }
                 guarda = Utils.leerBoolean("\nhay algun guarda al salir del aula " + j);
 
@@ -49,6 +50,9 @@ public class Ejemplo18 {
             i++;
 
         } while (i < 4 && guarda == false);
+
+        System.out.println("\n numero de papitas vendidas: " + numPapitasVenta + "\n numero de platanitos vendidos: "
+                + numPlatanitosVenta + "\n Ganancias totales: ");
 
     }
 }
