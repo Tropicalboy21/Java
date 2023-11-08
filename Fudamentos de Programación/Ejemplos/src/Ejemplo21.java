@@ -1,11 +1,17 @@
 public class Ejemplo21 {
 
-    public static int generarNumeroAleatorio() {
+    static int generarNumeroAleatorioValido() {
+        int numero = 0;
+        do {
+            numero = generarNumeroAleatorio();
+        } while (!validarNumero(numero));
+        return numero;
+    }
+
+    static int generarNumeroAleatorio() {
         int numero = 0;
         do {
             numero = (int) Math.round(Math.random() * 9999);
-            if (numero >= 1000)
-                System.out.println(numero);
         } while (numero < 1000);
         return numero;
     }
@@ -20,15 +26,16 @@ public class Ejemplo21 {
     }
 
     static int obtenerDecenas(int x) {
-        x = x - (1000 * obtenerCentenas(x));
+        x = x - (1000 * obtenerMillares(x));
         x = x - (100 * obtenerCentenas(x));
+        x = x - (10 * obtenerDecenas(x));
         return x / 10;
     }
 
     static int obtenerUnidades(int x) {
-        double y = x / 10.0;
-        y = y - (int) y;
-        return (int) (y * 10);
+        x = x - (1000 * obtenerCentenas(x));
+        x = x - (100 * obtenerCentenas(x));
+        return x / 10;
     }
 
     static boolean validarNumero(int x) {
@@ -43,9 +50,13 @@ public class Ejemplo21 {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.println(generarNumeroAleatorio());
-        }
-        validarNumero(8987);
+        int numero = generarNumeroAleatorioValido();
+        int m, c, d, u;
+        m = obtenerMillares(numero);
+        c = obtenerCentenas(numero);
+        d = obtenerDecenas(numero);
+        u = obtenerUnidades(numero);
+        System.out.println(numero);
+        System.out.printf("%d %d %d %d", m, c, d, u);
     }
 }
