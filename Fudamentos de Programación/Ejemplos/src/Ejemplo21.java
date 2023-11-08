@@ -20,7 +20,8 @@ public class Ejemplo21 {
     }
 
     static int obtenerDecenas(int x) {
-        x = x - (obtenerCentenas(x));
+        x = x - (1000 * obtenerCentenas(x));
+        x = x - (100 * obtenerCentenas(x));
         return x / 10;
     }
 
