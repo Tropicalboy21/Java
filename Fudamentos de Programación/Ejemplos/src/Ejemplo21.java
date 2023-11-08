@@ -12,13 +12,14 @@ public class Ejemplo21 {
 
     public static void probar(int x) {
         int m = 0, c = 0, d = 0, u = 0;
+        boolean esValido = false;
         m = x / 1000;
         x = x % 1000;
         c = x / 100;
         x = x % 100;
         d = x / 10;
         u = x % 10;
-        System.out.println("m:%d c:%d d:%d u:%d" + m, c, d, u);
+        System.out.printf("m:%d c:%d d:%d u:%d", m, c, d, u);
     }
 
     public static void main(String[] args) {
