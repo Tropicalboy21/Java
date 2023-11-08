@@ -10,6 +10,14 @@ public class Ejemplo21 {
         return numero;
     }
 
+    static int obtenerMillares(int x) {
+        return x / 1000;
+    }
+
+    static int obtenerDecenas(int x) {
+        return x / 1000;
+    }
+
     static boolean validarNumero(int x) {
         int m = 0, c = 0, d = 0, u = 0;
         m = x / 1000;
