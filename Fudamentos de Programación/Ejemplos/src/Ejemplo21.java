@@ -21,21 +21,21 @@ public class Ejemplo21 {
     }
 
     static int obtenerCentenas(int x) {
-        x = x - (obtenerMillares(x));
+        x = x - (1000 * obtenerMillares(x));
         return x / 100;
     }
 
     static int obtenerDecenas(int x) {
         x = x - (1000 * obtenerMillares(x));
         x = x - (100 * obtenerCentenas(x));
-        x = x - (10 * obtenerDecenas(x));
         return x / 10;
     }
 
     static int obtenerUnidades(int x) {
-        x = x - (1000 * obtenerCentenas(x));
+        x = x - (1000 * obtenerMillares(x));
         x = x - (100 * obtenerCentenas(x));
-        return x / 10;
+        x = x - (10 * obtenerDecenas(x));
+        return x;
     }
 
     static boolean validarNumero(int x) {
