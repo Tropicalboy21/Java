@@ -14,8 +14,20 @@ public class Ejemplo21 {
         return x / 1000;
     }
 
+    static int obtenerCentenas(int x) {
+        x = x - (obtenerMillares(x));
+        return x / 100;
+    }
+
     static int obtenerDecenas(int x) {
-        return x / 1000;
+        x = x - (obtenerCentenas(x));
+        return x / 10;
+    }
+
+    static int obtenerUnidades(int x) {
+        double y = x / 10.0;
+        y = y - (int) y;
+        return (int) (y * 10);
     }
 
     static boolean validarNumero(int x) {
