@@ -1,62 +1,33 @@
 public class App {
-    public static void main(String[] args) {
+    // Metodo para calcular el puntaje total.
+    static int calcularPuntajeTotal(int oro, int plata, int bronce) {
+        return (oro * 3) + (plata * 2) + bronce;
+    }
 
-        String pais = "";
-        int oro = 0;
-        int plata = 0;
-        int bronce = 0;
+    public static void main(String[] args) {
         String paisGanador = "";
         int maxPuntaje = Integer.MIN_VALUE;
-        int numPaises = 0;
 
-        numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
+        // Leer el numero de pais en el torneo.
+        int numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
 
-        for (int i = 0; i <= numPaises; i++) {
-            pais = Utils.leerString("\nNombre del país " + (i + 1) + ": ");
-            oro = Utils.leerEntero("Número de medallas de oro: ");
-            plata = Utils.leerEntero("Número de medallas de plata: ");
-            bronce = Utils.leerEntero("Número de medallas de bronce: ");
+        // Leer numero de medallas y calcular el total de puntos de cada pais.
+        for (int i = 0; i < numPaises; i++) {
+            String pais = Utils.leerString("\nNombre del país " + (i + 1) + ": ");
+            int oro = Utils.leerEntero("Número de medallas de oro: ");
+            int plata = Utils.leerEntero("Número de medallas de plata: ");
+            int bronce = Utils.leerEntero("Número de medallas de bronce: ");
 
-            int puntajeTotal = (oro * 3) + (plata * 2) + (bronce * 1);
-
-            // if (i == 1) {
-            // pais1 = pais;
-            // puntaje1 = puntaje;
-            // } else if (i == 2) {
-            // pais2 = pais;
-            // puntaje2 = puntaje;
-            // } else if (i == 3) {
-            // pais3 = pais;
-            // puntaje3 = puntaje;
-            // }
-
+            int puntajeTotal = calcularPuntajeTotal(oro, plata, bronce);
             System.out.println("\nEl puntaje total de " + pais + " es: " + puntajeTotal);
 
-            // validar si es el pais con mayor puntaje total.
-
+            // Validar si es el pais con mayor puntaje total.
             if (puntajeTotal > maxPuntaje) {
                 maxPuntaje = puntajeTotal;
                 paisGanador = pais;
             }
-
         }
-
-        System.out.println("\nEl pais que obtuvo mayor puntaje es: " + paisGanador);
-
-        // System.out.println("\nEl puntaje total de " + pais1 + " es: " + puntaje1);
-        // System.out.println("El puntaje total de " + pais2 + " es: " + puntaje2);
-        // System.out.println("El puntaje total de " + pais3 + " es: " + puntaje3);
-
-        // if (puntaje1 > puntaje2) {
-        // if (puntaje1 > puntaje3) {
-        // System.out.println("\nEl pais que obtuvo mayor puntaje es: " + pais1);
-        // } else {
-        // System.out.println("\nEl pais que obtuvo mayor puntaje es: " + pais3);
-        // }
-        // } else if (puntaje2 > puntaje3) {
-        // System.out.println("\nEl pais que obtuvo mayor puntaje es: " + pais2);
-        // } else {
-        // System.out.println("\nEl pais que obtuvo mayor puntaje es: " + pais3);
-        // }
+        // Imprimir el pais con mayor puntaje.
+        System.out.println("\nEl pais con mayor puntaje total es: " + paisGanador);
     }
 }
