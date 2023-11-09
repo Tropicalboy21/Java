@@ -8,8 +8,8 @@ public class App {
         String paisGanador = "";
         int maxPuntaje = Integer.MIN_VALUE;
 
-        // Leer el numero de pais en el torneo.
-        int numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
+        // Leer el numero de paises en el torneo.
+        final int numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
 
         // Leer numero de medallas y calcular el total de puntos de cada pais.
         for (int i = 0; i < numPaises; i++) {
