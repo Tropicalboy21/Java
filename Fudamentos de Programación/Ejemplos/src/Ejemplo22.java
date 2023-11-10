@@ -1,39 +1,41 @@
 public class Ejemplo22 {
     public static void main(String[] args) {
+        int victorias1 = 0;
+        int victorias2 = 0;
 
-        double victorias1 = 0;
-        double victorias2 = 0;
-
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
 
             String usuarioUno = Utils.leerString("\nUsuario uno : piedra, papel o tijera? ");
 
             String usuarioDos = Utils.leerString("\nUsuario dos : piedra, papel o tijera? ");
 
-            if (usuarioUno == "tijeras" && usuarioDos == "papel") {
-                victorias1 += 1;
+            if (usuarioUno == "tijera" && usuarioDos == "papel") {
+                victorias1 = victorias1 + 1;
             } else if (usuarioUno == "papel" && usuarioDos == "tijera") {
-                victorias2 += 1;
+                victorias2 = victorias2 + 1;
             }
 
             if (usuarioUno == "papel" && usuarioDos == "piedra") {
-                victorias1 += 1;
-            } else if (usuarioUno == "pidra" && usuarioDos == "papel") {
-                victorias2 += 1;
+                victorias1 = victorias1 + 1;
+            } else if (usuarioUno == "piedra" && usuarioDos == "papel") {
+                victorias2 = victorias2 + 1;
             }
 
-            if (usuarioUno == "piedra" && usuarioDos == "tijeras") {
-                victorias1 += 1;
-            } else if (usuarioUno == "tijeras" && usuarioDos == "piedra") {
-                victorias2 += 1;
+            if (usuarioUno == "piedra" && usuarioDos == "tijera") {
+                victorias1 = victorias1 + 1;
+            } else if (usuarioUno == "tijera" && usuarioDos == "piedra") {
+                victorias2 = victorias2 + 1;
             }
 
             if (usuarioUno == "piedra" && usuarioDos == "piedra") {
-                victorias1 += 0.5;
+                victorias1 = victorias1 + 0;
+                victorias2 = victorias2 + 0;
             } else if (usuarioUno == "papel" && usuarioDos == "papel") {
-                victorias2 += 0.5;
-            } else if (usuarioUno == "tijeras" && usuarioDos == "tijeras") {
-                victorias2 += 0.5;
+                victorias1 = victorias1 + 0;
+                victorias2 = victorias2 + 0;
+            } else if (usuarioUno == "tijera" && usuarioDos == "tijera") {
+                victorias1 = victorias1 + 0;
+                victorias2 = victorias2 + 0;
             }
         }
 
@@ -44,5 +46,9 @@ public class Ejemplo22 {
         } else if (victorias1 == 2.5 && victorias2 == 2.5) {
             System.out.println("Es un Empate");
         }
+
+        System.out.println(victorias1);
+        System.out.println(victorias2);
     }
+
 }
