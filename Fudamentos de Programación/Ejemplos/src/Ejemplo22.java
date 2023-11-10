@@ -9,21 +9,12 @@ public class Ejemplo22 {
 
             String usuarioDos = Utils.leerString("\nUsuario dos : piedra, papel o tijera? ");
 
-            if (usuarioUno == "tijera" && usuarioDos == "papel") {
+            if (usuarioUno == "tijera" && usuarioDos == "papel" || usuarioUno == "papel" && usuarioDos == "piedra"
+                    || usuarioUno == "piedra" && usuarioDos == "tijera") {
                 victorias1 = victorias1 + 1;
-            } else if (usuarioUno == "papel" && usuarioDos == "tijera") {
-                victorias2 = victorias2 + 1;
-            }
-
-            if (usuarioUno == "papel" && usuarioDos == "piedra") {
-                victorias1 = victorias1 + 1;
-            } else if (usuarioUno == "piedra" && usuarioDos == "papel") {
-                victorias2 = victorias2 + 1;
-            }
-
-            if (usuarioUno == "piedra" && usuarioDos == "tijera") {
-                victorias1 = victorias1 + 1;
-            } else if (usuarioUno == "tijera" && usuarioDos == "piedra") {
+            } else if (usuarioUno == "papel" && usuarioDos == "tijera"
+                    || usuarioUno == "piedra" && usuarioDos == "papel"
+                    || usuarioUno == "tijera" && usuarioDos == "piedra") {
                 victorias2 = victorias2 + 1;
             }
 
