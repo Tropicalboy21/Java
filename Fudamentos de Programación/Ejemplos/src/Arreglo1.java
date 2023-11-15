@@ -17,8 +17,9 @@ public class Arreglo1 {
 
         for (int i = 0; i < notas.length; i++) {
             notas[i] = Utils.leerDoble("Digite la nota del estudiante " + (i + 1) + ":");
-
-            promedio = sumar(notas) / notas.length;
         }
+        promedio = sumar(notas) / notas.length;
+
+        System.out.printf("El promedio de notas de los %d estudiandes es %.2f\n", notas.length, promedio);
     }
 }
