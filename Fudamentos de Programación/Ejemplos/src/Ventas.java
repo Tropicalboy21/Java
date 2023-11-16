@@ -14,7 +14,12 @@ public class Ventas {
     }
 
     public static double mesMayor(double[] ventas, double max) {
-
+        for (int i = 0; i < ventas.length; i++) {
+            if (max == ventas[i]) {
+                return i + 1;
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
