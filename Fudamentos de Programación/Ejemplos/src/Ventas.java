@@ -9,19 +9,21 @@ public class Ventas {
         // compare every element with current max
         for (i = 1; i < arr.length; i++)
             if (arr[i] > max)
-                max = i;
+                max = arr[i];
 
         return max;
     }
 
     public static void main(String[] args) {
 
+        double mayorVenta;
+        int mes;
         double[] ventas = new double[12];
 
         for (int i = 0; i < ventas.length; i++) {
             ventas[i] = Utils.leerDoble("\nDigite las ventas del mes " + (i + 1) + ":");
         }
 
-        System.out.printf("\nEl mes con más ventas fue : " + ventaMayor(ventas));
+        System.out.printf("\nEl mes con mayores ventas fue " + mes + " : " + ventaMayor(ventas));
     }
 }
