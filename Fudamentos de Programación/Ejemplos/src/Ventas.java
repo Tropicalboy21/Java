@@ -13,6 +13,10 @@ public class Ventas {
         return max;
     }
 
+    public static double mesMayor(double[] ventas, double max) {
+
+    }
+
     public static void main(String[] args) {
 
         double mayorVenta;
