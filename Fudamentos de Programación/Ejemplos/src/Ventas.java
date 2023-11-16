@@ -7,13 +7,13 @@ public class Ventas {
         // Traverse array elements from second and
         // compare every element with current max
         for (int i = 1; i < arr.length; i++)
-            if (arr[i] > max)
+            if (arr[i] >= max)
                 max = arr[i];
 
         return max;
     }
 
-    public static double mesMayor(double[] ventas, double max) {
+    public static int mesMayor(double[] ventas, double max) {
         for (int i = 0; i < ventas.length; i++) {
             if (max == ventas[i]) {
                 return i + 1;
@@ -33,7 +33,8 @@ public class Ventas {
         }
 
         mayorVenta = ventaMayor(ventas);
+        mes = mesMayor(ventas, ventaMayor(ventas));
 
-        System.out.printf("\nEl mes con mayores ventas fue " + mes + " : ₡" + mayorVenta + " Colones.");
+        System.out.println("\nEl mes con mayores ventas fue " + mes + " : ₡" + mayorVenta + " Colones.");
     }
 }
