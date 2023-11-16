@@ -25,16 +25,22 @@ public class Ventas {
     public static void main(String[] args) {
 
         double mayorVenta;
+        String mayorMes;
         int mes;
+        String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+                "Octubre", "Noviembre", "Diciembre" };
+
         double[] ventas = new double[12];
 
-        for (int i = 0; i < ventas.length; i++) {
-            ventas[i] = Utils.leerDoble("\nDigite las ventas del mes " + (i + 1) + ":");
+        for (int i = 0; i < meses.length; i++) {
+            ventas[i] = Utils.leerDoble("\nDigite las ventas del mes " + meses[i + 1] + ":");
         }
 
         mayorVenta = ventaMayor(ventas);
         mes = mesMayor(ventas, ventaMayor(ventas));
+        mayorMes = meses[mes];
 
-        System.out.println("\nEl mes con mayores ventas fue " + mes + " : ₡" + mayorVenta + " Colones.");
+        System.out.println("\nEl mes con mayores ventas fue " + mayorMes + " con un total de ₡" + mayorVenta
+                + " Colones en ingresos.");
     }
 }
