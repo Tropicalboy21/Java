@@ -1,13 +1,12 @@
 public class Ventas {
     public static double ventaMayor(double arr[]) {
-        int i;
 
         // Initialize maximum element
         double max = arr[0];
 
         // Traverse array elements from second and
         // compare every element with current max
-        for (i = 1; i < arr.length; i++)
+        for (int i = 1; i < arr.length; i++)
             if (arr[i] > max)
                 max = arr[i];
 
@@ -24,6 +23,8 @@ public class Ventas {
             ventas[i] = Utils.leerDoble("\nDigite las ventas del mes " + (i + 1) + ":");
         }
 
-        System.out.printf("\nEl mes con mayores ventas fue " + mes + " : " + ventaMayor(ventas));
+        mayorVenta = ventaMayor(ventas);
+
+        System.out.printf("\nEl mes con mayores ventas fue " + mes + " : ₡" + mayorVenta + " Colones.");
     }
 }
