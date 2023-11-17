@@ -26,11 +26,23 @@ public class Ventas {
         return suma;
     }
 
+    public static String mayoresPromedio(double[] ventas, double promedio, String[] meses) {
+        String resultado = "";
+
+        for (int i = 0; i < ventas.length; i++) {
+            if (ventas[i] > promedio) {
+                resultado += meses[i] + ": " + ventas[i] + " , ";
+            }
+        }
+        return resultado;
+    }
+
     public static void main(String[] args) {
         double mayorVenta;
         String mayorMes;
         int mes;
         double promedio;
+        String mesesMayores;
 
         String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
                 "Octubre", "Noviembre", "Diciembre" };
@@ -45,7 +57,11 @@ public class Ventas {
         mayorMes = meses[mes];
         promedio = suma(ventas) / 12;
 
+        mesesMayores = mayoresPromedio(ventas, promedio, meses);
+
         System.out.println("El promedio de ventas de todo el año es : " + promedio);
+
+        System.out.println("los meses con ventas mayores que el promedio : " + mesesMayores);
 
         System.out.println("\nEl mes con mayores ventas fue " + mayorMes + " con un total de ₡" + mayorVenta
                 + " Colones en ingresos.");
