@@ -59,9 +59,9 @@ public class Ventas {
 
         mesesMayores = mayoresPromedio(ventas, promedio, meses);
 
-        System.out.println("El promedio de ventas de todo el año es : " + promedio);
+        System.out.println("\nEl promedio de ventas de todo el año es : " + promedio);
 
-        System.out.println("los meses con ventas mayores que el promedio : " + mesesMayores);
+        System.out.println("\nlos meses con ventas mayores que el promedio : \n" + mesesMayores);
 
         System.out.println("\nEl mes con mayores ventas fue " + mayorMes + " con un total de ₡" + mayorVenta
                 + " Colones en ingresos.");
