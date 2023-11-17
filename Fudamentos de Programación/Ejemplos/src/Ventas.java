@@ -18,10 +18,20 @@ public class Ventas {
         return -1;
     }
 
+    public static double suma(double[] arreglo) {
+        double suma = 0;
+        for (double dato : arreglo) {
+            suma += dato;
+        }
+        return suma;
+    }
+
     public static void main(String[] args) {
         double mayorVenta;
         String mayorMes;
         int mes;
+        double promedio;
+
         String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
                 "Octubre", "Noviembre", "Diciembre" };
         double[] ventas = new double[12];
@@ -33,6 +43,9 @@ public class Ventas {
         mayorVenta = ventaMayor(ventas);
         mes = mesMayor(ventas, ventaMayor(ventas));
         mayorMes = meses[mes];
+        promedio = suma(ventas) / 12;
+
+        System.out.println("El promedio de ventas de todo el año es : " + promedio);
 
         System.out.println("\nEl mes con mayores ventas fue " + mayorMes + " con un total de ₡" + mayorVenta
                 + " Colones en ingresos.");

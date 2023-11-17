@@ -1,5 +1,4 @@
 public class Ejemplo23 {
-
     public static double ventaMayor(double[] ventas) {
         double mayor = 0;
         // for each
@@ -7,7 +6,6 @@ public class Ejemplo23 {
             if (ventas[i] >= mayor) {
                 mayor = ventas[i];
             }
-
         }
         return mayor;
     }
@@ -25,7 +23,7 @@ public class Ejemplo23 {
         double mayorVenta;
         int mes;
         double[] ventas = new double[12];
-
+        double promedio;
         for (int i = 0; i < ventas.length; i++) {
             ventas[i] = Utils.leerDoble("Cuanto se vendio en colones en el mes " + (i + 1) + " ");
         }
