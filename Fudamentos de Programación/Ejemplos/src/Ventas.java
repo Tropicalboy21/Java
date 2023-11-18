@@ -1,5 +1,5 @@
 public class Ventas {
-    public static double ventaMayor(double arr[]) {
+    public static double ventaMayor(double[] arr) {
         double max = arr[0];
 
         for (int i = 1; i < arr.length; i++)
@@ -56,7 +56,6 @@ public class Ventas {
         mes = mesMayor(ventas, ventaMayor(ventas));
         mayorMes = meses[mes];
         promedio = suma(ventas) / 12;
-
         mesesMayores = mayoresPromedio(ventas, promedio, meses);
 
         System.out.println("\nEl promedio de ventas de todo el año es : " + promedio);
