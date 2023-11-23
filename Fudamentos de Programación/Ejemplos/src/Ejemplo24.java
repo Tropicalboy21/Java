@@ -17,7 +17,7 @@ public class Ejemplo24 {
         notas = new double[cantidadEstudiante];
 
         for (int i = 0; i < notas.length; i++) {
-            notas[i] = Utils.leerDoble("Digite la nota del estudaintes " + (i + 1) + ": ");
+            notas[i] = Utils.leerDoble("Digite la nota del estudiantes " + (i + 1) + ": ");
         }
 
         promedio = sumar(notas) / notas.length;
