@@ -1,9 +1,9 @@
+import java.util.Arrays;
+
 public class Ejemplo31 {
-    public static int ordenar(int[]arr){
+    public static void ordenar(int[] edades, int[] compras) {
+        Arrays.sort(edades);
 
-        Arrays.sort()
-
-        return ;
     }
 
     public static void main(String[] args) {
