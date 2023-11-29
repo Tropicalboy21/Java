@@ -3,7 +3,6 @@ import java.util.Arrays;
 public class Ejemplo31 {
     public static double medianaReales(double[] compras) {
         double mediana = 0;
-
         int n = compras.length;
 
         mediana = (compras[n / 2] + compras[n / 2 - 1]) / 2;
@@ -13,7 +12,6 @@ public class Ejemplo31 {
 
     public static int medianaEnteros(int[] edades) {
         int mediana = 0;
-
         int n = edades.length;
 
         mediana = (edades[n / 2] + edades[n / 2 - 1]) / 2;
