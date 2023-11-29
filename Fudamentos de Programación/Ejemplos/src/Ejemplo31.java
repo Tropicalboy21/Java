@@ -1,6 +1,16 @@
 import java.util.Arrays;
 
 public class Ejemplo31 {
+    public static double medianaReales(double[] compras) {
+        double mediana = 0;
+
+        int n = compras.length;
+
+        mediana = (compras[n / 2] + compras[n / 2 - 1]) / 2;
+
+        return mediana;
+    }
+
     public static int medianaEnteros(int[] edades) {
         int mediana = 0;
 
@@ -22,9 +32,10 @@ public class Ejemplo31 {
 
         ordenar(edades, compras);
 
-        System.out.println(Arrays.toString(edades));
-        System.out.println(Arrays.toString(compras));
+        System.out.println("\n" + Arrays.toString(edades));
+        System.out.println("\n" + Arrays.toString(compras));
 
-        System.out.println(medianaEnteros(edades));
+        System.out.println("\n" + medianaEnteros(edades));
+        System.out.println("\n" + medianaReales(compras));
     }
 }
