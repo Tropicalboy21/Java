@@ -1,15 +1,12 @@
 import java.util.Arrays;
 
 public class Ejemplo31 {
-    public static int Mediana(int[] edades) {
+    public static int medianaEnteros(int[] edades) {
         int mediana = 0;
-        int calc = 0;
 
         int n = edades.length;
 
-        calc = (edades[n / 2] + edades[n / 2 - 1]) / 2;
-
-        System.out.println(calc);
+        mediana = (edades[n / 2] + edades[n / 2 - 1]) / 2;
 
         return mediana;
     }
@@ -28,6 +25,6 @@ public class Ejemplo31 {
         System.out.println(Arrays.toString(edades));
         System.out.println(Arrays.toString(compras));
 
-        Mediana(edades);
+        System.out.println(medianaEnteros(edades));
     }
 }
