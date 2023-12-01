@@ -94,9 +94,7 @@ public class Practica04 {
     public static void main(String[] args) {
 
         final int MIN = 100;
-
         final int MAX = 500;
-
         int size = 0;
 
         size = Utils.leerEntero("\nIngrese el Tamaño del Arreglo: ");
