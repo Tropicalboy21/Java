@@ -7,7 +7,7 @@ public class Practica04 {
         int top = Utils.leerEntero("\nDigite el top de numeros que desea ver: ");
         System.out.println("Top " + top + " numbers: ");
         for (int i = numeros.length - 1; i >= numeros.length - top; i--) {
-            System.out.println(numeros[i]);
+            System.out.print(numeros[i] + " ");
         }
     }
 
