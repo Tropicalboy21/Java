@@ -3,13 +3,52 @@ import java.util.Random;
 
 public class Practica04 {
 
+    public static void invertir(double arr[]) {
+        int n = arr.length;
+
+        for (int i = 0; i < n / 2; i++) {
+            double temp = arr[i];
+            arr[i] = arr[n - 1 - i];
+            arr[n - 1 - i] = temp;
+        }
+
+        System.out.println("\n" + Arrays.toString(arr));
+
+        System.out.println("\nTop n es igual a : " + arr[0]);
+    }
+
+    public static void mediana(double[] validos) {
+        double mediana = 0;
+        int n = validos.length;
+
+        if (n % 2 == 0) {
+            mediana = (validos[n / 2] + validos[n / 2 - 1]) / 2;
+        } else {
+            mediana = validos[n / 2];
+        }
+
+        System.out.println("\nLa mediana es igual a : " + mediana);
+    }
+
+    public static void promedio(double[] validos) {
+
+        int n = validos.length;
+
+        double suma = Arrays.stream(validos).sum();
+
+        double promedio = Math.round(suma / n);
+
+        System.out.println("\nEl promedio es: " + promedio);
+
+    }
+
     public static void maximo(double[] validos) {
 
         int l = validos.length - 1;
 
         double numeroMaximo = validos[l];
 
-        System.out.println("\nEl numero Máximo es: " + numeroMaximo);
+        System.out.println("\nEl número Máximo es: " + numeroMaximo);
 
     }
 
@@ -17,7 +56,7 @@ public class Practica04 {
 
         double numeroMinimo = validos[0];
 
-        System.out.println("\nEl numero Mínimo es: " + numeroMinimo);
+        System.out.println("\nEl número Mínimo es: " + numeroMinimo);
 
     }
 
@@ -41,6 +80,9 @@ public class Practica04 {
 
         minimo(removerMayores);
         maximo(removerMayores);
+        promedio(removerMayores);
+        mediana(removerMayores);
+        invertir(removerMayores);
     }
 
     public static void ordenar(double[] arreglo) {
@@ -57,7 +99,11 @@ public class Practica04 {
 
     public static void main(String[] args) {
 
-        double[] numeros = new double[60];
+        int size = 0;
+
+        size = Utils.leerEntero("Ingrese el Tamaño del Arreglo: ");
+
+        double[] numeros = new double[size];
         llenarNumeroAleatorios(numeros, 100, 500);
         ordenar(numeros);
         System.out.println("\n" + Arrays.toString(numeros));
