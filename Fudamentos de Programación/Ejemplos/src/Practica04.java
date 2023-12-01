@@ -3,6 +3,24 @@ import java.util.Random;
 
 public class Practica04 {
 
+    public static void maximo(double[] validos) {
+
+        int l = validos.length - 1;
+
+        double numeroMaximo = validos[l];
+
+        System.out.println("\nEl numero Máximo es: " + numeroMaximo);
+
+    }
+
+    public static void minimo(double[] validos) {
+
+        double numeroMinimo = validos[0];
+
+        System.out.println("\nEl numero Mínimo es: " + numeroMinimo);
+
+    }
+
     public static void removerAtipicos(double[] arreglo) {
 
         int l = arreglo.length;
@@ -15,8 +33,14 @@ public class Practica04 {
 
         double[] removerMayores = Arrays.copyOf(removerMenores, removerMenores.length - elementosAremover);
 
+        int n = removerMayores.length;
+
         System.out.println("\n" + Arrays.toString(removerMayores));
 
+        System.out.println("\nEl número de datos válidos es: " + n);
+
+        minimo(removerMayores);
+        maximo(removerMayores);
     }
 
     public static void ordenar(double[] arreglo) {
@@ -39,7 +63,6 @@ public class Practica04 {
         System.out.println("\n" + Arrays.toString(numeros));
 
         removerAtipicos(numeros);
-        System.out.println("\n" + Arrays.toString(numeros));
 
     }
 }
