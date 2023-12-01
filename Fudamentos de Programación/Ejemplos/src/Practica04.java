@@ -3,20 +3,11 @@ import java.util.Random;
 
 public class Practica04 {
 
-    public static void invertir(double arr[]) {
-        int n = arr.length;
-
-        for (int i = 0; i < n / 2; i++) {
-            double temp = arr[i];
-            arr[i] = arr[n - 1 - i];
-            arr[n - 1 - i] = temp;
-        }
-
-        System.out.println("\n" + Arrays.toString(arr));
-
-        System.out.println("\nTop n son igual a : ");
-        for (int i = 0; i <= 5; i++) {
-            System.out.print(arr[i] + " ");
+    public static void obtenerTop(double[] numeros) {
+        int top = Utils.leerEntero("\nDigite el top de numeros que desea ver: ");
+        System.out.println("Top " + top + " numbers: ");
+        for (int i = numeros.length - 1; i >= numeros.length - top; i--) {
+            System.out.println(numeros[i]);
         }
     }
 
@@ -85,7 +76,7 @@ public class Practica04 {
         maximo(removerMayores);
         promedio(removerMayores);
         mediana(removerMayores);
-        invertir(removerMayores);
+        obtenerTop(removerMayores);
     }
 
     public static void ordenar(double[] arreglo) {
@@ -102,12 +93,16 @@ public class Practica04 {
 
     public static void main(String[] args) {
 
+        final int MIN = 100;
+
+        final int MAX = 500;
+
         int size = 0;
 
         size = Utils.leerEntero("\nIngrese el Tamaño del Arreglo: ");
 
         double[] numeros = new double[size];
-        llenarNumeroAleatorios(numeros, 100, 500);
+        llenarNumeroAleatorios(numeros, MIN, MAX);
         ordenar(numeros);
         System.out.println("\n" + Arrays.toString(numeros));
 

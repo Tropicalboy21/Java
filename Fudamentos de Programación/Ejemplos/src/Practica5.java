@@ -8,7 +8,7 @@ public class Practica5 {
         long semilla = 1234567890l;
         Random random = new Random(semilla);
         for (int i = 0; i < datos.length; i++) {
-            datos[i] = random.nextLong(min, max);
+            datos[i] = (int) (random.nextInt(max));
         }
     }
 
