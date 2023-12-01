@@ -15,7 +15,7 @@ public class Practica04 {
 
         double[] removerMayores = Arrays.copyOf(removerMenores, removerMenores.length - elementosAremover);
 
-        System.out.println("\n" + Arrays.toString(arreglo));
+        System.out.println("\n" + Arrays.toString(removerMayores));
 
     }
 
@@ -36,10 +36,10 @@ public class Practica04 {
         double[] numeros = new double[60];
         llenarNumeroAleatorios(numeros, 100, 500);
         ordenar(numeros);
-        System.out.println(Arrays.toString(numeros));
-        numeros = removerAtipicos(numeros);
+        System.out.println("\n" + Arrays.toString(numeros));
 
-        System.out.println(Arrays.toString(numeros));
+        removerAtipicos(numeros);
+        System.out.println("\n" + Arrays.toString(numeros));
 
     }
 }
