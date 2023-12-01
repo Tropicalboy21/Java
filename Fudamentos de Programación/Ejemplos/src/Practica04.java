@@ -11,10 +11,16 @@ public class Practica04 {
 
         int elementosAremover = (int) Math.round(valoresAtipicos);
 
-        double[] nuevoArreglo = Arrays.copyOfRange(arreglo, elementosAremover, arreglo.length);
+        double[] removerMenores = Arrays.copyOfRange(arreglo, elementosAremover, arreglo.length);
 
-        System.out.println("\n" + Arrays.toString(nuevoArreglo));
+        double[] removerMayores = Arrays.copyOf(removerMenores, removerMenores.length - elementosAremover);
 
+        System.out.println("\n" + Arrays.toString(arreglo));
+
+    }
+
+    public static void ordenar(double[] arreglo) {
+        Arrays.sort(arreglo);
     }
 
     public static void llenarNumeroAleatorios(double[] datos, int min, int max) {
@@ -26,11 +32,14 @@ public class Practica04 {
     }
 
     public static void main(String[] args) {
+
         double[] numeros = new double[60];
         llenarNumeroAleatorios(numeros, 100, 500);
+        ordenar(numeros);
         System.out.println(Arrays.toString(numeros));
-        removerAtipicos(numeros);
-        System.out.println();
+        numeros = removerAtipicos(numeros);
+
+        System.out.println(Arrays.toString(numeros));
 
     }
 }
