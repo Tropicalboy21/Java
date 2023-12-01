@@ -14,7 +14,10 @@ public class Practica04 {
 
         System.out.println("\n" + Arrays.toString(arr));
 
-        System.out.println("\nTop n es igual a : " + arr[0]);
+        System.out.println("\nTop n son igual a : ");
+        for (int i = 0; i <= 5; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 
     public static void mediana(double[] validos) {
@@ -101,7 +104,7 @@ public class Practica04 {
 
         int size = 0;
 
-        size = Utils.leerEntero("Ingrese el Tamaño del Arreglo: ");
+        size = Utils.leerEntero("\nIngrese el Tamaño del Arreglo: ");
 
         double[] numeros = new double[size];
         llenarNumeroAleatorios(numeros, 100, 500);
