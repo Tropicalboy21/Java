@@ -31,6 +31,7 @@ public class App {
             int bronce = Utils.leerEntero("Número de medallas de bronce: ");
             bronces[i] = bronce;
 
+            // Buscar el pais con el puntaje mas alto.
             int puntajeTotal = calcularPuntajeTotal(oro, plata, bronce);
 
             puntajesTotal[i] = oros[i] * 3 + platas[i] * 2 + bronces[i];
