@@ -17,7 +17,18 @@ public class App {
 
     }
 
-    static public void medalleroInformativo() {
+    static public void medalleroInformativo(String[] paises, int[] oros, int[] platas, int[] bronces) {
+        int l = oros.length;
+
+        System.out.printf("\n ");
+        System.out.printf("Juegos Olímpicos de Tokio 2020%n");
+        System.out.printf("\n Medallero informativo %n");
+        System.out.printf("\n %-10s  %-8s  %-8s  %-8s %n", "Pais", "Medallas de oro", "Medallas de plata",
+                "Medallas de bronce");
+
+        for (int i = 0; i < l; i++) {
+            System.out.printf(" %-10s  %-8s %n", paises[i], oros[i], platas[i], bronces[i]);
+        }
 
     }
 
@@ -67,11 +78,7 @@ public class App {
         calcularPuntajeTotal(paises, puntajesTotal);
         tablaPuntajes(paises, puntajesTotal);
 
-        // System.out.println("\nArray paises: " + Arrays.toString(paises));
-        // System.out.println("Array paises: " + Arrays.toString(oros));
-        // System.out.println("Array paises: " + Arrays.toString(platas));
-        // System.out.println("Array paises: " + Arrays.toString(bronces));
-        // System.out.println("Array paises: " + Arrays.toString(puntajesTotal));
+        medalleroInformativo(paises, oros, platas, bronces);
     }
 
     public static void main(String[] args) {
