@@ -2,26 +2,42 @@ import java.util.Arrays;
 
 public class App {
 
-    // Metodo para calcular el puntaje total.
-    static int calcularPuntajeTotal(int oro, int plata, int bronce) {
-        return (oro * 3) + (plata * 2) + bronce;
+    static public void tablaPuntajes() {
+
     }
 
-    public static void main(String[] args) {
-        String paisGanador = "";
+    static public void medalleroInformativo() {
+
+    }
+
+    static public void tablaPosiciones() {
+
+    }
+
+    // Metodo para calcular el puntaje total.
+    static public void calcularPuntajeTotal(String[] paises, int[] puntajesTotal) {
+
         int maxPuntaje = Integer.MIN_VALUE;
+        String pais = "";
 
-        // Leer el numero de paises en el torneo.
-        final int numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
+        for (int i = 0; i < puntajesTotal.length; i++) {
+            if (puntajesTotal[i] > maxPuntaje) {
+                maxPuntaje = puntajesTotal[i];
+                pais = paises[i];
+            }
+        }
 
+        System.out.println("\nEl pais con mayor puntaje total es: " + pais);
+    }
+
+    // Lector
+    static public void leerPuntajes(int numPaises) {
         String[] paises = new String[numPaises];
         int[] oros = new int[numPaises];
         int[] platas = new int[numPaises];
         int[] bronces = new int[numPaises];
         int[] puntajesTotal = new int[numPaises];
 
-        // Leer numero de medallas y calcular el total de puntos de cada pais. 
-        // 
         for (int i = 0; i < numPaises; i++) {
             String pais = Utils.leerString("\nNombre del país " + (i + 1) + ": ");
             paises[i] = pais;
@@ -32,26 +48,27 @@ public class App {
             int bronce = Utils.leerEntero("Número de medallas de bronce: ");
             bronces[i] = bronce;
 
-            // Buscar el pais con el puntaje mas alto.
-            int puntajeTotal = calcularPuntajeTotal(oro, plata, bronce);
-
             puntajesTotal[i] = oros[i] * 3 + platas[i] * 2 + bronces[i];
 
-            System.out.println("\nEl puntaje total de " + pais + " es: " + puntajeTotal);
-
-            // Validar si es el pais con mayor puntaje total.
-            if (puntajeTotal > maxPuntaje) {
-                maxPuntaje = puntajeTotal;
-                paisGanador = pais;
-            }
+            System.out.println("\nEl puntaje total de " + pais + " es: " + puntajesTotal[i]);
         }
 
-        // Imprimir el pais con mayor puntaje.
-        System.out.println("\nEl pais con mayor puntaje total es: " + paisGanador);
-        System.out.println("Array paises: " + Arrays.toString(paises));
-        System.out.println("Array paises: " + Arrays.toString(oros));
-        System.out.println("Array paises: " + Arrays.toString(platas));
-        System.out.println("Array paises: " + Arrays.toString(bronces));
-        System.out.println("Array paises: " + Arrays.toString(puntajesTotal));
+        calcularPuntajeTotal(paises, puntajesTotal);
+
+        // System.out.println("\nArray paises: " + Arrays.toString(paises));
+        // System.out.println("Array paises: " + Arrays.toString(oros));
+        // System.out.println("Array paises: " + Arrays.toString(platas));
+        // System.out.println("Array paises: " + Arrays.toString(bronces));
+        // System.out.println("Array paises: " + Arrays.toString(puntajesTotal));
+    }
+
+    public static void main(String[] args) {
+
+        // Leer el numero de paises en el torneo.
+        final int numPaises = Utils.leerEntero("\nNúmero de países del torneo: ");
+
+        // Leer Puntajes de los paises participantes
+        leerPuntajes(numPaises);
+
     }
 }
