@@ -20,7 +20,8 @@ public class App {
         int[] bronces = new int[numPaises];
         int[] puntajesTotal = new int[numPaises];
 
-        // Leer numero de medallas y calcular el total de puntos de cada pais.
+        // Leer numero de medallas y calcular el total de puntos de cada pais. 
+        // 
         for (int i = 0; i < numPaises; i++) {
             String pais = Utils.leerString("\nNombre del país " + (i + 1) + ": ");
             paises[i] = pais;
