@@ -9,7 +9,7 @@ public class App {
         System.out.printf("\n ");
         System.out.printf("Juegos Olímpicos de Tokio 2020%n");
         System.out.printf("\n Tabla de posiciones %n");
-        System.out.printf("\n %-8s  %-8s %n", "Pais", "Puntaje Total");
+        System.out.printf("\n %10s  %-8s %n", "Pais", "Puntaje Total");
 
         for (int i = 0; i < l; i++) {
             System.out.printf(" %-10s  %-8s %n", paises[i], puntajesTotal[i]);
