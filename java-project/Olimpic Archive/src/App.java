@@ -2,18 +2,17 @@ import java.util.Arrays;
 
 public class App {
 
-    static public void tablaPuntajes(String[] paises) {
+    static public void tablaPuntajes(String[] paises, int[] puntajesTotal) {
 
         int l = paises.length;
 
         System.out.printf("\n ");
         System.out.printf("Juegos Olímpicos de Tokio 2020%n");
         System.out.printf("\n Tabla de posiciones %n");
-        System.out.printf("\n %-8s  %-8s %n", "Pais", "Puntaje Total");
+        System.out.printf("\n %-10s  %-8s %n", "Pais", "Puntaje Total");
 
         for (int i = 0; i < l; i++) {
-            System.out.printf("\n %-8s  %-8s %n", paises[i], "Puntaje Total");
-
+            System.out.printf(" %-10s  %-8s %n", paises[i], puntajesTotal[i]);
         }
 
     }
@@ -66,7 +65,7 @@ public class App {
         }
 
         calcularPuntajeTotal(paises, puntajesTotal);
-        tablaPuntajes(paises);
+        tablaPuntajes(paises, puntajesTotal);
 
         // System.out.println("\nArray paises: " + Arrays.toString(paises));
         // System.out.println("Array paises: " + Arrays.toString(oros));
