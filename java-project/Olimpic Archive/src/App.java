@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class App {
 
@@ -32,24 +33,45 @@ public class App {
 
     }
 
-    static public void tablaPosiciones() {
+    // Metodo para calcular los puntajes totales.
+    // static public void tablaPosiciones(String[] paises, int[] puntajesTotal) {
 
-    }
+    // int maxPuntaje = Integer.MIN_VALUE;
+    // String pais = "";
 
-    // Metodo para calcular el puntaje total.
-    static public void calcularPuntajeTotal(String[] paises, int[] puntajesTotal) {
+    // for (int i = puntajesTotal.length - 1; i >= 0; i--) {
+    // if (puntajesTotal[i] > maxPuntaje) {
+    // maxPuntaje = puntajesTotal[i];
+    // pais = paises[i];
+    // }
 
-        int maxPuntaje = Integer.MIN_VALUE;
-        String pais = "";
+    // System.out.println(
+    // "\nEl pais con mayor puntaje total es: " + paises[i] + " con un puntaje de "
+    // + puntajesTotal[i]);
+    // }
 
-        for (int i = 0; i < puntajesTotal.length; i++) {
-            if (puntajesTotal[i] > maxPuntaje) {
-                maxPuntaje = puntajesTotal[i];
-                pais = paises[i];
-            }
+    // }
+
+    static public void tablaPosiciones(String[] paises, int[] puntajesTotal) {
+        int l = puntajesTotal.length;
+        Integer[] indices = new Integer[l];
+
+        for (int i = 0; i < l; i++) {
+            indices[i] = i;
         }
 
-        // System.out.println("\nEl pais con mayor puntaje total es: " + pais);
+        Arrays.sort(indices, Comparator.comparing(i -> puntajesTotal[i], Comparator.reverseOrder()));
+
+        System.out.printf("\n ");
+        System.out.printf("Juegos Olímpicos de Tokio 2020%n");
+        System.out.printf("\n Tabla de posiciones %n");
+        System.out.printf("\n %-8s  %-8s %n", "Pais", "Puntaje Total");
+
+        for (int i : indices) {
+            System.out.printf(" %-8s  %-8s %n", paises[i], puntajesTotal[i]);
+
+        }
+
     }
 
     // Lector
@@ -75,10 +97,10 @@ public class App {
             System.out.println("\nEl puntaje total de " + pais + " es: " + puntajesTotal[i]);
         }
 
-        calcularPuntajeTotal(paises, puntajesTotal);
         tablaPuntajes(paises, puntajesTotal);
-
         medalleroInformativo(paises, oros, platas, bronces);
+        tablaPosiciones(paises, puntajesTotal);
+
     }
 
     public static void main(String[] args) {
