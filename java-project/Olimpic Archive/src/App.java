@@ -33,25 +33,6 @@ public class App {
 
     }
 
-    // Metodo para calcular los puntajes totales.
-    // static public void tablaPosiciones(String[] paises, int[] puntajesTotal) {
-
-    // int maxPuntaje = Integer.MIN_VALUE;
-    // String pais = "";
-
-    // for (int i = puntajesTotal.length - 1; i >= 0; i--) {
-    // if (puntajesTotal[i] > maxPuntaje) {
-    // maxPuntaje = puntajesTotal[i];
-    // pais = paises[i];
-    // }
-
-    // System.out.println(
-    // "\nEl pais con mayor puntaje total es: " + paises[i] + " con un puntaje de "
-    // + puntajesTotal[i]);
-    // }
-
-    // }
-
     static public void tablaPosiciones(String[] paises, int[] puntajesTotal) {
         int l = puntajesTotal.length;
         Integer[] indices = new Integer[l];
