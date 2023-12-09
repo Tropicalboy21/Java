@@ -43,13 +43,12 @@ public class App {
 
         Arrays.sort(indices, Comparator.comparing(i -> puntajesTotal[i], Comparator.reverseOrder()));
 
-        System.out.printf("\n ");
-        System.out.printf("Juegos Olímpicos de Tokio 2020%n");
-        System.out.printf("\n Tabla de posiciones %n");
-        System.out.printf("\n %-8s  %-8s %n", "Pais", "Puntaje Total");
+        System.out.printf("%nJuegos Olímpicos de Tokio 2020%n");
+        System.out.printf("%n Tabla de posiciones %n");
+        System.out.printf("%n %-15s  %-15s %n", "Pais", "Puntaje Total");
 
         for (int i : indices) {
-            System.out.printf(" %-8s  %-8s %n", paises[i], puntajesTotal[i]);
+            System.out.printf(" %-15s  %-15s%n", paises[i], puntajesTotal[i]);
 
         }
 
