@@ -47,7 +47,7 @@ public class App {
 
         int l = paises.length;
 
-        System.out.printf("Juegos Olímpicos de Tokio 2020%n");
+        System.out.printf("%nJuegos Olímpicos de Tokio 2020%n");
         System.out.printf("%n Tabla de posiciones %n");
         System.out.printf("%n %-15s  %-15s %n", "Pais", "Puntaje Total");
 
@@ -100,10 +100,9 @@ public class App {
 
         for (int i : indices) {
             System.out.printf(" %-15s  %-15s %n", paises[i], puntajesTotal[i]);
-
         }
-        Utils.leerString("");
 
+        Utils.leerString("");
     }
 
     // Lector
@@ -177,8 +176,9 @@ public class App {
             System.out.println("5. Imprimir el país con más medallas de bronce.");
             System.out.println("6. Mostrar la tabla del medallero completo.");
             System.out.println("7. Mostrar los países en order descendente según su puntaje."); // Esto incluye puntos 8
-                                                                                                // y 9 del document
+                                                                                                // // y 9 del document
             System.out.println("8. Salir\n");
+
             opcion = Utils.leerEntero("Opción: ");
 
             switch (opcion) {
@@ -204,7 +204,6 @@ public class App {
                     tablaPosiciones();
                     break;
             }
-
         } while (opcion != 8);
 
         Utils.leerString("\n¡Esperamos verte pronto!");
