@@ -1,2 +1,8 @@
-package PACKAGE_NAME;public class Empleado {
+public class Empleado {
+    String nombre;
+    String identificacion;
+    String genero;
+    String edad;
+    String puesto;
+
 }

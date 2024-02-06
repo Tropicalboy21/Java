@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class Galleta {
+public class Galleta {
+    String nombre;
+    String color;
+    String sabor;
+    String relleno;
+    double precio;
 }
