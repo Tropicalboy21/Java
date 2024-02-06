@@ -68,13 +68,4 @@ public class App {
         }
     }
 
-    /*
-     * public static int buscarMarca(String marcaSeleccionada) throws Exception{
-     * for (int pos =0; pos < marcas.length;pos++) {
-     * if(marcas[pos]!=null && marcas[pos].equals(marcaSeleccionada))
-     * return pos;
-     * }
-     * return -1;
-     * }
-     */
 }
