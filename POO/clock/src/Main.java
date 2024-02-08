@@ -5,7 +5,7 @@ public class Main {
 
     static int i = 0;
 
-    static int tamanno = 10;
+    static int tamanno = 20;
 
     static Empleado[] empleados = new Empleado[tamanno];
 
