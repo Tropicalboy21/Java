@@ -3,11 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static int i = 0;
-
-    static int tamanno = 20;
-
-    static Empleado[] empleados = new Empleado[tamanno];
+    static ArrayList<Empleado> empleados = new ArrayList<>();
 
     static Scanner sc = new Scanner(System.in);
 
@@ -67,18 +63,15 @@ public class Main {
 
         Empleado nuevoEmpleado = new Empleado(nombreIn, identificacionIn, generoIn, edadIn, puestoIn);
 
-        empleados[i] = nuevoEmpleado;
+        empleados.add(nuevoEmpleado);
 
-        i++;
 
     }
     public static void listarEmpleados(){
 
-        System.out.println("\n***** Lista de empleados *****");
-        for (int pos = 0; pos < empleados.length; pos++ ) {
-            if (empleados[pos] != null) {
-                System.out.println((pos + 1) +"." + empleados[pos].toString());
-            }
+        System.out.println("\n***** Lista de empleados *****\n");
+        for (int pos = 0; pos < empleados.size(); pos++ ) {
+                System.out.println((pos + 1) +"." + empleados.get(pos).toString());
         }
 
     }
