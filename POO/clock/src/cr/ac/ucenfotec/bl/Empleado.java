@@ -1,3 +1,5 @@
+package cr.ac.ucenfotec.bl;
+
 public class Empleado {
     private String nombre;
     private String identificacion;
@@ -55,7 +57,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado\n" +
+        return "cr.ac.ucenfotec.bl.Empleado\n" +
                 "nombre: " + nombre + "\n" +
                 "identificacion: " + identificacion + "\n" +
                 "genero: " + genero + "\n" +

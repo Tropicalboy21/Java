@@ -1,9 +1,13 @@
+package cr.ac.ucenfotec.ui;
+
+import cr.ac.ucenfotec.bl.CL;
+
 import java.util.*;
 
 
-public class Main {
+public class UI {
 
-    static ArrayList<Empleado> empleados = new ArrayList<>();
+    static CL gestor = new CL();
 
     static Scanner sc = new Scanner(System.in);
 
@@ -16,7 +20,7 @@ public class Main {
         do {
             System.out.println("\nRegistro de entradas y salidas.");
             System.out.println("----- Menu -----");
-            System.out.println("1. Registrar Empleado");
+            System.out.println("1. Registrar empleado");
             System.out.println("2. Listar empleados");
             System.out.println("3. Buscar Empleado por identificación");
             System.out.println("4. Salir");
@@ -60,42 +64,23 @@ public class Main {
         System.out.println("Porfavor ingrese la posición de trabajo: ");
         String puestoIn = sc.next();
 
+        String mensaje = gestor.registrarEmpleado(nombreIn, identificacionIn, generoIn, edadIn, puestoIn);
 
-        Empleado nuevoEmpleado = new Empleado(nombreIn, identificacionIn, generoIn, edadIn, puestoIn);
-
-        empleados.add(nuevoEmpleado);
-
-
+        System.out.println(mensaje);
     }
     public static void listarEmpleados(){
-
-        System.out.println("\n***** Lista de empleados *****\n");
-        for (int pos = 0; pos < empleados.size(); pos++ ) {
-                System.out.println((pos + 1) +"." + empleados.get(pos).toString());
-        }
-
-    }
-
-    public static void buscarEmpleado() {
-        System.out.print("Digite la identificación del usuario que desea registrar: ");
-        String id = sc.next();
-
-        Empleado empleadoBuscado = buscarEmpladoPorId(id);
-
-        if(empleadoBuscado != null){
-            System.out.println(empleadoBuscado);
-        } else {
-            System.out.println("No existe ningun empleado con la identificación " + id);
+        System.out.println("*** Listado de empleados registrados ***");
+        for (String infoEmpleadoTemp:gestor.listarEmpleados()) {
+            System.out.println(infoEmpleadoTemp);
         }
     }
 
-    public static Empleado buscarEmpladoPorId(String id){
-        for (Empleado empleado: empleados){
-            if(empleado != null && id.equals(empleado.getIdentificacion())){
-                return empleado;
-            }
-        }
-        return null;
+    public static void buscarEmpleado(){
+        System.out.print("Por favor, digite la identificación del empleado: ");
+        String identificacion = sc.next();
+
+        String mensaje = gestor.buscarEmpleado(identificacion);
+        System.out.println(mensaje);
     }
 
 
