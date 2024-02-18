@@ -2,12 +2,9 @@ package ucenfotec.ac.cr.ui;
 
 import java.util.Scanner;
 
+import java.time.LocalDate;
+
 import ucenfotec.ac.cr.bl.CL;
-
-public class UI {
-    static CL gestor = new CL();
-
-    static Scanner sc = new Scanner(System.in);
 
     /* Credenciales
 
@@ -15,6 +12,12 @@ public class UI {
     contraseña: 20Salvo20
 
     */
+
+public class UI {
+    static CL gestor = new CL();
+
+    static Scanner sc = new Scanner(System.in);
+
 
     public static void iniciarSesion() {
         String correo;
@@ -46,16 +49,15 @@ public class UI {
             System.out.printf("              Menu               %n");
             System.out.printf("---------------------------------%n");
             System.out.printf("    1.   Registrar casa          %n");
-            System.out.printf("    2.   Listar casa             %n");
+            System.out.printf("    2.   Listar casas            %n");
             System.out.printf("    3.   Registrar vecino        %n");
-            System.out.printf("    4.   Listar vecino           %n");
-            System.out.printf("    5.   Alerta de seguridad     %n");
-            System.out.printf("    6.   Cerrar Sesion           %n");
+            System.out.printf("    4.   Listar vecinos          %n");
+            System.out.printf("    5.   Cerrar Sesion           %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
             procesarOpcion(opcion);
 
-        }while(opcion != 6);
+        }while(opcion != 5);
     }
 
     public static void procesarOpcion(int opcion){
@@ -64,7 +66,7 @@ public class UI {
                 registrarCasa();
                 break;
             case 2:
-                listarCasa();
+                listarCasas();
                 break;
             case 3:
                 registrarVecino();
@@ -73,13 +75,10 @@ public class UI {
                 listarVecinos();
                 break;
             case 5:
-                alertaSeguridad();
-                break;
-            case 6:
-                System.out.printf("--------------------------------%n");
-                System.out.printf("  Muchas Gracias por su visita  %n");
-                System.out.printf("     lo esperamos de vuelta     %n");
-                System.out.printf("--------------------------------%n");
+                System.out.printf("---------------------------------%n");
+                System.out.printf("     Gracias por su visita       %n");
+                System.out.printf("         vuelva pronto           %n");
+                System.out.printf("---------------------------------%n");
                 break;
             default:
                 System.out.println("opcion invalida");
@@ -88,24 +87,46 @@ public class UI {
 
 
     public static void registrarCasa() {
+        System.out.printf("---------------------------------%n");
+        System.out.print("Ingrese la direccion:      ");
+        String direccionIn = sc.next();
 
-    }
-
-    public static void listarCasa() {
-
-    }
-    public static void registrarVecino() {
-        System.out.print("Porfavor ingrese su nombre: ");
-        String nombreIn = sc.next();
-
-        System.out.print("Porfavor ingrese sus apellidos: ");
-        String apellidosIn = sc.next();
-
-        System.out.print("Porfavor ingrese el numero de identificación: ");
+        System.out.print("Ingrese la identificación: ");
         String identificacionIn = sc.next();
 
-        System.out.print("Porfavor ingrese fecha de nacimiento MM/DD/YY: ");
+        System.out.print("Ingrese el encargado:    ");
+        String encargadoIn = sc.next();
+
+        String mensaje = gestor.registrarCasa(direccionIn, identificacionIn, encargadoIn);
+
+        System.out.println(mensaje);
+
+         menuInterno();
+    }
+
+    public static void listarCasas() {
+        System.out.printf("---------------------------------%n");
+        System.out.printf("    informacion de las casas     %n");
+        System.out.printf("---------------------------------%n");
+        for (String infoCasas: gestor.listarCasas()){
+            System.out.println(infoCasas);
+        }
+    }
+    public static void registrarVecino() {
+        System.out.printf("---------------------------------%n");
+        System.out.print("Ingrese el nombre:      ");
+        String nombreIn = sc.next();
+
+        System.out.print("Ingrese el apellido:    ");
+        String apellidosIn = sc.next();
+
+        System.out.print("Ingrese la identificación: ");
+        String identificacionIn = sc.next();
+
+        System.out.print("Ingrese fecha de nacimiento  YYYY-MM-DD: ");
         String nacimientoIn = sc.next();
+
+        int edad = nacimientoIn.length();
 
         System.out.print("Porfavor ingrese la genero: ");
         String generoIn = sc.next();
@@ -116,7 +137,13 @@ public class UI {
         System.out.print("¿Desea ser encargado de seguridad? digite 1. Si 2. NO: ");
         int encargadoIn = sc.nextInt();
 
-        String mensaje = gestor.registrarVecino(nombreIn, apellidosIn,  identificacionIn ,nacimientoIn, generoIn, telefonoIn, encargadoIn);
+        boolean encargado = false;
+
+        if(encargadoIn == 1 ) {
+            encargado = true;
+        }
+
+        String mensaje = gestor.registrarVecino(nombreIn, apellidosIn,  identificacionIn, nacimientoIn, edad,  generoIn, telefonoIn, encargado);
 
         System.out.println(mensaje);
 
@@ -135,12 +162,75 @@ public class UI {
 
 
 
-    public static void alertaSeguridad() {
-
-    }
-
-
     public static void main(String[] args) {
+
+        // Instancia de Casa #1
+        String direccionC1 = "Pavas";
+        String idetificacionC1 = "C124";
+        String encargadoC1 = "Joshua";
+
+        gestor.registrarCasa(direccionC1, idetificacionC1, encargadoC1);
+
+        // Instancia de Casa #2
+        String direccionC2 = "Alajuelita";
+        String idetificacionC2 = "A024";
+        String encargadoC2 = "Lucas";
+
+        gestor.registrarCasa(direccionC2, idetificacionC2, encargadoC2);
+
+
+        // Instancia de Vecino #1
+        String nombreV1 = "Joshua";
+
+        String apellidoV1 = "Hernan";
+
+        String identificacionV1 = "604590182";
+
+        String nacimientoV1 = "1983-03-22";
+
+        LocalDate dob = LocalDate.parse(nacimientoV1);
+
+        int edadV1 = gestor.CalcularEdad(dob);
+
+
+        String generoV1 = "Masculino";
+
+        String telefonoV1 = "61016510";
+
+        int encargadoV1 = 1;
+        boolean encargado = false;
+
+        if(encargadoV1 == 1 ) {
+            encargado = true;
+        }
+
+        gestor.registrarVecino(nombreV1, apellidoV1,  identificacionV1 , nacimientoV1,  edadV1, generoV1, telefonoV1, encargado);
+
+        // Instancia de Vecino #2
+        String nombreV2 = "Lucas";
+
+        String apellidoV2 = "Dali";
+
+        String identificacionV2 = "104520162";
+
+        String nacimientoV2 = "1992-11-12";
+
+        LocalDate dom = LocalDate.parse(nacimientoV2);
+
+        int edadV2 = gestor.CalcularEdad(dom);
+
+        String generoV2 = "Masculino";
+
+        String telefonoV2 = "61016510";
+
+        int encargadoV2 = 1;
+
+        if(encargadoV2 == 1 ) {
+            encargado = true;
+        }
+
+        gestor.registrarVecino(nombreV2, apellidoV2,  identificacionV2 , nacimientoV2,  edadV2, generoV2, telefonoV2, encargado);
+
         iniciarSesion();
     }
 
