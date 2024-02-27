@@ -1,2 +1,4 @@
-package ucenfotec.ac.cr.bl;public class Pinches {
+package ucenfotec.ac.cr.bl;
+
+public class Pinches {
 }

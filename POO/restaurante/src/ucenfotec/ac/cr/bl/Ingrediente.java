@@ -1,2 +1,4 @@
-package ucenfotec.ac.cr.bl;public class ingrediente {
+package ucenfotec.ac.cr.bl;
+
+public class Ingrediente {
 }

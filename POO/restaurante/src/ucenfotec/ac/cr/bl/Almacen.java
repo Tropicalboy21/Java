@@ -1,2 +1,4 @@
-package ucenfotec.ac.cr.bl;public class Almacen {
+package ucenfotec.ac.cr.bl;
+
+public class Almacen {
 }
