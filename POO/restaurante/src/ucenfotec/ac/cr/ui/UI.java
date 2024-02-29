@@ -1,11 +1,29 @@
 package ucenfotec.ac.cr.ui;
 
+import ucenfotec.ac.cr.bl.CL;
+
 import java.util.Scanner;
 
 public class UI {
 
+    static CL gestor = new CL();
+
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
+
+        gestor.registrarCocinero("Gustavo", "Chavarria", "9912", "1244", "1999-12-07", "2018-11-02", "690870964", "61435565");
+
+        gestor.registrarCocinero("Juan", "Mena", "6632", "2233", "1980-10-15", "2015-04-23", "98347544", "87018943");
+
+        gestor.registrarCocinero("Carlos", "Hernandez", "6970", "3240", "1994-12-21", "2008-11-12", "78974014", "17451455");
+
+        gestor.registrarPinche("Lucas", "Martinez", "7123", "9913", "2000-01-22", "Gustavo", "61652484", "81901607");
+
+        gestor.registrarPinche("David", "Mora", "8326", "1963", "1996-01-22", "Juan", "91653482", "79237423");
+
+        gestor.registrarPinche("Thalia", "Bazalar", "8326", "1963", "1996-01-22", "Carlos", "91653482", "79237423");
+
+
         menu();
     }
 
@@ -15,7 +33,7 @@ public class UI {
         int opcion = -1;
 
         do {
-            System.out.printf("---------------------------------%n");
+            System.out.printf("\n---------------------------------%n");
             System.out.printf("      Restaurante BienFeliz      %n");
             System.out.printf("               Menu              %n");
             System.out.printf("---------------------------------%n");
@@ -39,10 +57,10 @@ public class UI {
     public static void procesarOpcion(int opcion) {
         switch (opcion) {
             case 1:
-                  registrarEmpleado();
+                registrarEmpleado();
                break;
             case 2:
-//                listarEmpleado();
+                listarEmpleado();
                 break;
             case 3:
 //                registrarPlatillo();
@@ -82,15 +100,150 @@ public class UI {
         System.out.printf("    1.   Registrar Cocinero      %n");
         System.out.printf("    2.   Registrar Pinche        %n");
         System.out.printf("    3.   Registrar otro          %n");
-        System.out.print("    Porfavor ingrese una opcion:    ");
+        System.out.print("    Porfavor ingrese una opción:    ");
         opcion = sc.nextInt();
 
         if(opcion == 1){
-//        registrarCocinero();
+            registrarCocinero();
         } else if(opcion == 2) {
-//            registrarPinche();
+            registrarPinche();
         } else {
             System.out.printf("\n---------------------------------%n");
+            System.out.print("Ingrese el nombre:      ");
+            String nombreIn = sc.next();
+
+            System.out.print("Ingrese el apellido:      ");
+            String apellidoIn = sc.next();
+
+            System.out.print("Ingrese la idetificación:      ");
+            String idIn = sc.next();
+
+            System.out.print("Ingrese el numero social:      ");
+            String numeroSocialIn = sc.next();
+
+            System.out.print("Ingrese la fecha de nacimiento  YYYY-MM-DD:   ");
+            String fechaNacimientoIn = sc.next();
+
+            System.out.print("Ingrese el rol:   ");
+            String rolIn = sc.next();
+
+            System.out.print("Ingrese el numero de teléfono fijo:   ");
+            String numeroFijo = sc.next();
+
+            System.out.print("Ingrese el numero de teléfono Móvil:   ");
+            String numeroMovil = sc.next();
+
+            String mensaje = gestor.registrarEmpleado(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, rolIn, numeroFijo, numeroMovil);
+
+            System.out.println(mensaje);
         }
+
+    }
+
+    public static void registrarCocinero(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("Ingrese el nombre:      ");
+        String nombreIn = sc.next();
+
+        System.out.print("Ingrese el apellido:      ");
+        String apellidoIn = sc.next();
+
+        System.out.print("Ingrese la idetificación:      ");
+        String idIn = sc.next();
+
+        System.out.print("Ingrese el numero social:      ");
+        String numeroSocialIn = sc.next();
+
+        System.out.print("Ingrese la fecha de nacimiento YYYY-MM-DD:   ");
+        String fechaNacimientoIn = sc.next();
+
+        System.out.print("Ingrese la fecha de ingreso YYYY-MM-DD:    ");
+        String fechaIngresoIn = sc.next();
+
+        System.out.print("Ingrese el numero de teléfono fijo:   ");
+        String numeroFijo = sc.next();
+
+        System.out.print("Ingrese el numero de teléfono Móvil:   ");
+        String numeroMovil = sc.next();
+
+        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, fechaIngresoIn, numeroFijo, numeroMovil);
+
+        System.out.println(mensaje);
+    }
+
+    public static void registrarPinche(){
+        System.out.printf("\n---------------------------------%n");
+
+        System.out.print("Ingrese el nombre:      ");
+        String nombreIn = sc.next();
+
+        System.out.print("Ingrese el apellido:      ");
+        String apellidoIn = sc.next();
+
+        System.out.print("Ingrese la idetificación:      ");
+        String idIn = sc.next();
+
+        System.out.print("Ingrese el numero social:      ");
+        String numeroSocialIn = sc.next();
+
+        System.out.print("Ingrese la fecha de nacimiento YYYY-MM-DD:   ");
+        String fechaNacimientoIn = sc.next();
+
+        System.out.print("Ingrese el cocinero encargado:    ");
+        String cocineroEncargado = sc.next();
+
+        System.out.print("Ingrese el numero de teléfono fijo:   ");
+        String numeroFijo = sc.next();
+
+        System.out.print("Ingrese el numero de teléfono Móvil:   ");
+        String numeroMovil = sc.next();
+
+        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, cocineroEncargado, numeroFijo, numeroMovil);
+
+        System.out.println(mensaje);
+    }
+
+    public static void listarEmpleado(){
+        int opcion = 0;
+        System.out.printf("---------------------------------%n");
+        System.out.printf("     Restaurante Bien Feliz      %n");
+        System.out.printf("---------------------------------%n");
+        System.out.printf("    1.   listar cocineros        %n");
+        System.out.printf("    2.   listar pinches          %n");
+        System.out.printf("    3.   listar otros empleados  %n");
+        System.out.print("    Porfavor ingrese una opción:    ");
+        opcion = sc.nextInt();
+
+        switch (opcion){
+            case 1:
+                System.out.printf("---------------------------------%n");
+                System.out.printf("       Lista de Cocineros        %n");
+                System.out.printf("---------------------------------%n");
+                for(String infoCocineros: gestor.listarCocinero()){
+                    System.out.println(infoCocineros);
+                }
+                break;
+            case 2:
+                System.out.printf("---------------------------------%n");
+                System.out.printf("       Lista de Pinches          %n");
+                System.out.printf("---------------------------------%n");
+                for(String infoPinches: gestor.listarPinche()){
+                    System.out.println(infoPinches);
+                }
+                break;
+            case 3:
+                System.out.printf("---------------------------------%n");
+                System.out.printf("       Lista de Empleados        %n");
+                System.out.printf("---------------------------------%n");
+                for(String infoEmpleados: gestor.listarEmpleados()){
+                    System.out.println(infoEmpleados);
+                }
+                break;
+            default:
+                System.out.println("opción invalida");
+                break;
+        }
+
+
     }
 }

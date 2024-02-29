@@ -1,6 +1,6 @@
 package ucenfotec.ac.cr.bl;
 
-public class Pinches {
+public class Pinche {
     private String nombre;
     private String apellidos;
     private String id;
@@ -10,9 +10,9 @@ public class Pinches {
     private String numeroFijo;
     private String numeroMovil;
 
-    public Pinches() {}
+    public Pinche() {}
 
-    public Pinches(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String cocineroEncargado, String numeroFijo, String numeroMovil) {
+    public Pinche(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String cocineroEncargado, String numeroFijo, String numeroMovil) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.id = id;
@@ -89,15 +89,15 @@ public class Pinches {
 
     @Override
     public String toString() {
-        return "Pinches{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", id='" + id + '\'' +
-                ", numeroSocial='" + numeroSocial + '\'' +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                ", cocineroEncargado='" + cocineroEncargado + '\'' +
-                ", numeroFijo='" + numeroFijo + '\'' +
-                ", numeroMovil='" + numeroMovil + '\'' +
-                '}';
+        return
+                "\nPinche\n" +
+                "nombre: " + nombre + "\n" +
+                "apellidos: " + apellidos + "\n" +
+                "id: " + id + "\n" +
+                "numeroSocial: " + numeroSocial + "\n" +
+                "fechaNacimiento: " + fechaNacimiento + "\n" +
+                "cocineroEncargado: " + cocineroEncargado + "\n" +
+                "numeroFijo: " + numeroFijo + "\n" +
+                "numeroMovil: " + numeroMovil;
     }
 }

@@ -7,20 +7,18 @@ public class Empleado {
     private String id;
     private String numeroSocial;
     private String fechaNacimiento;
-    private String fechaIngreso;
-    private String tiempoRestaurante;
+    private String rol;
     private String numeroFijo;
     private String numeroMovil;
 
     public Empleado() {}
-    public Empleado(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String fechaIngreso, String tiempoRestaurante, String numeroFijo, String numeroMovil) {
+    public Empleado(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.id = id;
         this.numeroSocial = numeroSocial;
         this.fechaNacimiento = fechaNacimiento;
-        this.fechaIngreso = fechaIngreso;
-        this.tiempoRestaurante = tiempoRestaurante;
+        this.rol = rol;
         this.numeroFijo = numeroFijo;
         this.numeroMovil = numeroMovil;
     }
@@ -65,20 +63,12 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getFechaIngreso() {
-        return fechaIngreso;
+    public String getRol() {
+        return rol;
     }
 
-    public void setFechaIngreso(String fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public String getTiempoRestaurante() {
-        return tiempoRestaurante;
-    }
-
-    public void setTiempoRestaurante(String tiempoRestaurante) {
-        this.tiempoRestaurante = tiempoRestaurante;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public String getNumeroFijo() {
@@ -99,16 +89,15 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", id='" + id + '\'' +
-                ", numeroSocial='" + numeroSocial + '\'' +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                ", fechaIngreso='" + fechaIngreso + '\'' +
-                ", tiempoRestaurante='" + tiempoRestaurante + '\'' +
-                ", numeroFijo='" + numeroFijo + '\'' +
-                ", numeroMovil='" + numeroMovil + '\'' +
-                '}';
+        return
+                "\nEmpleado\n" +
+                "nombre: " + nombre + "\n" +
+                "apellidos: " + apellidos + "\n" +
+                "id: " + id + "\n" +
+                "numeroSocial: " + numeroSocial + "\n" +
+                "fechaNacimiento: " + fechaNacimiento + "\n" +
+                "rol: " + rol + "\n" +
+                "numeroFijo: " + numeroFijo + "\n" +
+                "numeroMovil: " + numeroMovil + "\n";
     }
 }
