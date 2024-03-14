@@ -1,15 +1,20 @@
 package ucenfotec.ac.cr.bl;
+
+import java.util.ArrayList;
+
 public class Casa {
     private String direccion;
     private String identificacion;
-    private String encargado;
+    private ArrayList<Vecino> vecinos;
 
 
-    public Casa(){};
-    public Casa(String direccion, String identificacion, String encargado) {
+    public Casa(){
+        vecinos = new ArrayList<>();
+    };
+    public Casa(String direccion, String identificacion) {
         this.direccion = direccion;
         this.identificacion = identificacion;
-        this.encargado = encargado;
+        this.vecinos = new ArrayList<>();
     }
 
     public String getDireccion() {
@@ -28,20 +33,21 @@ public class Casa {
         this.identificacion = identificacion;
     }
 
-    public String getEncargado() {
-        return encargado;
+    public void asociarVecino(Vecino vecino){
+        vecinos.add(vecino);
     }
-
-    public void setEncargado(String encargado) {
-        this.encargado = encargado;
-    }
-
     @Override
     public String toString() {
-        return "Casa" + "\n" +
-                "direccion: " + direccion + "\n" +
-                "identificacion: " + identificacion + "\n" +
-                "Encargado: " + encargado + "\n";
+        String data = "Casa" + "\n";
+                data+= "direccion: " + direccion + "\n";
+                data+= "identificacion: " + identificacion + "\n";
+                data+= "-------------------------------\n";
+                data+= "       Vecino Encargado        \n";
+        for (Vecino vecinoTemp: vecinos) {
+                data+= vecinoTemp.toString() + "\n";
+        }
+
+        return data;
     }
 }
 

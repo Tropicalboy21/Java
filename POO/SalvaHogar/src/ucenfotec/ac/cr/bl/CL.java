@@ -13,8 +13,8 @@ public class CL {
 
     public CL() {vecinos = new ArrayList<>(); casas = new ArrayList<>();}
 
-    public String registrarCasa(String direccion, String identificacion, String encargado){
-        Casa nuevaCasa = new Casa(direccion,identificacion,encargado);
+    public String registrarCasa(String direccion, String identificacion){
+        Casa nuevaCasa = new Casa(direccion,identificacion);
 
         casas.add(nuevaCasa);
 
@@ -58,6 +58,36 @@ public class CL {
         {
             return 0;
         }
+    }
+
+    public String agregarVecinoCasa(String idCasa, String idVecino) {
+        Casa casa = buscarCasa(idCasa);
+        if(casa != null){
+            Vecino vecino = buscarVecino(idVecino);
+            if(vecino !=null){
+                //  agregacion
+                casa.asociarVecino(vecino);
+                return "El vecino " + vecino.getNombre() +" fue agregado a la casa en " + casa.getDireccion();
+            }else
+                return "El vecino con el id " +idVecino+", no existe en el sitema!";
+        }else
+            return "La casa con el id " + idCasa + ", no existe en el sistema!";
+    }
+
+    public Casa buscarCasa(String idCasa){
+        for (Casa casaEncotrada:casas) {
+            if(casaEncotrada.getIdentificacion().equals(idCasa))
+                return casaEncotrada;
+        }
+        return null;
+    }
+
+    public Vecino buscarVecino(String idVecino){
+        for (Vecino vecinoEncotrada:vecinos) {
+            if(vecinoEncotrada.getIdentificacion().equals(idVecino))
+                return vecinoEncotrada;
+        }
+        return null;
     }
 }
 

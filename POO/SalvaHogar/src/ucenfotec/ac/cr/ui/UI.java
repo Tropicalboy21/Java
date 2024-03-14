@@ -52,12 +52,13 @@ public class UI {
             System.out.printf("    2.   Listar casas            %n");
             System.out.printf("    3.   Registrar vecino        %n");
             System.out.printf("    4.   Listar vecinos          %n");
-            System.out.printf("    5.   Cerrar Sesion           %n");
+            System.out.printf("    5.   Agregar Vecino a casa   %n");
+            System.out.printf("    6.   Cerrar Sesion           %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
             procesarOpcion(opcion);
 
-        }while(opcion != 5);
+        }while(opcion != 7);
     }
 
     public static void procesarOpcion(int opcion){
@@ -75,6 +76,9 @@ public class UI {
                 listarVecinos();
                 break;
             case 5:
+                agregarVecinoCasa();
+                break;
+            case 6:
                 System.out.printf("---------------------------------%n");
                 System.out.printf("     Gracias por su visita       %n");
                 System.out.printf("         vuelva pronto           %n");
@@ -94,10 +98,7 @@ public class UI {
         System.out.print("Ingrese la identificación: ");
         String identificacionIn = sc.next();
 
-        System.out.print("Ingrese el encargado:    ");
-        String encargadoIn = sc.next();
-
-        String mensaje = gestor.registrarCasa(direccionIn, identificacionIn, encargadoIn);
+        String mensaje = gestor.registrarCasa(direccionIn, identificacionIn);
 
         System.out.println(mensaje);
 
@@ -160,6 +161,16 @@ public class UI {
         }
     }
 
+    public static void agregarVecinoCasa() {
+        System.out.print("Digite la identificación de la Casa: ");
+        String idCasa =  sc.next();
+        System.out.print("Digite la identificación del Vecino: ");
+        String idVecino =  sc.next();
+
+        String mensaje = gestor.agregarVecinoCasa(idCasa,idVecino);
+        System.out.println(mensaje);
+    }
+
 
 
     public static void main(String[] args) {
@@ -167,16 +178,14 @@ public class UI {
         // Instancia de Casa #1
         String direccionC1 = "Pavas";
         String idetificacionC1 = "C124";
-        String encargadoC1 = "Joshua";
 
-        gestor.registrarCasa(direccionC1, idetificacionC1, encargadoC1);
+        gestor.registrarCasa(direccionC1, idetificacionC1);
 
         // Instancia de Casa #2
         String direccionC2 = "Alajuelita";
         String idetificacionC2 = "A024";
-        String encargadoC2 = "Lucas";
 
-        gestor.registrarCasa(direccionC2, idetificacionC2, encargadoC2);
+        gestor.registrarCasa(direccionC2, idetificacionC2);
 
 
         // Instancia de Vecino #1
@@ -231,7 +240,7 @@ public class UI {
 
         gestor.registrarVecino(nombreV2, apellidoV2,  identificacionV2 , nacimientoV2,  edadV2, generoV2, telefonoV2, encargado);
 
-        iniciarSesion();
+        menuInterno();
     }
 
 }
