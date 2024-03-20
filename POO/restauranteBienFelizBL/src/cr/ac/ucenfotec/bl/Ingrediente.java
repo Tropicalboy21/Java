@@ -5,7 +5,6 @@ public class Ingrediente {
     private int cantidad;
 
     public Ingrediente() {
-
     }
 
     public Ingrediente(String nombre, int cantidad) {
