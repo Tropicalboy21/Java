@@ -1,6 +1,6 @@
 package cr.ac.ucenfotec.ui;
 
-import ucenfotec.ac.cr.bl.CL;
+import cr.ac.ucenfotec.bl.CL;
 
 import java.util.Scanner;
 
@@ -25,6 +25,17 @@ public class UI {
 
 
         menu();
+    }
+
+    public static void IniciarSesion(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.printf("      Restaurante BienFeliz      %n");
+        System.out.printf("               Menu              %n");
+        System.out.printf("---------------------------------%n");
+        System.out.println("Ingrese su correo electrónico: ");
+        System.out.println("Ingrese su contraseña: ");
+
+
     }
 
 
@@ -63,7 +74,7 @@ public class UI {
                 listarEmpleado();
                 break;
             case 3:
-//                registrarPlatillo();
+//               registrarPlatillo();
                 break;
             case 4:
 //                listarPlatillo();
