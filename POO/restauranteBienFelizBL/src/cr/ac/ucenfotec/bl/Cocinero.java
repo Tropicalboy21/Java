@@ -1,69 +1,16 @@
 package cr.ac.ucenfotec.bl;
 
-public class Cocinero {
-    private String nombre;
-    private String apellidos;
-    private String id;
-    private String numeroSocial;
-    private String fechaNacimiento;
+public class Cocinero extends Empleado {
     private String fechaIngreso;
     private String tiempoRestaurante;
-    private String numeroFijo;
-    private String numeroMovil;
 
     public Cocinero() {
     }
 
-    public Cocinero(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String fechaIngreso, String numeroFijo, String numeroMovil) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.id = id;
-        this.numeroSocial = numeroSocial;
-        this.fechaNacimiento = fechaNacimiento;
+    public Cocinero(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String fechaIngreso) {
+        super(nombre, apellidos,id,numeroSocial,fechaNacimiento, rol, numeroFijo, numeroMovil);
         this.fechaIngreso = fechaIngreso;
-//        this.tiempoRestaurante = tiempoRestaurante;
-        this.numeroFijo = numeroFijo;
-        this.numeroMovil = numeroMovil;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNumeroSocial() {
-        return numeroSocial;
-    }
-
-    public void setNumeroSocial(String numeroSocial) {
-        this.numeroSocial = numeroSocial;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+//      this.tiempoRestaurante = tiempoRestaurante;
     }
 
     public String getFechaIngreso() {
@@ -82,34 +29,13 @@ public class Cocinero {
         this.tiempoRestaurante = tiempoRestaurante;
     }
 
-    public String getNumeroFijo() {
-        return numeroFijo;
-    }
-
-    public void setNumeroFijo(String numeroFijo) {
-        this.numeroFijo = numeroFijo;
-    }
-
-    public String getNumeroMovil() {
-        return numeroMovil;
-    }
-
-    public void setNumeroMovil(String numeroMovil) {
-        this.numeroMovil = numeroMovil;
-    }
 
     @Override
     public String toString() {
         return
                 "\nCocinero\n" +
-                "nombre: " + nombre + "\n" +
-                "apellidos: " + apellidos + "\n" +
-                "id: " + id + "\n" +
-                "numeroSocial: " + numeroSocial + "\n" +
-                "fechaNacimiento: " + fechaNacimiento + "\n" +
+                 super.toString() +
                 "fechaIngreso: " + fechaIngreso + "\n" +
-                "tiempoRestaurante: " + tiempoRestaurante + "\n" +
-                "numeroFijo: " + numeroFijo + "\n" +
-                "numeroMovil: " + numeroMovil;
+                "tiempoRestaurante: " + tiempoRestaurante;
     }
 }

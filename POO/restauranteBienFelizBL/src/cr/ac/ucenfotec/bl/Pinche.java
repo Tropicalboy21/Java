@@ -1,66 +1,14 @@
 package cr.ac.ucenfotec.bl;
 
-public class Pinche {
-    private String nombre;
-    private String apellidos;
-    private String id;
-    private String numeroSocial;
-    private String fechaNacimiento;
+public class Pinche extends Empleado{
     private String cocineroEncargado;
-    private String numeroFijo;
-    private String numeroMovil;
+
 
     public Pinche() {}
 
-    public Pinche(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String cocineroEncargado, String numeroFijo, String numeroMovil) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.id = id;
-        this.numeroSocial = numeroSocial;
-        this.fechaNacimiento = fechaNacimiento;
+    public Pinche(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String cocineroEncargado) {
+        super(nombre, apellidos, id, numeroSocial, fechaNacimiento, rol, numeroFijo, numeroMovil);
         this.cocineroEncargado = cocineroEncargado;
-        this.numeroFijo = numeroFijo;
-        this.numeroMovil = numeroMovil;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNumeroSocial() {
-        return numeroSocial;
-    }
-
-    public void setNumeroSocial(String numeroSocial) {
-        this.numeroSocial = numeroSocial;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCocineroEncargado() {
@@ -71,33 +19,11 @@ public class Pinche {
         this.cocineroEncargado = cocineroEncargado;
     }
 
-    public String getNumeroFijo() {
-        return numeroFijo;
-    }
-
-    public void setNumeroFijo(String numeroFijo) {
-        this.numeroFijo = numeroFijo;
-    }
-
-    public String getNumeroMovil() {
-        return numeroMovil;
-    }
-
-    public void setNumeroMovil(String numeroMovil) {
-        this.numeroMovil = numeroMovil;
-    }
-
     @Override
     public String toString() {
         return
                 "\nPinche\n" +
-                "nombre: " + nombre + "\n" +
-                "apellidos: " + apellidos + "\n" +
-                "id: " + id + "\n" +
-                "numeroSocial: " + numeroSocial + "\n" +
-                "fechaNacimiento: " + fechaNacimiento + "\n" +
-                "cocineroEncargado: " + cocineroEncargado + "\n" +
-                "numeroFijo: " + numeroFijo + "\n" +
-                "numeroMovil: " + numeroMovil;
+                super.toString() +
+                "cocineroEncargado: " + cocineroEncargado;
     }
 }
