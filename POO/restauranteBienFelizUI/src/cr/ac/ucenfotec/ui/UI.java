@@ -8,10 +8,12 @@ public class UI {
 
     static CL gestor = new CL();
 
+    static String rol;
+
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        gestor.registrarCocinero("Gustavo", "Chavarria", "9912", "1244", "1999-12-07", "2018-11-02", "690870964", "61435565");
+        gestor.registrarCocinero("Gustavo", "Navarro", "9912", "1244", "1999-12-07", "2018-11-02", "690870964", "61435565");
 
         gestor.registrarCocinero("Juan", "Mena", "6632", "2233", "1980-10-15", "2015-04-23", "98347544", "87018943");
 
@@ -21,22 +23,36 @@ public class UI {
 
         gestor.registrarPinche("David", "Mora", "8326", "1963", "1996-01-22", "Juan", "91653482", "79237423");
 
-        gestor.registrarPinche("Thalia", "Bazalar", "8326", "1963", "1996-01-22", "Carlos", "91653482", "79237423");
+        gestor.registrarPinche("Tatiana", "Vargas", "8326", "1963", "1996-01-22", "Carlos", "91653482", "79237423");
 
 
         menu();
     }
 
     public static void IniciarSesion(){
+        int opcion = -1;
+
         System.out.printf("\n---------------------------------%n");
         System.out.printf("      Restaurante BienFeliz      %n");
         System.out.printf("               Menu              %n");
         System.out.printf("---------------------------------%n");
+        System.out.printf("      Porfavor indique su rol    %n");
+        System.out.printf("         1.   Cocinero           %n");
+        System.out.printf("         2.   Pinche             %n");
+        System.out.printf("         3.   SuperAdmin         %n");
+        System.out.print("    Porfavor ingrese una opcion:    ");
+        opcion = sc.nextInt();
+
+
+        if()
+
         System.out.println("Ingrese su correo electrónico: ");
         System.out.println("Ingrese su contraseña: ");
 
 
     }
+
+
 
 
     public static void menu(){
