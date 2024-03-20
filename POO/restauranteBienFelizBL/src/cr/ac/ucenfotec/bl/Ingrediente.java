@@ -2,18 +2,14 @@ package cr.ac.ucenfotec.bl;
 
 public class Ingrediente {
     private String nombre;
-    private String estante;
-    private String almacen;
     private int cantidad;
 
     public Ingrediente() {
 
     }
 
-    public Ingrediente(String nombre, String estante, String almacen, int cantidad) {
+    public Ingrediente(String nombre, int cantidad) {
         this.nombre = nombre;
-        this.estante = estante;
-        this.almacen = almacen;
         this.cantidad = cantidad;
     }
 
@@ -23,22 +19,6 @@ public class Ingrediente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getEstante() {
-        return estante;
-    }
-
-    public void setEstante(String estante) {
-        this.estante = estante;
-    }
-
-    public String getAlmacen() {
-        return almacen;
-    }
-
-    public void setAlmacen(String almacen) {
-        this.almacen = almacen;
     }
 
     public int getCantidad() {
@@ -54,8 +34,6 @@ public class Ingrediente {
         return
                 "\nIngrediente\n" +
                 "nombre: " + nombre + "\n" +
-                "estante: " + estante + "\n" +
-                "almacen: " + almacen + "\n" +
                 "cantidad: " + cantidad;
     }
 }
