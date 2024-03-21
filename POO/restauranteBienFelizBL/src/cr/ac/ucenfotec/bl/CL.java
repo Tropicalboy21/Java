@@ -30,8 +30,6 @@ public class CL {
                 "El cocinero fue agregado con exito";
     }
 
-
-
     public ArrayList<String> listarEmpleados(){
         ArrayList<String> infoEmpleados = new ArrayList<>();
         for (Empleado empTemp: empleados){
@@ -55,4 +53,18 @@ public class CL {
         }
         return infoPinches;
     }
+
+    public Cocinero validarCocinero(String nombre){
+
+        String validation = "false";
+
+        for(Cocinero cocineroTemp: cocineros){
+            if (cocineroTemp.getNombre().equals(nombre))
+               return cocineroTemp;
+
+        }
+
+        return null;
+    }
+
 }

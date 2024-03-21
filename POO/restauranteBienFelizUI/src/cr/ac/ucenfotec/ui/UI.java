@@ -1,6 +1,7 @@
 package cr.ac.ucenfotec.ui;
 
 import cr.ac.ucenfotec.bl.CL;
+import cr.ac.ucenfotec.bl.Cocinero;
 
 import java.util.Scanner;
 
@@ -8,25 +9,25 @@ public class UI {
 
     static CL gestor = new CL();
 
-    static String rol;
+    static String roluser;
 
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        gestor.registrarCocinero("Gustavo", "Navarro", "9912", "1244", "1999-12-07", "2018-11-02", "690870964", "61435565");
+        gestor.registrarCocinero("Gustavo", "Navarro", "9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
 
-        gestor.registrarCocinero("Juan", "Mena", "6632", "2233", "1980-10-15", "2015-04-23", "98347544", "87018943");
+        gestor.registrarCocinero("Juan", "Mena", "6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
 
-        gestor.registrarCocinero("Carlos", "Hernandez", "6970", "3240", "1994-12-21", "2008-11-12", "78974014", "17451455");
+        gestor.registrarCocinero("Carlos", "Hernandez", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
 
-        gestor.registrarPinche("Lucas", "Martinez", "7123", "9913", "2000-01-22", "Gustavo", "61652484", "81901607");
+        gestor.registrarPinche("Lucas", "Martinez", "7123", "9913", "2000-01-22", "pinche", "61652484", "81901607", "Gustavo");
 
-        gestor.registrarPinche("David", "Mora", "8326", "1963", "1996-01-22", "Juan", "91653482", "79237423");
+        gestor.registrarPinche("David", "Mora", "8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Juan");
 
-        gestor.registrarPinche("Tatiana", "Vargas", "8326", "1963", "1996-01-22", "Carlos", "91653482", "79237423");
+        gestor.registrarPinche("Tatiana", "Vargas", "8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
 
 
-        menu();
+        IniciarSesion();
     }
 
     public static void IniciarSesion(){
@@ -44,12 +45,31 @@ public class UI {
         opcion = sc.nextInt();
 
 
-        if()
+        if(opcion == 1){
+            validarCocinero();
+        } else if (opcion == 2) {
+//            validarPinche();
+        } else if (opcion == 3){
+//            validarSuperAdmin();
+        }
+
+    }
+
+    public static void validarCocinero(){
+        String correo;
+//        String contrasenna;
 
         System.out.println("Ingrese su correo electrónico: ");
-        System.out.println("Ingrese su contraseña: ");
+        correo = sc.next();
+//        System.out.println("Ingrese su contraseña: ");
+//        contrasenna = sc.next();
 
+        Cocinero cocineroEncontrado = gestor.validarCocinero(correo);
 
+        if (cocineroEncontrado != null){
+            menu();
+        } else
+            System.out.println("Lo sentimos, datos no encontrados.");
     }
 
 
@@ -193,7 +213,7 @@ public class UI {
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, fechaIngresoIn, numeroFijo, numeroMovil);
+        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, "cocinero", numeroFijo, numeroMovil, fechaIngresoIn);
 
         System.out.println(mensaje);
     }
@@ -225,7 +245,7 @@ public class UI {
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, cocineroEncargado, numeroFijo, numeroMovil);
+        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, "pinche", numeroFijo, numeroMovil, cocineroEncargado);
 
         System.out.println(mensaje);
     }
