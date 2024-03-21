@@ -14,17 +14,17 @@ public class UI {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        gestor.registrarCocinero("Gustavo", "Navarro", "9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
+        gestor.registrarCocinero("Gustavo", "Navarro", "gus12@bienfeliz.com", "bienFeliz","9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
 
-        gestor.registrarCocinero("Juan", "Mena", "6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
+        gestor.registrarCocinero("Juan", "Mena", "Jmena22@bienfeliz.com","bienFeliz",,"6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
 
-        gestor.registrarCocinero("Carlos", "Hernandez", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
+        gestor.registrarCocinero("Carlos", "Hernandez","Carher00@bienfeliz.com","bienFeliz", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
 
-        gestor.registrarPinche("Lucas", "Martinez", "7123", "9913", "2000-01-22", "pinche", "61652484", "81901607", "Gustavo");
+        gestor.registrarPinche("Lucas", "Martinez", "Lucasmm@bienfeliz.com","bienFeliz","7123", "9913", "2000-01-22", "pinche", "61652484", "81901607", "Gustavo");
 
-        gestor.registrarPinche("David", "Mora", "8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Juan");
+        gestor.registrarPinche("David", "Mora", "David19@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Juan");
 
-        gestor.registrarPinche("Tatiana", "Vargas", "8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
+        gestor.registrarPinche("Tatiana", "Vargas", "ttvargas@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
 
 
         IniciarSesion();
@@ -57,14 +57,14 @@ public class UI {
 
     public static void validarCocinero(){
         String correo;
-//        String contrasenna;
+        String contrasenna;
 
         System.out.println("Ingrese su correo electrónico: ");
         correo = sc.next();
-//        System.out.println("Ingrese su contraseña: ");
-//        contrasenna = sc.next();
+        System.out.println("Ingrese su contraseña: ");
+        contrasenna = sc.next();
 
-        Cocinero cocineroEncontrado = gestor.validarCocinero(correo);
+        Cocinero cocineroEncontrado = gestor.validarCocinero(correo, contrasenna);
 
         if (cocineroEncontrado != null){
             menu();
@@ -162,6 +162,12 @@ public class UI {
             System.out.print("Ingrese el apellido:      ");
             String apellidoIn = sc.next();
 
+            System.out.println("Genere un correo electronico en el siguiente formato (XXXXXX@bienfeliz.com):");
+            String correoIn = sc.next();
+
+            System.out.println("Genere una contraseña: ");
+            String contrasennaIn = sc.next();
+
             System.out.print("Ingrese la idetificación:      ");
             String idIn = sc.next();
 
@@ -180,7 +186,7 @@ public class UI {
             System.out.print("Ingrese el numero de teléfono Móvil:   ");
             String numeroMovil = sc.next();
 
-            String mensaje = gestor.registrarEmpleado(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, rolIn, numeroFijo, numeroMovil);
+            String mensaje = gestor.registrarEmpleado(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, rolIn, numeroFijo, numeroMovil);
 
             System.out.println(mensaje);
         }
@@ -194,6 +200,12 @@ public class UI {
 
         System.out.print("Ingrese el apellido:      ");
         String apellidoIn = sc.next();
+
+        System.out.println("Genere un correo electronico en el siguiente formato (XXXXXX@bienfeliz.com):");
+        String correoIn = sc.next();
+
+        System.out.println("Genere una contraseña: ");
+        String contrasennaIn = sc.next();
 
         System.out.print("Ingrese la idetificación:      ");
         String idIn = sc.next();
@@ -213,7 +225,7 @@ public class UI {
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, "cocinero", numeroFijo, numeroMovil, fechaIngresoIn);
+        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "cocinero", numeroFijo, numeroMovil, fechaIngresoIn);
 
         System.out.println(mensaje);
     }
@@ -226,6 +238,12 @@ public class UI {
 
         System.out.print("Ingrese el apellido:      ");
         String apellidoIn = sc.next();
+
+        System.out.println("Genere un correo electronico en el siguiente formato (XXXXXX@bienfeliz.com):");
+        String correoIn = sc.next();
+
+        System.out.println("Genere una contraseña: ");
+        String contrasennaIn = sc.next();
 
         System.out.print("Ingrese la idetificación:      ");
         String idIn = sc.next();
@@ -245,7 +263,7 @@ public class UI {
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, idIn, numeroSocialIn, fechaNacimientoIn, "pinche", numeroFijo, numeroMovil, cocineroEncargado);
+        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "pinche", numeroFijo, numeroMovil, cocineroEncargado);
 
         System.out.println(mensaje);
     }

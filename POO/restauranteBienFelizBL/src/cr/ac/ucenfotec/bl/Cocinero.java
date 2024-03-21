@@ -7,8 +7,8 @@ public class Cocinero extends Empleado {
     public Cocinero() {
     }
 
-    public Cocinero(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String fechaIngreso) {
-        super(nombre, apellidos,id,numeroSocial,fechaNacimiento, rol, numeroFijo, numeroMovil);
+    public Cocinero(String nombre, String apellidos,String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String fechaIngreso) {
+        super(nombre, apellidos,correo, contrasenna, id,numeroSocial,fechaNacimiento, rol, numeroFijo, numeroMovil);
         this.fechaIngreso = fechaIngreso;
 //      this.tiempoRestaurante = tiempoRestaurante;
     }

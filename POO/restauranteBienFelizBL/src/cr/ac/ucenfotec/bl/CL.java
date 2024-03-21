@@ -10,21 +10,21 @@ public class CL {
 
     public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>();}
 
-    public String registrarEmpleado(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil){
-        Empleado nuevoEmpleado = new Empleado(nombre,apellidos,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil);
+    public String registrarEmpleado(String nombre, String apellidos, String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil){
+        Empleado nuevoEmpleado = new Empleado(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil);
         empleados.add(nuevoEmpleado);
         return "El empleado fue agregado con exito";
     }
 
-    public String registrarCocinero(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String fechaIngreso){
-        Cocinero nuevoCocinero = new Cocinero(nombre,apellidos,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil,fechaIngreso);
+    public String registrarCocinero(String nombre, String apellidos,String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil, String fechaIngreso){
+        Cocinero nuevoCocinero = new Cocinero(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil,fechaIngreso);
         cocineros.add(nuevoCocinero);
         return
                 "El cocinero fue agregado con exito";
     }
 
-    public String registrarPinche(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento,String rol, String numeroFijo, String numeroMovil, String cocineroEncargado){
-        Pinche nuevoPinche = new Pinche(nombre,apellidos,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil,cocineroEncargado);
+    public String registrarPinche(String nombre, String apellidos,String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento,String rol, String numeroFijo, String numeroMovil, String cocineroEncargado){
+        Pinche nuevoPinche = new Pinche(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil,cocineroEncargado);
         pinches.add(nuevoPinche);
         return
                 "El cocinero fue agregado con exito";
@@ -54,12 +54,11 @@ public class CL {
         return infoPinches;
     }
 
-    public Cocinero validarCocinero(String nombre){
+    public Cocinero validarCocinero(String correo, String contrasenna){
 
-        String validation = "false";
 
         for(Cocinero cocineroTemp: cocineros){
-            if (cocineroTemp.getNombre().equals(nombre))
+            if (cocineroTemp.getNombre().equals(correo) && cocineroTemp.getContrasenna().equals(contrasenna))
                return cocineroTemp;
 
         }

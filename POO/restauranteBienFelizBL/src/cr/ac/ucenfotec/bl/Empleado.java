@@ -1,9 +1,10 @@
 package cr.ac.ucenfotec.bl;
 
 public class Empleado {
-
     private String nombre;
     private String apellidos;
+    private String correo;
+    private String contrasenna;
     private String id;
     private String numeroSocial;
     private String fechaNacimiento;
@@ -12,9 +13,11 @@ public class Empleado {
     private String numeroMovil;
 
     public Empleado() {}
-    public Empleado(String nombre, String apellidos, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil) {
+    public Empleado(String nombre, String apellidos, String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.correo = correo;
+        this.contrasenna = contrasenna;
         this.id = id;
         this.numeroSocial = numeroSocial;
         this.fechaNacimiento = fechaNacimiento;
@@ -37,6 +40,22 @@ public class Empleado {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasenna() {
+        return contrasenna;
+    }
+
+    public void setContrasenna(String contrasenna) {
+        this.contrasenna = contrasenna;
     }
 
     public String getId() {
@@ -93,6 +112,8 @@ public class Empleado {
                 "\nEmpleado\n" +
                 "nombre: " + nombre + "\n" +
                 "apellidos: " + apellidos + "\n" +
+                "correo: " + correo + "\n" +
+                "contrasenna  ********  \n" +
                 "id: " + id + "\n" +
                 "numeroSocial: " + numeroSocial + "\n" +
                 "fechaNacimiento: " + fechaNacimiento + "\n" +
