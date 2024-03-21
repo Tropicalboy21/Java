@@ -7,17 +7,14 @@ public class Estante {
     private String codigo;
 
     private ArrayList<Ingrediente> ingredientes;
-    private Almacen almacen;
-
 
     public Estante() {
         ingredientes = new ArrayList<>();
     }
 
-    public Estante(String codigo, ArrayList<Ingrediente> ingredientes, Almacen almacen) {
+    public Estante(String codigo, ArrayList<Ingrediente> ingredientes) {
         this.codigo = codigo;
         this.ingredientes = ingredientes;
-        this.almacen = almacen;
     }
 
     public String getCodigo() {
@@ -36,20 +33,11 @@ public class Estante {
         this.ingredientes = ingredientes;
     }
 
-    public Almacen getAlmacen() {
-        return almacen;
-    }
-
-    public void setAlmacen(Almacen almacen) {
-        this.almacen = almacen;
-    }
-
     @Override
     public String toString() {
         return
                 "\nEstante\n" +
                 "codigo: " + codigo + "\n" +
-                "ingredientes: " + ingredientes + "\n" +
-                "almacen: " + almacen;
+                "ingredientes: " + ingredientes + "\n";
     }
 }

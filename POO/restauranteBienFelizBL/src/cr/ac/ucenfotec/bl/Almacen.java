@@ -29,9 +29,10 @@ public class Almacen {
         return estantes;
     }
 
-    public void setEstantes(ArrayList<Estante> estantes) {
-        this.estantes = estantes;
+    public void agregarEstante(Estante estante) {
+        estantes.add(estante);
     }
+
 
     @Override
     public String toString() {

@@ -1,9 +1,6 @@
 package cr.ac.ucenfotec.ui;
 
-import cr.ac.ucenfotec.bl.CL;
-import cr.ac.ucenfotec.bl.Cocinero;
-import cr.ac.ucenfotec.bl.Empleado;
-import cr.ac.ucenfotec.bl.Pinche;
+import cr.ac.ucenfotec.bl.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,33 +33,43 @@ public class UI {
     public static void IniciarSesion(){
         int opcion = -1;
 
-        System.out.printf("\n---------------------------------%n");
-        System.out.printf("      Restaurante BienFeliz      %n");
-        System.out.printf("          Inciar sesion          %n");
-        System.out.printf("---------------------------------%n");
-        System.out.printf("      Porfavor indique su rol    %n");
-        System.out.printf("         1.   Cocinero           %n");
-        System.out.printf("         2.   Pinche             %n");
-        System.out.printf("         3.   Empleado           %n");
-        System.out.printf("         4.   SuperAdmin         %n");
-        System.out.print("    Porfavor ingrese una opcion:    ");
-        opcion = sc.nextInt();
 
+        do {
+            System.out.printf("\n---------------------------------%n");
+            System.out.printf("      Restaurante BienFeliz      %n");
+            System.out.printf("          Inciar sesion          %n");
+            System.out.printf("---------------------------------%n");
+            System.out.printf("      Porfavor indique su rol    %n");
+            System.out.printf("         1.   Cocinero           %n");
+            System.out.printf("         2.   Pinche             %n");
+            System.out.printf("         3.   Empleado           %n");
+            System.out.printf("         4.   SuperAdmin         %n");
+            System.out.printf("         0.   salir              %n");
+            System.out.print("    Porfavor ingrese una opcion:    ");
+            opcion = sc.nextInt();
 
-        if(opcion == 1){
-            roluser = "cocinero";
-            validarCocinero();
-        } else if (opcion == 2) {
-            roluser = "pinche";
-            validarPinche();
-        } else if (opcion == 3){
-            System.out.print("ingrese su rol: ");
-            roluser = sc.next();
-            validarEmpleado();
-        } else if (opcion == 4){
-            roluser = "SuperAdmin";
-            validarSuperAdmin();
-        }
+            if(opcion == 1){
+                roluser = "cocinero";
+                validarCocinero();
+            } else if (opcion == 2) {
+                roluser = "pinche";
+                validarPinche();
+            } else if (opcion == 3){
+                System.out.print("ingrese su rol: ");
+                roluser = sc.next();
+                validarEmpleado();
+            } else if (opcion == 4){
+                roluser = "SuperAdmin";
+                validarSuperAdmin();
+            } else if (opcion == 0) {
+                System.out.printf("---------------------------------%n");
+                System.out.printf("     Gracias por su visita       %n");
+                System.out.printf("         vuelva pronto           %n");
+                System.out.printf("---------------------------------%n");
+            }
+
+        }while (opcion != 0);
+
 
     }
 
@@ -148,11 +155,11 @@ public class UI {
             System.out.printf("    1.   Listar platillos        %n");
             System.out.printf("    2.   listar ingredientes     %n");
             System.out.printf("    3.   listar almacen/Estante  %n");
-            System.out.printf("    0.   Cerrar Sesion           %n");
+            System.out.printf("    4.   Cerrar Sesion           %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
             procesarOpcion(opcion);
-        }while(opcion != 0 );
+        }while(opcion != 4 );
 
     }
 
@@ -172,8 +179,8 @@ public class UI {
             System.out.printf("    4.   Listar platillos        %n");
             System.out.printf("    5.   Registrar ingredientes  %n");
             System.out.printf("    6.   listar ingredientes     %n");
-            System.out.printf("    7.   Crear almacen/Estante   %n");
-            System.out.printf("    8.   listar almacen/Estante  %n");
+            System.out.printf("    7.   Registrar almacen       %n");
+            System.out.printf("    8.   Registrar Estante       %n");
             System.out.printf("    0.   Cerrar Sesion           %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
@@ -195,7 +202,7 @@ public class UI {
                registrarPlatillo();
                 break;
             case 4:
-//                listarPlatillo();
+                listarPlatillo();
                 break;
             case 5:
 //                registrarIngrediente();
@@ -204,10 +211,10 @@ public class UI {
 //                listarIngredientes();
                 break;
             case 7:
-//                RegistrarAlmacenEstante();
+                registrarAlmacen();
                 break;
             case 8:
-//                listarAlmacenes();
+                registrarEstante();
                 break;
             case 0:
                 System.out.printf("---------------------------------%n");
@@ -425,7 +432,35 @@ public class UI {
     }
 
     public static void listarPlatillo(){
-
+        for (String infoPlatillos: gestor.listarPlatillos()){
+            System.out.println(infoPlatillos);
+        }
     }
+
+    public static void registrarAlmacen(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("ingrese el codigo del Almacen: ");
+        String codigoIn = sc.next();
+        ArrayList<Estante> estantes;
+        estantes = new ArrayList<>();
+
+        String mensaje = gestor.registrarAlmacen(codigoIn, estantes);
+
+        System.out.println(mensaje);
+    }
+
+    public static void registrarEstante(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("ingrese el codigo del estante: ");
+        String codigoIn = sc.next();
+        ArrayList<Ingrediente> ingredientes;
+        ingredientes = new ArrayList<>();
+
+        String mensaje = gestor.registrarEstante(codigoIn, ingredientes);
+
+        System.out.println(mensaje);
+    }
+
+
 
 }

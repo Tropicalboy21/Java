@@ -6,11 +6,12 @@ public class CL {
     private ArrayList<Cocinero> cocineros;
     private ArrayList<Pinche> pinches;
     private ArrayList<Empleado> empleados;
-
     private ArrayList<Platillo> platillos;
+    private ArrayList<Almacen> almacenes;
+    private ArrayList<Estante> estantes;
 
 
-    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>(); platillos = new ArrayList<>();}
+    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>(); platillos = new ArrayList<>(); almacenes = new ArrayList<>(); estantes = new ArrayList<>();}
 
     public String registrarEmpleado(String nombre, String apellidos, String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil){
         Empleado nuevoEmpleado = new Empleado(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil);
@@ -37,6 +38,20 @@ public class CL {
         platillos.add(nuevoPlatillo);
         return
                 "EL platillo fue agregado con exito";
+    }
+
+    public String registrarAlmacen(String codigo, ArrayList<Estante> estantes){
+        Almacen nuevoAlmacen = new Almacen(codigo, estantes);
+        almacenes.add(nuevoAlmacen);
+        return
+                "El Almacen fue registrado con exito";
+    }
+
+    public String registrarEstante(String codigo, ArrayList<Ingrediente> ingredientes){
+        Estante nuevoEstante = new Estante(codigo, ingredientes);
+        estantes.add(nuevoEstante);
+        return
+                "El Almacen fue registrado con exito";
     }
 
     public ArrayList<String> listarEmpleados(){
@@ -94,6 +109,40 @@ public class CL {
         }
         return null;
     }
+
+    public String agregarEstanteAAlmacen(String codigoAlmacen, String codigoEstante){
+
+        Almacen almacen = buscarAlmacen(codigoAlmacen);
+        if(almacen != null){
+            Estante estante =  buscarEstante(codigoEstante);
+            if(estante !=null){
+                // APLICAR AGREGACION
+                almacen.agregarEstante(estante);
+                return "El estante " + estante.getCodigo() +" fue agregado al almacen " + almacen.getCodigo();
+            }else
+                return "El estante con el código " +codigoEstante+", no existe en el sitema!";
+        }else
+            return "La Almacen con el código " + codigoAlmacen + ", no existe en el sistema!";
+    }
+
+
+    public Almacen buscarAlmacen(String codigo){
+        for (Almacen almacenEncontrado:almacenes) {
+            if(almacenEncontrado.getCodigo().equals(codigo))
+                return almacenEncontrado;
+        }
+        return null;
+    }
+
+    public Estante buscarEstante(String codigo){
+        for (Estante estanteEncontrado:estantes) {
+            if(estanteEncontrado.getCodigo().equals(codigo))
+                return estanteEncontrado;
+        }
+        return null;
+    }
+
+
 
 
 }
