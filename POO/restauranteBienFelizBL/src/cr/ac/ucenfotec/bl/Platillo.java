@@ -4,7 +4,7 @@ import  java.util.ArrayList;
 
 public class Platillo {
     private String nombre;
-    private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<String> ingredientes;
     private String experto;
     private double costo;
 
@@ -12,7 +12,7 @@ public class Platillo {
         ingredientes = new ArrayList<>();
     }
 
-    public Platillo(String nombre, ArrayList<Ingrediente> ingredientes, String experto, double costo) {
+    public Platillo(String nombre, ArrayList<String> ingredientes, String experto, double costo) {
         this.nombre = nombre;
         this.ingredientes = ingredientes;
         this.experto = experto;
@@ -27,11 +27,11 @@ public class Platillo {
         this.nombre = nombre;
     }
 
-    public ArrayList<Ingrediente> getIngredientes() {
+    public ArrayList<String> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+    public void setIngredientes(ArrayList<String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

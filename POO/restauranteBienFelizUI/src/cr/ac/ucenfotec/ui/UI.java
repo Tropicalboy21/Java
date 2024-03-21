@@ -5,6 +5,7 @@ import cr.ac.ucenfotec.bl.Cocinero;
 import cr.ac.ucenfotec.bl.Empleado;
 import cr.ac.ucenfotec.bl.Pinche;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
@@ -191,7 +192,7 @@ public class UI {
                 listarEmpleado();
                 break;
             case 3:
-//               registrarPlatillo();
+               registrarPlatillo();
                 break;
             case 4:
 //                listarPlatillo();
@@ -392,4 +393,39 @@ public class UI {
 
 
     }
+
+    public static void registrarPlatillo(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("Ingrese el nombre:      ");
+        String nombreIn = sc.next();
+
+        ArrayList<String> ingredientes;
+        ingredientes = new ArrayList<>();
+        String ingrediente;
+
+        System.out.print("Ingrese la cantidad de ingredientes:      ");
+        int numIngredientes = sc.nextInt();
+
+        for (int i = 0; i < numIngredientes; i++) {
+            System.out.print("Ingrese el ingrediente #"+ (i + 1) +": ");
+            ingrediente = sc.next();
+            ingredientes.add(ingrediente);
+        }
+
+        System.out.print("Ingrese el cocinero experto:      ");
+        String expertoIn = sc.next();
+
+        System.out.print("Ingrese el costo del platillo:      ");
+        double costoIn = sc.nextDouble();
+
+        String mensaje = gestor.registrarPlatillo(nombreIn, ingredientes,expertoIn, costoIn);
+
+        System.out.println(mensaje);
+
+    }
+
+    public static void listarPlatillo(){
+
+    }
+
 }

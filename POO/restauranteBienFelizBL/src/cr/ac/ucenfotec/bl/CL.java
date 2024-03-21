@@ -7,8 +7,10 @@ public class CL {
     private ArrayList<Pinche> pinches;
     private ArrayList<Empleado> empleados;
 
+    private ArrayList<Platillo> platillos;
 
-    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>();}
+
+    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>(); platillos = new ArrayList<>();}
 
     public String registrarEmpleado(String nombre, String apellidos, String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil){
         Empleado nuevoEmpleado = new Empleado(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil);
@@ -28,6 +30,13 @@ public class CL {
         pinches.add(nuevoPinche);
         return
                 "El cocinero fue agregado con exito";
+    }
+
+    public String registrarPlatillo(String nombre, ArrayList<String> ingredientes, String experto, double costo){
+        Platillo nuevoPlatillo = new Platillo(nombre, ingredientes, experto, costo);
+        platillos.add(nuevoPlatillo);
+        return
+                "EL platillo fue agregado con exito";
     }
 
     public ArrayList<String> listarEmpleados(){
@@ -52,6 +61,14 @@ public class CL {
             infoPinches.add(pincheTemp.toString());
         }
         return infoPinches;
+    }
+
+    public ArrayList<String> listarPlatillos(){
+        ArrayList<String> infoPlatillos = new ArrayList<>();
+        for(Platillo platilloTemp: platillos){
+            infoPlatillos.add(platilloTemp.toString());
+        }
+        return infoPlatillos;
     }
 
     public Cocinero validarCocinero(String correo, String contrasenna){
