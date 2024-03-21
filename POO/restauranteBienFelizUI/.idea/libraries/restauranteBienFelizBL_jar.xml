@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="restauranteBienFelizBL_jar">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../restauranteBienFelizBL/out/artifacts/restauranteBienFelizBL_jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../restauranteBienFelizBL/out/artifacts/restauranteBienFelizBL_jar" recursive="false" />
+  </library>
+</component>

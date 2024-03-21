@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="restauranteBienFelizBL">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../restauranteBienFelizBL/out/artifacts/restauranteBienFelizBL_jar/restauranteBienFelizBL.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
