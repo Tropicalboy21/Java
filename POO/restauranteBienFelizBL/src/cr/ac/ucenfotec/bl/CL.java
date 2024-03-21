@@ -55,15 +55,28 @@ public class CL {
     }
 
     public Cocinero validarCocinero(String correo, String contrasenna){
-
-
         for(Cocinero cocineroTemp: cocineros){
-            if (cocineroTemp.getNombre().equals(correo) && cocineroTemp.getContrasenna().equals(contrasenna))
+            if (cocineroTemp.getCorreo().equals(correo) && cocineroTemp.getContrasenna().equals(contrasenna))
                return cocineroTemp;
-
         }
-
         return null;
     }
+
+    public Pinche validarPinche(String correo, String contrasenna){
+        for(Pinche pincheTemp: pinches){
+            if (pincheTemp.getCorreo().equals(correo) && pincheTemp.getContrasenna().equals(contrasenna))
+                return pincheTemp;
+        }
+        return null;
+    }
+
+    public Empleado validarEmpleado(String correo, String contrasenna){
+        for(Empleado empleadoTemp: empleados){
+            if (empleadoTemp.getCorreo().equals(correo) && empleadoTemp.getContrasenna().equals(contrasenna))
+                return empleadoTemp;
+        }
+        return null;
+    }
+
 
 }

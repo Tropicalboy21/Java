@@ -2,6 +2,8 @@ package cr.ac.ucenfotec.ui;
 
 import cr.ac.ucenfotec.bl.CL;
 import cr.ac.ucenfotec.bl.Cocinero;
+import cr.ac.ucenfotec.bl.Empleado;
+import cr.ac.ucenfotec.bl.Pinche;
 
 import java.util.Scanner;
 
@@ -16,7 +18,7 @@ public class UI {
 
         gestor.registrarCocinero("Gustavo", "Navarro", "gus12@bienfeliz.com", "bienFeliz","9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
 
-        gestor.registrarCocinero("Juan", "Mena", "Jmena22@bienfeliz.com","bienFeliz",,"6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
+        gestor.registrarCocinero("Juan", "Mena", "Jmena22@bienfeliz.com","bienFeliz","6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
 
         gestor.registrarCocinero("Carlos", "Hernandez","Carher00@bienfeliz.com","bienFeliz", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
 
@@ -35,22 +37,30 @@ public class UI {
 
         System.out.printf("\n---------------------------------%n");
         System.out.printf("      Restaurante BienFeliz      %n");
-        System.out.printf("               Menu              %n");
+        System.out.printf("          Inciar sesion          %n");
         System.out.printf("---------------------------------%n");
         System.out.printf("      Porfavor indique su rol    %n");
         System.out.printf("         1.   Cocinero           %n");
         System.out.printf("         2.   Pinche             %n");
-        System.out.printf("         3.   SuperAdmin         %n");
+        System.out.printf("         3.   Empleado           %n");
+        System.out.printf("         4.   SuperAdmin         %n");
         System.out.print("    Porfavor ingrese una opcion:    ");
         opcion = sc.nextInt();
 
 
         if(opcion == 1){
+            roluser = "cocinero";
             validarCocinero();
         } else if (opcion == 2) {
-//            validarPinche();
+            roluser = "pinche";
+            validarPinche();
         } else if (opcion == 3){
-//            validarSuperAdmin();
+            System.out.print("ingrese su rol: ");
+            roluser = sc.next();
+            validarEmpleado();
+        } else if (opcion == 4){
+            roluser = "SuperAdmin";
+            validarSuperAdmin();
         }
 
     }
@@ -59,31 +69,102 @@ public class UI {
         String correo;
         String contrasenna;
 
-        System.out.println("Ingrese su correo electrónico: ");
+        System.out.print("Ingrese su correo electrónico: ");
         correo = sc.next();
-        System.out.println("Ingrese su contraseña: ");
+        System.out.print("Ingrese su contraseña: ");
         contrasenna = sc.next();
 
         Cocinero cocineroEncontrado = gestor.validarCocinero(correo, contrasenna);
 
         if (cocineroEncontrado != null){
-            menu();
+            menuEmpleados();
+        } else
+            System.out.println("Lo sentimos, datos no encontrados.");
+    }
+
+    public static void validarPinche(){
+        String correo;
+        String contrasenna;
+
+        System.out.print("Ingrese su correo electrónico: ");
+        correo = sc.next();
+        System.out.print("Ingrese su contraseña: ");
+        contrasenna = sc.next();
+
+        Pinche picheEncontrado = gestor.validarPinche(correo, contrasenna);
+
+        if (picheEncontrado != null){
+            menuEmpleados();
         } else
             System.out.println("Lo sentimos, datos no encontrados.");
     }
 
 
+    public static void validarEmpleado(){
+        String correo;
+        String contrasenna;
 
+        System.out.print("Ingrese su correo electrónico: ");
+        correo = sc.next();
+        System.out.print("Ingrese su contraseña: ");
+        contrasenna = sc.next();
 
-    public static void menu(){
+        Empleado empleadoEncontrado = gestor.validarEmpleado(correo, contrasenna);
+
+        if (empleadoEncontrado != null){
+            menuEmpleados();
+        } else
+            System.out.println("Lo sentimos, datos no encontrados.");
+    }
+
+    public static void validarSuperAdmin(){
+        String correo;
+        String adminCorreo = "superadmin@bienfeliz.com";
+        String contrasenna;
+        String adminContra = "superBienFeliz";
+
+        System.out.print("Ingrese su correo electrónico: ");
+        correo = sc.next();
+        System.out.print("Ingrese su contraseña: ");
+        contrasenna = sc.next();
+
+        if (correo.equals(adminCorreo) && contrasenna.equals(adminContra)){
+            menuAdmin();
+        } else
+            System.out.println("Lo sentimos, usuario administrador invalido.");
+    }
+
+    public static void menuEmpleados(){
 
         int opcion = -1;
 
         do {
             System.out.printf("\n---------------------------------%n");
             System.out.printf("      Restaurante BienFeliz      %n");
-            System.out.printf("               Menu              %n");
+            System.out.printf("       Bienvenido " + roluser + "%n");
             System.out.printf("---------------------------------%n");
+            System.out.printf("               Menu              %n");
+            System.out.printf("    1.   Listar platillos        %n");
+            System.out.printf("    2.   listar ingredientes     %n");
+            System.out.printf("    3.   listar almacen/Estante  %n");
+            System.out.printf("    0.   Cerrar Sesion           %n");
+            System.out.print("    Porfavor ingrese una opcion:    ");
+            opcion = sc.nextInt();
+            procesarOpcion(opcion);
+        }while(opcion != 0 );
+
+    }
+
+    public static void menuAdmin(){
+
+        int opcion = -1;
+
+        do {
+            System.out.printf("\n---------------------------------%n");
+            System.out.printf("      Restaurante BienFeliz      %n");
+            System.out.printf("      Bienvenido " + roluser +  "%n");
+            System.out.printf("---------------------------------%n");
+            System.out.printf("               Menu              %n");
             System.out.printf("    1.   Registrar empleado      %n");
             System.out.printf("    2.   Listar empleados        %n");
             System.out.printf("    3.   Registrar platillo      %n");
