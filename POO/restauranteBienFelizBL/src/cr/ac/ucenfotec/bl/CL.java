@@ -33,6 +33,21 @@ public class CL {
                 "El cocinero fue agregado con exito";
     }
 
+    public String asociarPincheACocinero(String cocinero, String pinche){
+
+        Cocinero cocineroEn = buscarCocinero(cocinero);
+        if(cocineroEn != null){
+            Pinche pincheEn =  buscarPinche(pinche);
+            if(pincheEn !=null){
+                pincheEn.setCocineroEncargado(pinche);
+                return "El pinche " + pincheEn.getNombre() +" fue agregado al cocinero " + cocineroEn.getNombre();
+            }else
+                return "El pinche con el nombre " +pinche+", no existe en el sitema!";
+        }else
+            return "La cocinero con el nombre " + cocinero + ", no existe en el sistema!";
+    }
+
+
     public String registrarPlatillo(String nombre, ArrayList<String> ingredientes, String experto, double costo){
         Platillo nuevoPlatillo = new Platillo(nombre, ingredientes, experto, costo);
         platillos.add(nuevoPlatillo);
@@ -116,13 +131,28 @@ public class CL {
         if(almacen != null){
             Estante estante =  buscarEstante(codigoEstante);
             if(estante !=null){
-                // APLICAR AGREGACION
                 almacen.agregarEstante(estante);
                 return "El estante " + estante.getCodigo() +" fue agregado al almacen " + almacen.getCodigo();
             }else
                 return "El estante con el código " +codigoEstante+", no existe en el sitema!";
         }else
             return "La Almacen con el código " + codigoAlmacen + ", no existe en el sistema!";
+    }
+
+    public Cocinero buscarCocinero(String nombre){
+        for (Cocinero cocineroEncontrado:cocineros) {
+            if(cocineroEncontrado.getNombre().equals(nombre))
+                return cocineroEncontrado;
+        }
+        return null;
+    }
+
+    public Pinche buscarPinche(String nombre){
+        for (Pinche pincheEncontrado:pinches) {
+            if(pincheEncontrado.getNombre().equals(nombre))
+                return pincheEncontrado;
+        }
+        return null;
     }
 
 

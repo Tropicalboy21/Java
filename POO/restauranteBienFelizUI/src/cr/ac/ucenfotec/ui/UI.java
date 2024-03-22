@@ -230,19 +230,22 @@ public class UI {
 
     public static void registrarEmpleado(){
         int opcion = -1;
-        System.out.printf("---------------------------------%n");
-        System.out.printf("   Registrar un nuevo empleado   %n");
-        System.out.printf("---------------------------------%n");
-        System.out.printf("    1.   Registrar Cocinero      %n");
-        System.out.printf("    2.   Registrar Pinche        %n");
-        System.out.printf("    3.   Registrar otro          %n");
-        System.out.print("    Porfavor ingrese una opción:    ");
+        System.out.printf("--------------------------------------%n");
+        System.out.printf("     Registrar un nuevo empleado      %n");
+        System.out.printf("--------------------------------------%n");
+        System.out.printf("      1.   Registrar Cocinero         %n");
+        System.out.printf("      2.   Registrar Pinche           %n");
+        System.out.printf("      3.   Asociar Pinches a cocineros%n");
+        System.out.printf("      4.   Registrar otro             %n");
+        System.out.print("        Porfavor ingrese una opción:  ");
         opcion = sc.nextInt();
 
         if(opcion == 1){
             registrarCocinero();
         } else if(opcion == 2) {
             registrarPinche();
+        } else if(opcion == 3) {
+            asociarPincheACocinero();
         } else {
             System.out.printf("\n---------------------------------%n");
             System.out.print("Ingrese el nombre:      ");
@@ -457,6 +460,18 @@ public class UI {
         ingredientes = new ArrayList<>();
 
         String mensaje = gestor.registrarEstante(codigoIn, ingredientes);
+
+        System.out.println(mensaje);
+    }
+
+    public static void asociarPincheACocinero(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("ingrese el nombre del Cocinero: ");
+        String cocineroIn = sc.next();
+        System.out.print("ingrese el nombre del Pinche: ");
+        String pincheIn = sc.next();
+
+        String mensaje = gestor.asociarPincheACocinero(cocineroIn, pincheIn);
 
         System.out.println(mensaje);
     }
