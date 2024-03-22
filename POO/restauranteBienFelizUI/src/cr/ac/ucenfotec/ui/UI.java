@@ -26,6 +26,10 @@ public class UI {
 
         gestor.registrarPinche("Tatiana", "Vargas", "ttvargas@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
 
+        ArrayList<Estante> estantes;
+        estantes = new ArrayList<>();
+
+        gestor.registrarAlmacen("222109", estantes);
 
         IniciarSesion();
     }
@@ -152,15 +156,38 @@ public class UI {
             System.out.printf("       Bienvenido " + roluser + "%n");
             System.out.printf("---------------------------------%n");
             System.out.printf("               Menu              %n");
-            System.out.printf("    1.   Listar platillos        %n");
-            System.out.printf("    2.   listar ingredientes     %n");
-            System.out.printf("    3.   listar almacen/Estante  %n");
-            System.out.printf("    4.   Cerrar Sesion           %n");
+            System.out.printf("    1.   Listar empleados        %n");
+            System.out.printf("    2.   Listar platillos        %n");
+            System.out.printf("    3.   listar ingredientes     %n");
+            System.out.printf("    4.   listar estantes         %n");
+            System.out.printf("    5.   Listar almacenes        %n");
+            System.out.printf("    6.   Cerrar Sesion           %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
-            procesarOpcion(opcion);
-        }while(opcion != 4 );
+            procesarOpcion2(opcion);
+        }while(opcion != 6 );
 
+    }
+
+    public static void procesarOpcion2(int opcion){
+        switch (opcion){
+            case 1:
+                listarEmpleado();
+                break;
+            case 2:
+                listarPlatillo();
+            case 3:
+                listarIngredientes();
+            case 4:
+                listarEstantes();
+            case 5:
+                listarAlmacenes();
+            case 6:
+                System.out.printf("---------------------------------%n");
+                System.out.printf("     Gracias por su visita       %n");
+                System.out.printf("         vuelva pronto           %n");
+                System.out.printf("---------------------------------%n");
+        }
     }
 
     public static void menuAdmin(){
@@ -168,20 +195,21 @@ public class UI {
         int opcion = -1;
 
         do {
-            System.out.printf("\n---------------------------------%n");
-            System.out.printf("      Restaurante BienFeliz      %n");
-            System.out.printf("      Bienvenido " + roluser +  "%n");
-            System.out.printf("---------------------------------%n");
-            System.out.printf("               Menu              %n");
-            System.out.printf("    1.   Registrar empleado      %n");
-            System.out.printf("    2.   Listar empleados        %n");
-            System.out.printf("    3.   Registrar platillo      %n");
-            System.out.printf("    4.   Listar platillos        %n");
-            System.out.printf("    5.   Registrar ingredientes  %n");
-            System.out.printf("    6.   listar ingredientes     %n");
-            System.out.printf("    7.   Registrar almacen       %n");
-            System.out.printf("    8.   Registrar Estante       %n");
-            System.out.printf("    0.   Cerrar Sesion           %n");
+            System.out.printf("\n----------------------------------%n");
+            System.out.printf("      Restaurante BienFeliz         %n");
+            System.out.printf("      Bienvenido " + roluser +  "   %n");
+            System.out.printf("------------------------------------%n");
+            System.out.printf("               Menu                 %n");
+            System.out.printf("    1.   Registrar empleado         %n");
+            System.out.printf("    2.   Listar empleados           %n");
+            System.out.printf("    3.   Registrar platillo         %n");
+            System.out.printf("    4.   Listar platillos           %n");
+            System.out.printf("    5.   Registrar ingredientes     %n");
+            System.out.printf("    6.   listar ingredientes        %n");
+            System.out.printf("    7.   Registrar almacen          %n");
+            System.out.printf("    8.   Registrar Estante          %n");
+            System.out.printf("    9.   Agregar estante a almacen  %n");
+            System.out.printf("    0.   Cerrar Sesion              %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
             procesarOpcion(opcion);
@@ -205,16 +233,19 @@ public class UI {
                 listarPlatillo();
                 break;
             case 5:
-//                registrarIngrediente();
+                registrarIngrediente();
                 break;
             case 6:
-//                listarIngredientes();
+                listarIngredientes();
                 break;
             case 7:
                 registrarAlmacen();
                 break;
             case 8:
                 registrarEstante();
+                break;
+            case 9:
+                agregarEstanteAAlmacen();
                 break;
             case 0:
                 System.out.printf("---------------------------------%n");
@@ -404,6 +435,26 @@ public class UI {
 
     }
 
+    public static void registrarIngrediente(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("Ingrese el nombre del ingrediente:      ");
+        String nombreIn = sc.next();
+
+        System.out.print("Ingrese la cantidad:      ");
+        int cantidadIn = sc.nextInt();
+
+        String mensaje = gestor.registrarIngrediente(nombreIn, cantidadIn);
+
+        System.out.println(mensaje);
+
+    }
+
+    public static void listarIngredientes(){
+        for (String infoIngredientes: gestor.listarIngredientes()){
+            System.out.println(infoIngredientes);
+        }
+    }
+
     public static void registrarPlatillo(){
         System.out.printf("\n---------------------------------%n");
         System.out.print("Ingrese el nombre:      ");
@@ -452,6 +503,13 @@ public class UI {
         System.out.println(mensaje);
     }
 
+    public static void listarAlmacenes(){
+        for(String infoAlmacenes: gestor.listarAlmacenes()){
+            System.out.println(infoAlmacenes);
+        }
+    }
+
+
     public static void registrarEstante(){
         System.out.printf("\n---------------------------------%n");
         System.out.print("ingrese el codigo del estante: ");
@@ -462,6 +520,12 @@ public class UI {
         String mensaje = gestor.registrarEstante(codigoIn, ingredientes);
 
         System.out.println(mensaje);
+    }
+
+    public static void listarEstantes(){
+        for(String infoEstantes: gestor.listarEstantes()){
+            System.out.println(infoEstantes);
+        }
     }
 
     public static void asociarPincheACocinero(){
@@ -476,6 +540,16 @@ public class UI {
         System.out.println(mensaje);
     }
 
+    public static void agregarEstanteAAlmacen(){
+        System.out.printf("\n---------------------------------%n");
+        System.out.print("ingrese el codigo del Almacen: ");
+        String almacenIn = sc.next();
+        System.out.print("ingrese el codigo del estante: ");
+        String estanteIn = sc.next();
 
+        String mensaje = gestor.agregarEstanteAAlmacen(almacenIn, estanteIn);
+
+        System.out.println(mensaje);
+    }
 
 }

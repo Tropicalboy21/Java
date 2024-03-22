@@ -7,11 +7,12 @@ public class CL {
     private ArrayList<Pinche> pinches;
     private ArrayList<Empleado> empleados;
     private ArrayList<Platillo> platillos;
+    private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Almacen> almacenes;
     private ArrayList<Estante> estantes;
 
 
-    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>(); platillos = new ArrayList<>(); almacenes = new ArrayList<>(); estantes = new ArrayList<>();}
+    public CL() {cocineros = new ArrayList<>(); pinches = new ArrayList<>(); empleados = new ArrayList<>(); platillos = new ArrayList<>(); almacenes = new ArrayList<>(); estantes = new ArrayList<>(); ingredientes = new ArrayList<>();}
 
     public String registrarEmpleado(String nombre, String apellidos, String correo, String contrasenna, String id, String numeroSocial, String fechaNacimiento, String rol, String numeroFijo, String numeroMovil){
         Empleado nuevoEmpleado = new Empleado(nombre,apellidos,correo,contrasenna,id,numeroSocial,fechaNacimiento,rol,numeroFijo,numeroMovil);
@@ -45,6 +46,13 @@ public class CL {
                 return "El pinche con el nombre " +pinche+", no existe en el sitema!";
         }else
             return "La cocinero con el nombre " + cocinero + ", no existe en el sistema!";
+    }
+
+    public String registrarIngrediente(String nombre, int cantidad) {
+        Ingrediente nuevoIngrediente = new Ingrediente(nombre, cantidad);
+        ingredientes.add(nuevoIngrediente);
+        return
+                "El ingrediente se agrego con exito";
     }
 
 
@@ -99,6 +107,30 @@ public class CL {
             infoPlatillos.add(platilloTemp.toString());
         }
         return infoPlatillos;
+    }
+
+    public ArrayList<String> listarIngredientes(){
+        ArrayList<String> infoIngredientes = new ArrayList<>();
+        for(Ingrediente ingredienteTemp: ingredientes){
+            infoIngredientes.add(ingredienteTemp.toString());
+        }
+        return infoIngredientes;
+    }
+
+    public ArrayList<String> listarAlmacenes(){
+        ArrayList<String> infoAlmacenes = new ArrayList<>();
+        for(Almacen almacenTemp: almacenes){
+            infoAlmacenes.add(almacenTemp.toString());
+        }
+        return infoAlmacenes;
+    }
+
+    public ArrayList<String> listarEstantes(){
+        ArrayList<String> infoEstantes = new ArrayList<>();
+        for(Estante estanteTemp: estantes){
+            infoEstantes.add(estanteTemp.toString());
+        }
+        return infoEstantes;
     }
 
     public Cocinero validarCocinero(String correo, String contrasenna){
@@ -171,8 +203,6 @@ public class CL {
         }
         return null;
     }
-
-
 
 
 }
