@@ -39,8 +39,8 @@ public class CL {
         if(cocineroEn != null){
             Pinche pincheEn =  buscarPinche(pinche);
             if(pincheEn !=null){
-                pincheEn.setCocineroEncargado(pinche);
-                return "El pinche " + pincheEn.getNombre() +" fue agregado al cocinero " + cocineroEn.getNombre();
+                pincheEn.setCocineroEncargado(cocinero);
+                return "El cocinero " + cocineroEn.getNombre() + " es ahora el encargado del pinche " + pincheEn.getNombre();
             }else
                 return "El pinche con el nombre " +pinche+", no existe en el sitema!";
         }else
