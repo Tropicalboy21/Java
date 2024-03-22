@@ -48,11 +48,20 @@ public class CL {
             return "La cocinero con el nombre " + cocinero + ", no existe en el sistema!";
     }
 
-    public String registrarIngrediente(String nombre, int cantidad) {
+    public String registrarIngrediente(String nombre, int cantidad, String codigo) {
+
+        Estante estanteEn = buscarEstante(codigo);
+
         Ingrediente nuevoIngrediente = new Ingrediente(nombre, cantidad);
         ingredientes.add(nuevoIngrediente);
+
+        if (estanteEn != null) {
+            estanteEn.setIngredientes(nuevoIngrediente);
+            return
+                    "El ingrediente se agrego con exito";
+        }
         return
-                "El ingrediente se agrego con exito";
+                 "El estante con el código " +codigo+", no existe en el sitema!";
     }
 
 

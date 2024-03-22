@@ -31,6 +31,13 @@ public class UI {
 
         gestor.registrarAlmacen("222109", estantes);
 
+        ArrayList<Ingrediente> ingredientes;
+        ingredientes = new ArrayList<>();
+
+        gestor.registrarEstante("8888", ingredientes);
+
+        gestor.agregarEstanteAAlmacen("222109","8888");
+
         IniciarSesion();
     }
 
@@ -207,8 +214,10 @@ public class UI {
             System.out.printf("    5.   Registrar ingredientes     %n");
             System.out.printf("    6.   listar ingredientes        %n");
             System.out.printf("    7.   Registrar almacen          %n");
-            System.out.printf("    8.   Registrar Estante          %n");
-            System.out.printf("    9.   Agregar estante a almacen  %n");
+            System.out.printf("    8.   Listar almacen             %n");
+            System.out.printf("    9.   Registrar Estante          %n");
+            System.out.printf("    10.  Listar Estante             %n");
+            System.out.printf("    11.  Agregar estante a almacen  %n");
             System.out.printf("    0.   Cerrar Sesion              %n");
             System.out.print("    Porfavor ingrese una opcion:    ");
             opcion = sc.nextInt();
@@ -242,9 +251,15 @@ public class UI {
                 registrarAlmacen();
                 break;
             case 8:
-                registrarEstante();
+                listarAlmacenes();
                 break;
             case 9:
+                registrarEstante();
+                break;
+            case 10:
+                listarEstantes();
+                break;
+            case 11:
                 agregarEstanteAAlmacen();
                 break;
             case 0:
@@ -443,7 +458,10 @@ public class UI {
         System.out.print("Ingrese la cantidad:      ");
         int cantidadIn = sc.nextInt();
 
-        String mensaje = gestor.registrarIngrediente(nombreIn, cantidadIn);
+        System.out.print("Ingrese el codigo del estante:      ");
+        String codigoIn = sc.next();
+
+        String mensaje = gestor.registrarIngrediente(nombreIn, cantidadIn, codigoIn);
 
         System.out.println(mensaje);
 

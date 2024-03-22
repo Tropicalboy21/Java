@@ -29,8 +29,8 @@ public class Estante {
         return ingredientes;
     }
 
-    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setIngredientes(Ingrediente ingrediente) {
+        ingredientes.add(ingrediente);
     }
 
     @Override
