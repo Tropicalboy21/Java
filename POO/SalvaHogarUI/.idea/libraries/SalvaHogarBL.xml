@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SalvaHogarBL">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../SalvaHogarBL/out/artifacts/SalvaHogarBL_jar/SalvaHogarBL.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
