@@ -1,6 +1,7 @@
 package ucenfotec.ac.cr.tl;
 
 import ucenfotec.ac.cr.bl.logic.CasaGestor;
+import ucenfotec.ac.cr.bl.logic.VecinoGestor;
 import ucenfotec.ac.cr.ui.UI;
 
 import java.time.LocalDate;
@@ -8,10 +9,12 @@ import java.time.LocalDate;
 public class Controller {
     private UI interfaz;
     private CasaGestor casaGestor;
+    private VecinoGestor vecinoGestor;
 
     public Controller(){
         interfaz  = new UI();
         casaGestor = new CasaGestor();
+        vecinoGestor = new VecinoGestor();
     }
 
     public void start() {
@@ -101,30 +104,30 @@ public class Controller {
             encargado = true;
         }
 
-//        String mensaje = gestor.registrarVecino(nombreIn, apellidosIn,  identificacionIn, nacimientoIn, edad,  generoIn, telefonoIn, encargado);
+        String mensaje = vecinoGestor.registrarVecino(nombreIn, apellidosIn,  identificacionIn, nacimientoIn, edad,  generoIn, telefonoIn, encargado);
 
-//        interfaz.imprimirMensaje(mensaje);
+        interfaz.imprimirMensaje(mensaje);
 
     }
 
-//    public void listarVecinos() {
-//        System.out.printf("---------------------------------%n");
-//        System.out.printf("   informacion de los vecinos    %n");
-//        System.out.printf("---------------------------------%n");
-////        for (String infoVecinos: gestor.listarVecinos()){
-////            System.out.println(infoVecinos);
-//        }
-//    }
-//
-//    public void agregarVecinoCasa() {
-//        System.out.print("Digite la identificación de la Casa: ");
-//        String idCasa = interfaz.leerTexto();
-//        System.out.print("Digite la identificación del Vecino: ");
-//        String idVecino = interfaz.leerTexto();
-//
-//        String mensaje = gestor.agregarVecinoCasa(idCasa,idVecino);
-//        System.out.println(mensaje);
-//    }
+    public void listarVecinos() {
+        System.out.printf("---------------------------------%n");
+        System.out.printf("   informacion de los vecinos    %n");
+        System.out.printf("---------------------------------%n");
+        for (String infoVecinos: vecinoGestor.listarVecinos()){
+            System.out.println(infoVecinos);
+        }
+    }
+
+    public void agregarVecinoCasa() {
+        System.out.print("Digite la identificación de la Casa: ");
+        String idCasa = interfaz.leerTexto();
+        System.out.print("Digite la identificación del Vecino: ");
+        String idVecino = interfaz.leerTexto();
+
+        String mensaje = gestor.agregarVecinoCasa(idCasa,idVecino);
+        System.out.println(mensaje);
+    }
 
 
 
