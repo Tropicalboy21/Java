@@ -89,12 +89,77 @@ class LoginPanel extends JPanel {
 
 class MainApplicationScreen extends JFrame {
     public MainApplicationScreen() {
-        setTitle("Main Application");
+        setTitle("Menu Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create main application panel
         JPanel mainPanel = new JPanel();
-        mainPanel.add(new JLabel("Welcome, Admin!"));
+
+        Label title = new Label("Bienvenido a SalvaHogar");
+
+        title.setBounds(170, 50, 220, 50);
+
+        mainPanel.add(title);
+
+        getContentPane().add(title, BorderLayout.CENTER);
+
+
+        JButton button = new JButton("Registrar casa");
+
+        // x axis, y axis, width, height
+        button.setBounds(140, 150, 220, 50);
+
+        mainPanel.add(button);
+
+        getContentPane().add(button, BorderLayout.CENTER);
+
+
+        JButton button2 = new JButton("Listar casas");
+
+        // x axis, y axis, width, height
+        button2.setBounds(140, 200, 220, 50);
+
+        mainPanel.add(button2);
+
+        getContentPane().add(button2, BorderLayout.CENTER);
+
+
+        JButton button3 = new JButton("Registrar vecino");
+
+        // x axis, y axis, width, height
+        button3.setBounds(140, 250, 220, 50);
+
+        mainPanel.add(button3);
+
+        getContentPane().add(button3, BorderLayout.CENTER);
+
+
+        JButton button4 = new JButton("Listar vecinos");
+
+        // x axis, y axis, width, height
+        button4.setBounds(140, 300, 220, 50);
+
+        mainPanel.add(button4);
+
+        getContentPane().add(button4, BorderLayout.CENTER);
+
+        JButton button5 = new JButton("Agregar vecino a casa");
+
+        // x axis, y axis, width, height
+        button5.setBounds(140, 350, 220, 50);
+
+        mainPanel.add(button5);
+
+        getContentPane().add(button5, BorderLayout.CENTER);
+
+        JButton button6 = new JButton("Salir");
+
+        // x axis, y axis, width, height
+        button6.setBounds(140, 400, 220, 50);
+
+        mainPanel.add(button6);
+
+        getContentPane().add(button6, BorderLayout.CENTER);
 
         // Add main application panel to the content pane
         getContentPane().add(mainPanel, BorderLayout.CENTER);
