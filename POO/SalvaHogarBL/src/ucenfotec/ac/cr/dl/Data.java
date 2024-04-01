@@ -3,6 +3,8 @@ package ucenfotec.ac.cr.dl;
 import ucenfotec.ac.cr.bl.entities.Casa;
 import ucenfotec.ac.cr.bl.entities.Vecino;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Data {
@@ -12,6 +14,7 @@ public class Data {
 
     public Data() {
         casas = new ArrayList<>();
+        vecinos = new ArrayList<>();
     }
 
     public String registrarCasa(Casa nuevaCasa){
@@ -48,4 +51,21 @@ public class Data {
         return  infoVecinos;
 
     }
+
+    public Casa buscarCasa(String idCasa){
+        for (Casa casaEncotrada:casas) {
+            if(casaEncotrada.getIdentificacion().equals(idCasa))
+                return casaEncotrada;
+        }
+        return null;
+    }
+
+    public Vecino buscarVecino(String idVecino){
+        for (Vecino vecinoEncotrada:vecinos) {
+            if(vecinoEncotrada.getIdentificacion().equals(idVecino))
+                return vecinoEncotrada;
+        }
+        return null;
+    }
+
 }

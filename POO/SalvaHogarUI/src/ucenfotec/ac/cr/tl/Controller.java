@@ -18,12 +18,79 @@ public class Controller {
     }
 
     public void start() {
+
+        // Instancia de Casa #1
+        String direccionC1 = "Pavas";
+        String idetificacionC1 = "C124";
+
+        casaGestor.registrarCasa(direccionC1, idetificacionC1);
+
+        // Instancia de Casa #2
+        String direccionC2 = "Alajuelita";
+        String idetificacionC2 = "A024";
+
+        casaGestor.registrarCasa(direccionC2, idetificacionC2);
+
+
+        // Instancia de Vecino #1
+        String nombreV1 = "Joshua";
+
+        String apellidoV1 = "Hernan";
+
+        String identificacionV1 = "604590182";
+
+        String nacimientoV1 = "1983-03-22";
+
+        LocalDate dob = LocalDate.parse(nacimientoV1);
+
+        int edadV1 = vecinoGestor.calcularEdad(dob);
+
+
+        String generoV1 = "Masculino";
+
+        String telefonoV1 = "61016510";
+
+        int encargadoV1 = 1;
+        boolean encargado = false;
+
+        if(encargadoV1 == 1 ) {
+            encargado = true;
+        }
+
+        vecinoGestor.registrarVecino(nombreV1, apellidoV1,  identificacionV1 , nacimientoV1,  edadV1, generoV1, telefonoV1, encargado);
+
+        // Instancia de Vecino #2
+        String nombreV2 = "Lucas";
+
+        String apellidoV2 = "Dali";
+
+        String identificacionV2 = "104520162";
+
+        String nacimientoV2 = "1992-11-12";
+
+        LocalDate dom = LocalDate.parse(nacimientoV2);
+
+        int edadV2 = vecinoGestor.calcularEdad(dom);
+
+        String generoV2 = "Masculino";
+
+        String telefonoV2 = "61016510";
+
+        int encargadoV2 = 1;
+
+        if(encargadoV2 == 1 ) {
+            encargado = true;
+        }
+
+        vecinoGestor.registrarVecino(nombreV2, apellidoV2,  identificacionV2 , nacimientoV2,  edadV2, generoV2, telefonoV2, encargado);
+
+
         int opcion = -1;
         do{
             interfaz.mostrarMenu();
             opcion = interfaz.leerNumero();
             procesarOpcion(opcion);
-        }while(opcion != 0);
+        }while(opcion != 6);
     }
 
     public void procesarOpcion(int pOpcion){
@@ -38,10 +105,10 @@ public class Controller {
                 registrarVecino();
                 break;
             case 4:
-//                listarVecinos();
+                listarVecinos();
                 break;
             case 5:
-//                agregarVecinoCasa();
+                agregarVecinoCasa();
                 break;
             case 6:
                 interfaz.imprimirMensaje("Gracias por su visita ");
@@ -125,80 +192,8 @@ public class Controller {
         System.out.print("Digite la identificación del Vecino: ");
         String idVecino = interfaz.leerTexto();
 
-        String mensaje = gestor.agregarVecinoCasa(idCasa,idVecino);
+        String mensaje = vecinoGestor.agregarVecinoCasa(idCasa,idVecino);
         System.out.println(mensaje);
     }
-
-
-
-//    public void main(String[] args) {
-//
-//        // Instancia de Casa #1
-//        String direccionC1 = "Pavas";
-//        String idetificacionC1 = "C124";
-//
-//        gestor.registrarCasa(direccionC1, idetificacionC1);
-//
-//        // Instancia de Casa #2
-//        String direccionC2 = "Alajuelita";
-//        String idetificacionC2 = "A024";
-//
-//        gestor.registrarCasa(direccionC2, idetificacionC2);
-//
-//
-//        // Instancia de Vecino #1
-//        String nombreV1 = "Joshua";
-//
-//        String apellidoV1 = "Hernan";
-//
-//        String identificacionV1 = "604590182";
-//
-//        String nacimientoV1 = "1983-03-22";
-//
-//        LocalDate dob = LocalDate.parse(nacimientoV1);
-//
-//        int edadV1 = gestor.CalcularEdad(dob);
-//
-//
-//        String generoV1 = "Masculino";
-//
-//        String telefonoV1 = "61016510";
-//
-//        int encargadoV1 = 1;
-//        boolean encargado = false;
-//
-//        if(encargadoV1 == 1 ) {
-//            encargado = true;
-//        }
-//
-//        gestor.registrarVecino(nombreV1, apellidoV1,  identificacionV1 , nacimientoV1,  edadV1, generoV1, telefonoV1, encargado);
-//
-//        // Instancia de Vecino #2
-//        String nombreV2 = "Lucas";
-//
-//        String apellidoV2 = "Dali";
-//
-//        String identificacionV2 = "104520162";
-//
-//        String nacimientoV2 = "1992-11-12";
-//
-//        LocalDate dom = LocalDate.parse(nacimientoV2);
-//
-//        int edadV2 = gestor.CalcularEdad(dom);
-//
-//        String generoV2 = "Masculino";
-//
-//        String telefonoV2 = "61016510";
-//
-//        int encargadoV2 = 1;
-//
-//        if(encargadoV2 == 1 ) {
-//            encargado = true;
-//        }
-//
-//        gestor.registrarVecino(nombreV2, apellidoV2,  identificacionV2 , nacimientoV2,  edadV2, generoV2, telefonoV2, encargado);
-//
-//        menuInterno();
-//    }
 
 }
