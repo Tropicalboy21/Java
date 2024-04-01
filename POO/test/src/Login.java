@@ -1,5 +1,3 @@
-package ucenfotec.ac.cr.ui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -95,110 +93,61 @@ class LoginPanel extends JPanel {
         });
     }
 }
-
 class MainApplicationScreen extends JFrame {
+    private JPanel menuPanel;
+    private JPanel contentPanel;
+    private CardLayout cardLayout;
 
     public MainApplicationScreen(Login loginFrame) {
-
         setTitle("Menu Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        // Create main application panel
-        JPanel mainPanel = new JPanel();
+        // Create menu panel with buttons
+        menuPanel = new JPanel(new GridLayout(5, 1));
+        JButton registrarCasaButton = new JButton("Registrar casa");
+        JButton listarCasasButton = new JButton("Listar casas");
+        JButton registrarVecinoButton = new JButton("Registrar vecino");
+        JButton listarVecinosButton = new JButton("Listar vecinos");
+        JButton agregarVecinoButton = new JButton("Agregar vecino a casa");
 
-        Label title = new Label("Bienvenido a SalvaHogar");
+        menuPanel.add(registrarCasaButton);
+        menuPanel.add(listarCasasButton);
+        menuPanel.add(registrarVecinoButton);
+        menuPanel.add(listarVecinosButton);
+        menuPanel.add(agregarVecinoButton);
 
-        title.setBounds(170, 50, 220, 50);
+        getContentPane().add(menuPanel, BorderLayout.WEST);
 
-        mainPanel.add(title);
+        // Create content panel to display different screens
+        contentPanel = new JPanel();
+        cardLayout = new CardLayout();
+        contentPanel.setLayout(cardLayout);
 
-        getContentPane().add(title, BorderLayout.CENTER);
+        // Add content panels for each menu option
+        contentPanel.add(new JPanel(), "Menu");
+        contentPanel.add(new JPanel(), "RegistrarCasa");
+        // Add content panels for other menu options as needed
 
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
 
-        JButton button = new JButton("Registrar casa");
-
-        // x axis, y axis, width, height
-        button.setBounds(140, 150, 220, 50);
-
-        mainPanel.add(button);
-
-        getContentPane().add(button, BorderLayout.CENTER);
-
-        button.addActionListener(new ActionListener() {
+        // Add actions to menu buttons
+        registrarCasaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                    loginFrame.Navegar();
-
+                cardLayout.show(contentPanel, "RegistrarCasa");
             }
         });
 
-
-
-        JButton button2 = new JButton("Listar casas");
-
-        // x axis, y axis, width, height
-        button2.setBounds(140, 200, 220, 50);
-
-        mainPanel.add(button2);
-
-        getContentPane().add(button2, BorderLayout.CENTER);
-
-
-        JButton button3 = new JButton("Registrar vecino");
-
-        // x axis, y axis, width, height
-        button3.setBounds(140, 250, 220, 50);
-
-        mainPanel.add(button3);
-
-        getContentPane().add(button3, BorderLayout.CENTER);
-
-
-        JButton button4 = new JButton("Listar vecinos");
-
-        // x axis, y axis, width, height
-        button4.setBounds(140, 300, 220, 50);
-
-        mainPanel.add(button4);
-
-        getContentPane().add(button4, BorderLayout.CENTER);
-
-        JButton button5 = new JButton("Agregar vecino a casa");
-
-        // x axis, y axis, width, height
-        button5.setBounds(140, 350, 220, 50);
-
-        mainPanel.add(button5);
-
-        getContentPane().add(button5, BorderLayout.CENTER);
-
-        JButton button6 = new JButton("Salir");
-
-        // x axis, y axis, width, height
-        button6.setBounds(140, 400, 220, 50);
-
-        mainPanel.add(button6);
-
-        getContentPane().add(button6, BorderLayout.CENTER);
-
-        // Add main application panel to the content pane
-        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        // Add actions for other menu buttons
 
         // Pack the frame to ensure proper layout and sizing
         pack();
 
-        setSize(500, 600);
-
-        setResizable(false);
-
         // Center the frame on the screen
         setLocationRelativeTo(null);
     }
-
-
 }
-
 
 class RegistrarCasaVista extends JFrame {
 
