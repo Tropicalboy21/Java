@@ -149,14 +149,25 @@ class MainApplicationScreen extends JFrame {
         // Center the frame on the screen
         setLocationRelativeTo(null);
     }
-
     public void showRegistrarCasaPanel() {
+
         // Create registrar casa panel
         JPanel registrarCasaPanel = new JPanel();
         registrarCasaPanel.setLayout(new BorderLayout());
 
+
+        JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
         Label title = new Label("Nueva Casa");
-        registrarCasaPanel.add(title, BorderLayout.CENTER);
+        inputPanel.add(title);
+
+        JTextField casaID = new JTextField(20);
+
+        casaID.setPreferredSize(new Dimension(200, 30));
+
+        inputPanel.add(casaID);
+        registrarCasaPanel.add(inputPanel, BorderLayout.CENTER);
+
 
         // Create return button
         JButton returnButton = new JButton("Menu");
