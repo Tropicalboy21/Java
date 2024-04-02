@@ -88,6 +88,7 @@ class LoginPanel extends JPanel {
 class MainApplicationScreen extends JFrame {
 
     private JPanel currentPanel;
+    private JPanel mainPanel;
 
     public MainApplicationScreen(Login1 loginFrame) {
 
@@ -95,7 +96,7 @@ class MainApplicationScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create main application panel
-        JPanel mainPanel = new JPanel();
+        mainPanel = new JPanel();
         currentPanel = mainPanel;
 
         Label title = new Label("Bienvenido a SalvaHogar");
@@ -149,7 +150,7 @@ class MainApplicationScreen extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    private void showRegistrarCasaPanel() {
+    public void showRegistrarCasaPanel() {
         // Create registrar casa panel
         JPanel registrarCasaPanel = new JPanel();
         registrarCasaPanel.setLayout(new BorderLayout());
@@ -157,12 +158,38 @@ class MainApplicationScreen extends JFrame {
         Label title = new Label("Nueva Casa");
         registrarCasaPanel.add(title, BorderLayout.CENTER);
 
+        // Create return button
+        JButton returnButton = new JButton("Menu");
+
+        returnButton.setPreferredSize(new Dimension(100, 40));
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show main menu panel
+                showMainPanel();
+            }
+        });
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        buttonPanel.add(returnButton);
+        registrarCasaPanel.add(buttonPanel, BorderLayout.NORTH);
+
         // Replace current panel with registrar casa panel
         getContentPane().remove(currentPanel);
         currentPanel = registrarCasaPanel;
         getContentPane().add(currentPanel, BorderLayout.CENTER);
 
         // Repaint the frame to reflect the changes
+        revalidate();
+        repaint();
+    }
+
+    public void showMainPanel(){
+        getContentPane().remove(currentPanel);
+        currentPanel = mainPanel;
+        getContentPane().add(currentPanel, BorderLayout.CENTER);
+
         revalidate();
         repaint();
     }

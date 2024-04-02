@@ -28,17 +28,7 @@ public class Login extends JFrame {
         MainApplicationScreen mainAppScreen = new MainApplicationScreen(this);
         mainAppScreen.setVisible(true);
     }
-
-    public void Navegar() {
-        // Close the login screen
-        dispose();
-
-        // Open the main application screen
-        RegistrarCasaVista registarCasa = new RegistrarCasaVista();
-        registarCasa.setVisible(true);
-    }
-
-    public static void main(String[] args) {
+    public void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new Login();
@@ -48,8 +38,8 @@ public class Login extends JFrame {
 }
 
 class LoginPanel extends JPanel {
-    public static JTextField usernameField;
-    public static JPasswordField passwordField;
+    public JTextField usernameField;
+    public JPasswordField passwordField;
 
     public LoginPanel() {
         Insets insets = new Insets(6, 15, 6, 15);
@@ -98,93 +88,62 @@ class LoginPanel extends JPanel {
 
 class MainApplicationScreen extends JFrame {
 
+    private JPanel mainPanel;
+    private JPanel registrarCasaPanel;
+
     public MainApplicationScreen(Login loginFrame) {
 
         setTitle("Menu Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create main application panel
-        JPanel mainPanel = new JPanel();
+        mainPanel = new JPanel();
+
 
         Label title = new Label("Bienvenido a SalvaHogar");
-
         title.setBounds(170, 50, 220, 50);
-
         mainPanel.add(title);
 
-        getContentPane().add(title, BorderLayout.CENTER);
-
-
         JButton button = new JButton("Registrar casa");
-
-        // x axis, y axis, width, height
         button.setBounds(140, 150, 220, 50);
-
         mainPanel.add(button);
 
-        getContentPane().add(button, BorderLayout.CENTER);
+        JButton button2 = new JButton("Listar casas");
+        button2.setBounds(140, 200, 220, 50);
+        mainPanel.add(button2);
+
+        JButton button3 = new JButton("Registrar vecino");
+        button3.setBounds(140, 250, 220, 50);
+        mainPanel.add(button3);
+
+        JButton button4 = new JButton("Listar vecinos");
+        button4.setBounds(140, 300, 220, 50);
+        mainPanel.add(button4);
+
+        JButton button5 = new JButton("Agregar vecino a casa");
+        button5.setBounds(140, 350, 220, 50);
+        mainPanel.add(button5);
+
+        JButton button6 = new JButton("Salir");
+        button6.setBounds(140, 400, 220, 50);
+        mainPanel.add(button6);
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                    loginFrame.Navegar();
+                showRegistrarCasaPanel();
 
             }
         });
 
 
-
-        JButton button2 = new JButton("Listar casas");
-
-        // x axis, y axis, width, height
-        button2.setBounds(140, 200, 220, 50);
-
-        mainPanel.add(button2);
-
-        getContentPane().add(button2, BorderLayout.CENTER);
-
-
-        JButton button3 = new JButton("Registrar vecino");
-
-        // x axis, y axis, width, height
-        button3.setBounds(140, 250, 220, 50);
-
-        mainPanel.add(button3);
-
-        getContentPane().add(button3, BorderLayout.CENTER);
-
-
-        JButton button4 = new JButton("Listar vecinos");
-
-        // x axis, y axis, width, height
-        button4.setBounds(140, 300, 220, 50);
-
-        mainPanel.add(button4);
-
-        getContentPane().add(button4, BorderLayout.CENTER);
-
-        JButton button5 = new JButton("Agregar vecino a casa");
-
-        // x axis, y axis, width, height
-        button5.setBounds(140, 350, 220, 50);
-
-        mainPanel.add(button5);
-
-        getContentPane().add(button5, BorderLayout.CENTER);
-
-        JButton button6 = new JButton("Salir");
-
-        // x axis, y axis, width, height
-        button6.setBounds(140, 400, 220, 50);
-
-        mainPanel.add(button6);
-
-        getContentPane().add(button6, BorderLayout.CENTER);
-
         // Add main application panel to the content pane
         getContentPane().add(mainPanel, BorderLayout.CENTER);
 
+        // Add main application panel to the content pane
+        getContentPane().add(registrarCasaPanel, BorderLayout.CENTER);
+
         // Pack the frame to ensure proper layout and sizing
         pack();
 
@@ -196,41 +155,39 @@ class MainApplicationScreen extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    public void showMainPanel(){
+        registrarCasaPanel.setVisible(false);
+        mainPanel.setVisible(true);
+    }
 
-}
-
-
-class RegistrarCasaVista extends JFrame {
-
-
-    public RegistrarCasaVista() {
-        setTitle("Registrar Casa");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        // Create main application panel
-        JPanel registarCasaPanel = new JPanel();
+    public void showRegistrarCasaPanel() {
+        // Create registrar casa panel
+        JPanel registrarCasaPanel = new JPanel();
+        registrarCasaPanel.setLayout(new BorderLayout());
 
         Label title = new Label("Nueva Casa");
+        registrarCasaPanel.add(title, BorderLayout.CENTER);
 
-        title.setBounds(170, 50, 220, 50);
+        JButton returnButton = new JButton("volver a Menu");
 
-        registarCasaPanel.add(title);
+        getContentPane().remove(mainPanel);
+        mainPanel = registrarCasaPanel;
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               showMainPanel();
+            }
+        });
+        add(returnButton, BorderLayout.SOUTH);
 
-        getContentPane().add(title, BorderLayout.CENTER);
+        // Replace current panel with registrar casa panel
 
-
-        getContentPane().add(registarCasaPanel, BorderLayout.CENTER);
-
-        // Pack the frame to ensure proper layout and sizing
-        pack();
-
-        setSize(500, 600);
-
-        setResizable(false);
-
-        // Center the frame on the screen
-        setLocationRelativeTo(null);
-
+        // Repaint the frame to reflect the changes
+        revalidate();
+        repaint();
     }
 
+
 }
+
