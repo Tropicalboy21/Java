@@ -26,7 +26,9 @@ public class Data {
     public ArrayList<String> listarCasas(){
         ArrayList<String> infoCasas = new ArrayList<>();
 
-        for(Casa casaTemp: casas){
+        ArrayList<Casa> copyOfCasas = new ArrayList<>(casas);
+
+        for(Casa casaTemp: copyOfCasas){
             infoCasas.add(casaTemp.toString());
         }
 
@@ -41,10 +43,12 @@ public class Data {
                 "\nEl vecino fue añadido con exito";
     }
     
-    public ArrayList<String> listarVecinos(){
+    public  ArrayList<String> listarVecinos(){
         ArrayList<String> infoVecinos = new ArrayList<>();
+
+        ArrayList<Vecino> copyOfVecinos = new ArrayList<>(vecinos);
         
-        for (Vecino vecinoTemp: vecinos){
+        for (Vecino vecinoTemp: copyOfVecinos){
             infoVecinos.add(vecinoTemp.toString());
         }
 
