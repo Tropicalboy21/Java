@@ -1,4 +1,6 @@
-package ucenfotec.ac.cr.bl.entities;
+package ucenfotec.ac.cr.bl.entities.casa;
+
+import ucenfotec.ac.cr.bl.entities.vecino.Vecino;
 
 import java.util.ArrayList;
 

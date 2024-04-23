@@ -1,4 +1,4 @@
-package ucenfotec.ac.cr.bl.entities;
+package ucenfotec.ac.cr.bl.entities.alarma;
 
 public class Alarma {
     private String direccion;

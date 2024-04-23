@@ -1,4 +1,4 @@
-package ucenfotec.ac.cr.bl.entities;
+package ucenfotec.ac.cr.bl.entities.vecino;
 
 public class Vecino {
     private String nombre;
