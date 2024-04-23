@@ -49,71 +49,6 @@ class MainApplicationScreen extends JFrame {
         casaGestor = new CasaGestor();
         vecinoGestor = new VecinoGestor();
 
-        // Instancia de Casa #1
-        String direccionC1 = "Pavas";
-        String idetificacionC1 = "C124";
-
-        casaGestor.registrarCasa(direccionC1, idetificacionC1);
-
-        // Instancia de Casa #2
-        String direccionC2 = "Alajuelita";
-        String idetificacionC2 = "A024";
-
-        casaGestor.registrarCasa(direccionC2, idetificacionC2);
-
-        // Instancia de Vecino #1
-        String nombreV1 = "Joshua";
-
-        String apellidoV1 = "Hernan";
-
-        String identificacionV1 = "604590182";
-
-        String nacimientoV1 = "1983-03-22";
-
-        LocalDate dob = LocalDate.parse(nacimientoV1);
-
-        int edadV1 = vecinoGestor.calcularEdad(dob);
-
-
-        String generoV1 = "Masculino";
-
-        String telefonoV1 = "61016510";
-
-        int encargadoV1 = 1;
-        boolean encargado = false;
-
-        if(encargadoV1 == 1 ) {
-            encargado = true;
-        }
-
-        vecinoGestor.registrarVecino(nombreV1, apellidoV1,  identificacionV1 , nacimientoV1,  edadV1, generoV1, telefonoV1, encargado);
-
-        // Instancia de Vecino #2
-        String nombreV2 = "Lucas";
-
-        String apellidoV2 = "Dali";
-
-        String identificacionV2 = "104520162";
-
-        String nacimientoV2 = "1992-11-12";
-
-        LocalDate dom = LocalDate.parse(nacimientoV2);
-
-        int edadV2 = vecinoGestor.calcularEdad(dom);
-
-        String generoV2 = "Masculino";
-
-        String telefonoV2 = "61016510";
-
-        int encargadoV2 = 1;
-
-        if(encargadoV2 == 1 ) {
-            encargado = true;
-        }
-
-        vecinoGestor.registrarVecino(nombreV2, apellidoV2,  identificacionV2 , nacimientoV2,  edadV2, generoV2, telefonoV2, encargado);
-
-
         setTitle("Menu Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainPanel = new JPanel();
@@ -167,9 +102,21 @@ class MainApplicationScreen extends JFrame {
 
         gbc.gridy++;
         gbc.gridwidth = 2;
-        JButton button6 = new JButton("Salir");
+        JButton button6 = new JButton("Asignar encargado a casa");
         button6.setPreferredSize(new Dimension(220, 50));
         menuPanel.add(button6, gbc);
+
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        JButton button7 = new JButton("Crear alarma");
+        button7.setPreferredSize(new Dimension(220, 50));
+        menuPanel.add(button7, gbc);
+
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        JButton button8 = new JButton("Salir");
+        button8.setPreferredSize(new Dimension(220, 50));
+        menuPanel.add(button8, gbc);
 
         mainPanel.add(menuPanel, BorderLayout.CENTER);
 
@@ -210,6 +157,21 @@ class MainApplicationScreen extends JFrame {
         });
 
         button6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showAsignarEncargadoCasaPanel();
+            }
+        });
+
+        button7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showCrearAlarmaPanel();
+            }
+        });
+
+
+        button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -415,7 +377,7 @@ class MainApplicationScreen extends JFrame {
         //nacimiento input field
         gbc.gridy++;
         gbc.gridx = 0;
-        JLabel nacimientoLabel = new JLabel("Fecha de nacimiento:");
+        JLabel nacimientoLabel = new JLabel("Fecha de nacimiento (YYYY-MM-DD):");
         inputPanel.add(nacimientoLabel, gbc);
 
         gbc.gridx = 1;
@@ -489,13 +451,7 @@ class MainApplicationScreen extends JFrame {
 
                 String encargadoIn = encargadoInput.getText();
 
-                boolean encargado = false;
-
-                if(encargadoIn.equals("si")) {
-                    encargado = true;
-                }
-
-                String mensaje = vecinoGestor.registrarVecino(nombreIn, apellidoIn, identiInput, nacimientoIn, edadIn, generoIn, telefonoIn, encargado);
+                String mensaje = vecinoGestor.registrarVecino(nombreIn, apellidoIn, identiInput, nacimientoIn, edadIn, generoIn, telefonoIn, encargadoIn);
 
                 System.out.println(mensaje);
 
@@ -584,7 +540,7 @@ class MainApplicationScreen extends JFrame {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        JLabel casaIdIn = new JLabel("Casa identificación:");
+        JLabel casaIdIn = new JLabel("Casa direccion:");
         inputPanel.add(casaIdIn, gbc);
 
         gbc.gridx = 1;
@@ -594,7 +550,7 @@ class MainApplicationScreen extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        JLabel casaDiIn = new JLabel("Vecino identificación:");
+        JLabel casaDiIn = new JLabel("Vecino nombre:");
         inputPanel.add(casaDiIn, gbc);
 
         gbc.gridx = 1;
@@ -621,9 +577,183 @@ class MainApplicationScreen extends JFrame {
 
                 String vecinoIn = vecinoIdIn.getText();
 
-                String mensaje = vecinoGestor.agregarVecinoCasa(casaIn, vecinoIn);
+                String mensaje = casaGestor.agregarVecinoCasa(casaIn, vecinoIn);
 
-                JOptionPane.showMessageDialog(MainApplicationScreen.this, mensaje, "Login Failed", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(MainApplicationScreen.this, mensaje, "Acción Existosa", JOptionPane.INFORMATION_MESSAGE);
+
+                revalidate();
+                repaint();
+
+                showMainPanel();
+
+            }
+        });
+
+
+        registrarCasaPanel.add(inputPanel, BorderLayout.CENTER);
+
+        getContentPane().remove(currentPanel);
+        currentPanel = registrarCasaPanel;
+        getContentPane().add(currentPanel, BorderLayout.CENTER);
+
+        revalidate();
+        repaint();
+    }
+
+    public void showAsignarEncargadoCasaPanel() {
+        JPanel registrarCasaPanel = new JPanel();
+        registrarCasaPanel.setLayout(new BorderLayout());
+
+        JButton returnButton = new JButton("Menu");
+        returnButton.setPreferredSize(new Dimension(100, 40));
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMainPanel();
+            }
+        });
+
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        Label title = new Label("Asignar Encargado a casa");
+        title.setFont(new Font("Arial", Font.BOLD, 16));
+        titlePanel.add(title);
+
+        registrarCasaPanel.add(titlePanel, BorderLayout.NORTH);
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel casaIdIn = new JLabel("Casa direccion:");
+        inputPanel.add(casaIdIn, gbc);
+
+        gbc.gridx = 1;
+        JTextField casaID = new JTextField(10);
+        casaID.setPreferredSize(new Dimension(200, 30));
+        inputPanel.add(casaID, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        JLabel casaDiIn = new JLabel("Vecino nombre:");
+        inputPanel.add(casaDiIn, gbc);
+
+        gbc.gridx = 1;
+        JTextField vecinoIdIn = new JTextField(10);
+        vecinoIdIn.setPreferredSize(new Dimension(200, 30));
+        inputPanel.add(vecinoIdIn, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+
+        inputPanel.add(returnButton, gbc);
+
+        gbc.gridx = 1;
+        JButton registrarCasaBtn = new JButton("Registrar");
+        registrarCasaBtn.setPreferredSize(new Dimension(100, 40));
+        inputPanel.add(registrarCasaBtn, gbc);
+
+        registrarCasaBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                String casaIn = casaID.getText();
+
+                String vecinoIn = vecinoIdIn.getText();
+
+                String mensaje = casaGestor.asignarEncargadoCasa(casaIn, vecinoIn);
+
+                JOptionPane.showMessageDialog(MainApplicationScreen.this, mensaje, "Acción Existosa", JOptionPane.INFORMATION_MESSAGE);
+
+                revalidate();
+                repaint();
+
+                showMainPanel();
+
+            }
+        });
+
+
+        registrarCasaPanel.add(inputPanel, BorderLayout.CENTER);
+
+        getContentPane().remove(currentPanel);
+        currentPanel = registrarCasaPanel;
+        getContentPane().add(currentPanel, BorderLayout.CENTER);
+
+        revalidate();
+        repaint();
+    }
+
+    public void showCrearAlarmaPanel() {
+        JPanel registrarCasaPanel = new JPanel();
+        registrarCasaPanel.setLayout(new BorderLayout());
+
+        JButton returnButton = new JButton("Menu");
+        returnButton.setPreferredSize(new Dimension(100, 40));
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMainPanel();
+            }
+        });
+
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        Label title = new Label("Crear Alarma");
+        title.setFont(new Font("Arial", Font.BOLD, 16));
+        titlePanel.add(title);
+
+        registrarCasaPanel.add(titlePanel, BorderLayout.NORTH);
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel casaIdIn = new JLabel("Casa direccion:");
+        inputPanel.add(casaIdIn, gbc);
+
+        gbc.gridx = 1;
+        JTextField casaID = new JTextField(10);
+        casaID.setPreferredSize(new Dimension(200, 30));
+        inputPanel.add(casaID, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        JLabel casaDiIn = new JLabel("descripcion:");
+        inputPanel.add(casaDiIn, gbc);
+
+        gbc.gridx = 1;
+        JTextField desc = new JTextField(10);
+        desc.setPreferredSize(new Dimension(200, 30));
+        inputPanel.add(desc, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+
+        inputPanel.add(returnButton, gbc);
+
+        gbc.gridx = 1;
+        JButton registrarCasaBtn = new JButton("Registrar");
+        registrarCasaBtn.setPreferredSize(new Dimension(100, 40));
+        inputPanel.add(registrarCasaBtn, gbc);
+
+        registrarCasaBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                String casaIn = casaID.getText();
+
+                String descIn = desc.getText();
+
+                String mensaje = vecinoGestor.crearAlarma(casaIn, descIn);
+
+                JOptionPane.showMessageDialog(MainApplicationScreen.this, mensaje, "Acción Existosa", JOptionPane.INFORMATION_MESSAGE);
 
                 revalidate();
                 repaint();

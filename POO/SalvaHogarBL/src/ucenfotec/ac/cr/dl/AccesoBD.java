@@ -19,7 +19,7 @@ public class AccesoBD {
     public void ejecutarSQL(String query){
         try{
             stmt = conn.createStatement();
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
         }catch (Exception e){
             e.printStackTrace();
         }

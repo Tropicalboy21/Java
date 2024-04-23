@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MacPatoPropiedadesBL">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../macpatopropiedadesbl/out/artifacts/MacPatoPropiedadesBL_jar/MacPatoPropiedadesBL.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SalvaHogarUI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SalvaHogarUI_jar</output-path>
+    <root id="archive" name="SalvaHogarUI.jar">
+      <element id="module-output" name="SalvaHogarUI" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../SalvaHogarBL/out/artifacts/SalvaHogarBL_jar/SalvaHogarBL.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

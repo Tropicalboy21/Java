@@ -44,7 +44,7 @@ public class LoginScreen  extends JPanel {
                 String password = new String(passwordField.getPassword());
 
 
-                if (username.equals("admin") && password.equals("password")) {
+                if (username.equals("admin@salvahogar.com") && password.equals("password")) {
                     ((Controller) SwingUtilities.getWindowAncestor(LoginScreen.this)).loggedIn();
 
                 } else {

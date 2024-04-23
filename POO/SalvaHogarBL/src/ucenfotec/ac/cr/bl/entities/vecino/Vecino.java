@@ -1,5 +1,9 @@
 package ucenfotec.ac.cr.bl.entities.vecino;
 
+import ucenfotec.ac.cr.bl.entities.alarma.Alarma;
+
+import java.util.ArrayList;
+
 public class Vecino {
     private String nombre;
     private String apellido;
@@ -8,11 +12,14 @@ public class Vecino {
     private int edad;
     private String genero;
     private String telefono;
-    private boolean encargado;
+    private String encargado;
+    private ArrayList<Alarma> listaAlarmas;
 
-    public Vecino(){}
+    public Vecino(){
+        listaAlarmas = new ArrayList<>();
+    }
 
-    public Vecino(String nombre, String apellido, String identificacion, String nacimiento, int edad,  String genero, String telefono, boolean encargado) {
+    public Vecino(String nombre, String apellido, String identificacion, String nacimiento, int edad,  String genero, String telefono, String encargado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
@@ -21,6 +28,7 @@ public class Vecino {
         this.genero = genero;
         this.telefono = telefono;
         this.encargado = encargado;
+        this.listaAlarmas = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -79,17 +87,21 @@ public class Vecino {
         this.telefono = telefono;
     }
 
-    public boolean getEncargado() {
+    public String getEncargado() {
         return encargado;
     }
 
-    public void setEncargado(boolean encargado) {
+    public void setEncargado(String encargado) {
         this.encargado = encargado;
+    }
+
+    public void asociarAlarma(Alarma alarma) {
+        listaAlarmas.add(alarma);
     }
 
     @Override
     public String toString() {
-        return "\nVecino\n" +
+        String data = "\nVecino\n" +
                 "nombre: " + nombre + "\n" +
                 "apellido: " + apellido + "\n" +
                 "identificacion: " + identificacion + "\n" +
@@ -98,5 +110,13 @@ public class Vecino {
                 "genero: " + genero + "\n" +
                 "telefono: " + telefono + "\n" +
                 "Encargado: " + encargado + "\n";
+        data+= "--------------------------\n";
+        data+= "           Alarmas            \n";
+        for (Alarma alarmaTemp: listaAlarmas) {
+            data+= alarmaTemp.toString() + "\n";
+        }
+
+
+        return data;
     }
 }

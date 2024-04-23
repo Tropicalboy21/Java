@@ -1,17 +1,22 @@
 package ucenfotec.ac.cr.bl.entities.alarma;
 
+import ucenfotec.ac.cr.bl.entities.vecino.Vecino;
+
 public class Alarma {
     private String direccion;
     private String identificacion;
     private String encargado;
 
+    private String descripcion;
+
     public Alarma() {
     }
 
-    public Alarma(String direccion, String identificacion, String encargado) {
+    public Alarma(String direccion, String identificacion, String encargado, String descripcion) {
         this.direccion = direccion;
         this.identificacion = identificacion;
         this.encargado = encargado;
+        this.descripcion = descripcion;
     }
 
     public String getDireccion() {
@@ -38,12 +43,22 @@ public class Alarma {
         this.encargado = encargado;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public String toString() {
-        return "Alarma{" +
-                "direccion='" + direccion + '\'' +
-                ", identificacion='" + identificacion + '\'' +
-                ", encargado='" + encargado + '\'' +
-                '}';
+        String data = "Alarma" + "\n";
+                data += "direccion: " + direccion+"\n";
+                data += "identificacion: " + identificacion+"\n";
+                data += "encargado: " + encargado+"\n";
+                data += "descripcion: " + descripcion+"\n";
+
+        return  data;
     }
 }
