@@ -1,4 +1,6 @@
-package cr.ac.ucenfotec.bl;
+package cr.ac.ucenfotec.bl.entities.estante;
+
+import cr.ac.ucenfotec.bl.entities.ingrediente.Ingrediente;
 
 import java.util.ArrayList;
 

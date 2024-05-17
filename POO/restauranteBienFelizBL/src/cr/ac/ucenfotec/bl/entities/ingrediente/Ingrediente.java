@@ -1,4 +1,4 @@
-package cr.ac.ucenfotec.bl;
+package cr.ac.ucenfotec.bl.entities.ingrediente;
 
 public class Ingrediente {
     private String nombre;

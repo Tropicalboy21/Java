@@ -1,4 +1,4 @@
-package cr.ac.ucenfotec.bl;
+package cr.ac.ucenfotec.bl.entities.platillo;
 import  java.util.ArrayList;
 
 

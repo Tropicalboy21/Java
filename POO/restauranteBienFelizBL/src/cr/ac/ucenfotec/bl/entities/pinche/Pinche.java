@@ -1,6 +1,8 @@
-package cr.ac.ucenfotec.bl;
+package cr.ac.ucenfotec.bl.entities.pinche;
 
-public class Pinche extends Empleado{
+import cr.ac.ucenfotec.bl.entities.empleado.Empleado;
+
+public class Pinche extends Empleado {
     private String cocineroEncargado;
 
 

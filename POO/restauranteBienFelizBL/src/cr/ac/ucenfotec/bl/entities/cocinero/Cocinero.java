@@ -1,4 +1,6 @@
-package cr.ac.ucenfotec.bl;
+package cr.ac.ucenfotec.bl.entities.cocinero;
+
+import cr.ac.ucenfotec.bl.entities.empleado.Empleado;
 
 public class Cocinero extends Empleado {
     private String fechaIngreso;
