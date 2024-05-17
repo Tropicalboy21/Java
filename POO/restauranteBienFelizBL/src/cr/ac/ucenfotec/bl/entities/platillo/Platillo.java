@@ -12,9 +12,9 @@ public class Platillo {
         ingredientes = new ArrayList<>();
     }
 
-    public Platillo(String nombre, ArrayList<String> ingredientes, String experto, double costo) {
+    public Platillo(String nombre, String experto, double costo) {
         this.nombre = nombre;
-        this.ingredientes = ingredientes;
+        this.ingredientes = new ArrayList<>();
         this.experto = experto;
         this.costo = costo;
     }

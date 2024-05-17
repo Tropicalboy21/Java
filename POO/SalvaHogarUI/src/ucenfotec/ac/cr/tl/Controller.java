@@ -343,6 +343,9 @@ class MainApplicationScreen extends JFrame {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(10, 10, 10, 10);
 
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+
         //nombre input field
         JLabel nombreLabel = new JLabel("Nombre:");
         inputPanel.add(nombreLabel, gbc);

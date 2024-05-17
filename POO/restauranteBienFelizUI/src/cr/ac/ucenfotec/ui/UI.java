@@ -1,44 +1,59 @@
 package cr.ac.ucenfotec.ui;
 
-import cr.ac.ucenfotec.bl.*;
+import cr.ac.ucenfotec.bl.entities.cocinero.Cocinero;
+import cr.ac.ucenfotec.bl.entities.empleado.Empleado;
+import cr.ac.ucenfotec.bl.entities.estante.Estante;
+import cr.ac.ucenfotec.bl.entities.ingrediente.Ingrediente;
+import cr.ac.ucenfotec.bl.entities.pinche.Pinche;
+import cr.ac.ucenfotec.bl.logic.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
 
-    static CL gestor = new CL();
+//    static CL gestor = new CL();
+
+    static CocineroGestor cocineroGestor = new CocineroGestor();
+    static EmpleadoGestor empleadoGestor = new EmpleadoGestor();
+    static PincheGestor pincheGestor = new PincheGestor();
+    static AlmacenGestor almacenGestor = new AlmacenGestor();
+    static IngredienteGestor ingredienteGestor = new IngredienteGestor();
+    static PlatilloGestor platilloGestor = new PlatilloGestor();
+    static EstanteGestor estanteGestor = new EstanteGestor();
 
     static String roluser;
 
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        gestor.registrarCocinero("Gustavo", "Navarro", "gus12@bienfeliz.com", "bienFeliz","9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
-
-        gestor.registrarCocinero("Juan", "Mena", "Jmena22@bienfeliz.com","bienFeliz","6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
-
-        gestor.registrarCocinero("Carlos", "Hernandez","Carher00@bienfeliz.com","bienFeliz", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
-
-        gestor.registrarPinche("Lucas", "Martinez", "Lucasmm@bienfeliz.com","bienFeliz","7123", "9913", "2000-01-22", "pinche", "61652484", "81901607", "Gustavo");
-
-        gestor.registrarPinche("David", "Mora", "David19@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Juan");
-
-        gestor.registrarPinche("Tatiana", "Vargas", "ttvargas@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
-
-        ArrayList<Estante> estantes;
-        estantes = new ArrayList<>();
-
-        gestor.registrarAlmacen("222109", estantes);
-
-        ArrayList<Ingrediente> ingredientes;
-        ingredientes = new ArrayList<>();
-
-        gestor.registrarEstante("8888", ingredientes);
-
-        gestor.agregarEstanteAAlmacen("222109","8888");
+//        gestor.registrarCocinero("Gustavo", "Navarro", "gus12@bienfeliz.com", "bienFeliz","9912", "1244", "1999-12-07", "cocinero", "690870964", "61435565", "2018-11-02");
+//
+//        gestor.registrarCocinero("Juan", "Mena", "Jmena22@bienfeliz.com","bienFeliz","6632", "2233", "1980-10-15", "cocinero", "98347544", "87018943", "2015-04-23");
+//
+//        gestor.registrarCocinero("Carlos", "Hernandez","Carher00@bienfeliz.com","bienFeliz", "6970", "3240", "1994-12-21", "cocinero", "78974014", "17451455", "2008-11-12");
+//
+//        gestor.registrarPinche("Lucas", "Martinez", "Lucasmm@bienfeliz.com","bienFeliz","7123", "9913", "2000-01-22", "pinche", "61652484", "81901607", "Gustavo");
+//
+//        gestor.registrarPinche("David", "Mora", "David19@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Juan");
+//
+//        gestor.registrarPinche("Tatiana", "Vargas", "ttvargas@bienfeliz.com","bienFeliz","8326", "1963", "1996-01-22", "pinche", "91653482", "79237423", "Carlos");
+//
+//        ArrayList<Estante> estantes;
+//        estantes = new ArrayList<>();
+//
+//        gestor.registrarAlmacen("222109", estantes);
+//
+//        ArrayList<Ingrediente> ingredientes;
+//        ingredientes = new ArrayList<>();
+//
+//        gestor.registrarEstante("8888", ingredientes);
+//
+//        gestor.agregarEstanteAAlmacen("222109","8888");
 
         IniciarSesion();
+
+
     }
 
     public static void IniciarSesion(){
@@ -93,7 +108,7 @@ public class UI {
         System.out.print("Ingrese su contraseña: ");
         contrasenna = sc.next();
 
-        Cocinero cocineroEncontrado = gestor.validarCocinero(correo, contrasenna);
+        Cocinero cocineroEncontrado = cocineroGestor.validarCocinero(correo, contrasenna);
 
         if (cocineroEncontrado != null){
             menuEmpleados();
@@ -110,7 +125,7 @@ public class UI {
         System.out.print("Ingrese su contraseña: ");
         contrasenna = sc.next();
 
-        Pinche picheEncontrado = gestor.validarPinche(correo, contrasenna);
+        Pinche picheEncontrado = pincheGestor.validarPinche(correo, contrasenna);
 
         if (picheEncontrado != null){
             menuEmpleados();
@@ -128,7 +143,7 @@ public class UI {
         System.out.print("Ingrese su contraseña: ");
         contrasenna = sc.next();
 
-        Empleado empleadoEncontrado = gestor.validarEmpleado(correo, contrasenna);
+        Empleado empleadoEncontrado = empleadoGestor.validarEmpleado(correo, contrasenna);
 
         if (empleadoEncontrado != null){
             menuEmpleados();
@@ -260,7 +275,7 @@ public class UI {
                 listarEstantes();
                 break;
             case 11:
-                agregarEstanteAAlmacen();
+//                agregarEstanteAAlmacen();
                 break;
             case 0:
                 System.out.printf("---------------------------------%n");
@@ -324,7 +339,7 @@ public class UI {
             System.out.print("Ingrese el numero de teléfono Móvil:   ");
             String numeroMovil = sc.next();
 
-            String mensaje = gestor.registrarEmpleado(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, rolIn, numeroFijo, numeroMovil);
+            String mensaje = empleadoGestor.registrarEmpleado(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, rolIn, numeroFijo, numeroMovil);
 
             System.out.println(mensaje);
         }
@@ -363,7 +378,7 @@ public class UI {
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarCocinero(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "cocinero", numeroFijo, numeroMovil, fechaIngresoIn);
+        String mensaje = cocineroGestor.registrarCocinero(nombreIn, apellidoIn,correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "cocinero", numeroFijo, numeroMovil, fechaIngresoIn);
 
         System.out.println(mensaje);
     }
@@ -392,16 +407,13 @@ public class UI {
         System.out.print("Ingrese la fecha de nacimiento YYYY-MM-DD:   ");
         String fechaNacimientoIn = sc.next();
 
-        System.out.print("Ingrese el cocinero encargado:    ");
-        String cocineroEncargado = sc.next();
-
         System.out.print("Ingrese el numero de teléfono fijo:   ");
         String numeroFijo = sc.next();
 
         System.out.print("Ingrese el numero de teléfono Móvil:   ");
         String numeroMovil = sc.next();
 
-        String mensaje = gestor.registrarPinche(nombreIn, apellidoIn, correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "pinche", numeroFijo, numeroMovil, cocineroEncargado);
+        String mensaje = pincheGestor.registrarPinche(nombreIn, apellidoIn, correoIn, contrasennaIn, idIn, numeroSocialIn, fechaNacimientoIn, "pinche", numeroFijo, numeroMovil);
 
         System.out.println(mensaje);
     }
@@ -422,7 +434,7 @@ public class UI {
                 System.out.printf("---------------------------------%n");
                 System.out.printf("       Lista de Cocineros        %n");
                 System.out.printf("---------------------------------%n");
-                for(String infoCocineros: gestor.listarCocinero()){
+                for(String infoCocineros: cocineroGestor.listarCocineros()){
                     System.out.println(infoCocineros);
                 }
                 break;
@@ -430,7 +442,7 @@ public class UI {
                 System.out.printf("---------------------------------%n");
                 System.out.printf("       Lista de Pinches          %n");
                 System.out.printf("---------------------------------%n");
-                for(String infoPinches: gestor.listarPinche()){
+                for(String infoPinches: pincheGestor.listarPinches()){
                     System.out.println(infoPinches);
                 }
                 break;
@@ -438,7 +450,7 @@ public class UI {
                 System.out.printf("---------------------------------%n");
                 System.out.printf("       Lista de Empleados        %n");
                 System.out.printf("---------------------------------%n");
-                for(String infoEmpleados: gestor.listarEmpleados()){
+                for(String infoEmpleados: empleadoGestor.listarEmpleados()){
                     System.out.println(infoEmpleados);
                 }
                 break;
@@ -461,14 +473,14 @@ public class UI {
         System.out.print("Ingrese el codigo del estante:      ");
         String codigoIn = sc.next();
 
-        String mensaje = gestor.registrarIngrediente(nombreIn, cantidadIn, codigoIn);
+        String mensaje = ingredienteGestor.registrarIngrediente(nombreIn, cantidadIn);
 
         System.out.println(mensaje);
 
     }
 
     public static void listarIngredientes(){
-        for (String infoIngredientes: gestor.listarIngredientes()){
+        for (String infoIngredientes: ingredienteGestor.listarIngredientes()){
             System.out.println(infoIngredientes);
         }
     }
@@ -478,18 +490,18 @@ public class UI {
         System.out.print("Ingrese el nombre:      ");
         String nombreIn = sc.next();
 
-        ArrayList<String> ingredientes;
-        ingredientes = new ArrayList<>();
-        String ingrediente;
-
-        System.out.print("Ingrese la cantidad de ingredientes:      ");
-        int numIngredientes = sc.nextInt();
-
-        for (int i = 0; i < numIngredientes; i++) {
-            System.out.print("Ingrese el ingrediente #"+ (i + 1) +": ");
-            ingrediente = sc.next();
-            ingredientes.add(ingrediente);
-        }
+//        ArrayList<String> ingredientes;
+//        ingredientes = new ArrayList<>();
+//        String ingrediente;
+//
+//        System.out.print("Ingrese la cantidad de ingredientes:      ");
+//        int numIngredientes = sc.nextInt();
+//
+//        for (int i = 0; i < numIngredientes; i++) {
+//            System.out.print("Ingrese el ingrediente #"+ (i + 1) +": ");
+//            ingrediente = sc.next();
+//            ingredientes.add(ingrediente);
+//        }
 
         System.out.print("Ingrese el cocinero experto:      ");
         String expertoIn = sc.next();
@@ -497,14 +509,14 @@ public class UI {
         System.out.print("Ingrese el costo del platillo:      ");
         double costoIn = sc.nextDouble();
 
-        String mensaje = gestor.registrarPlatillo(nombreIn, ingredientes,expertoIn, costoIn);
+        String mensaje = platilloGestor.registrarPlatillo(nombreIn,expertoIn, costoIn);
 
         System.out.println(mensaje);
 
     }
 
     public static void listarPlatillo(){
-        for (String infoPlatillos: gestor.listarPlatillos()){
+        for (String infoPlatillos: platilloGestor.listarPlatillos()){
             System.out.println(infoPlatillos);
         }
     }
@@ -516,17 +528,16 @@ public class UI {
         ArrayList<Estante> estantes;
         estantes = new ArrayList<>();
 
-        String mensaje = gestor.registrarAlmacen(codigoIn, estantes);
+        String mensaje = almacenGestor.registrarAlmacen(codigoIn);
 
         System.out.println(mensaje);
     }
 
     public static void listarAlmacenes(){
-        for(String infoAlmacenes: gestor.listarAlmacenes()){
+        for(String infoAlmacenes: almacenGestor.listarAlmacenes()){
             System.out.println(infoAlmacenes);
         }
     }
-
 
     public static void registrarEstante(){
         System.out.printf("\n---------------------------------%n");
@@ -535,13 +546,13 @@ public class UI {
         ArrayList<Ingrediente> ingredientes;
         ingredientes = new ArrayList<>();
 
-        String mensaje = gestor.registrarEstante(codigoIn, ingredientes);
+        String mensaje = estanteGestor.registrarEstante(codigoIn);
 
         System.out.println(mensaje);
     }
 
     public static void listarEstantes(){
-        for(String infoEstantes: gestor.listarEstantes()){
+        for(String infoEstantes: estanteGestor.listarEstantes()){
             System.out.println(infoEstantes);
         }
     }
@@ -553,21 +564,20 @@ public class UI {
         System.out.print("ingrese el nombre del Pinche: ");
         String pincheIn = sc.next();
 
-        String mensaje = gestor.asociarPincheACocinero(cocineroIn, pincheIn);
+        String mensaje = pincheGestor.asociarPincheACocinero(cocineroIn, pincheIn);
 
         System.out.println(mensaje);
     }
 
-    public static void agregarEstanteAAlmacen(){
-        System.out.printf("\n---------------------------------%n");
-        System.out.print("ingrese el codigo del Almacen: ");
-        String almacenIn = sc.next();
-        System.out.print("ingrese el codigo del estante: ");
-        String estanteIn = sc.next();
-
-        String mensaje = gestor.agregarEstanteAAlmacen(almacenIn, estanteIn);
-
-        System.out.println(mensaje);
-    }
-
+//    public static void agregarEstanteAAlmacen(){
+//        System.out.printf("\n---------------------------------%n");
+//        System.out.print("ingrese el codigo del Almacen: ");
+//        String almacenIn = sc.next();
+//        System.out.print("ingrese el codigo del estante: ");
+//        String estanteIn = sc.next();
+//
+//        String mensaje = gestor.agregarEstanteAAlmacen(almacenIn, estanteIn);
+//
+//        System.out.println(mensaje);
+//    }
 }

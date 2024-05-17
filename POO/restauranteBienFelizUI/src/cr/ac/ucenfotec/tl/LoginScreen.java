@@ -1,11 +1,11 @@
-package ucenfotec.ac.cr.tl;
+package cr.ac.ucenfotec.tl;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginScreen extends JPanel {
+public class LoginScreen extends JPanel{
     public static JTextField usernameField;
     public static JPasswordField passwordField;
 
@@ -31,7 +31,7 @@ public class LoginScreen extends JPanel {
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
             }
         });
 
@@ -40,11 +40,10 @@ public class LoginScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 String username = usernameField.getText();
-
                 String password = new String(passwordField.getPassword());
 
 
-                if (username.equals("admin@salvahogar.com") && password.equals("password")) {
+                if (username.equals("admin") && password.equals("password")) {
                     ((Controller) SwingUtilities.getWindowAncestor(LoginScreen.this)).loggedIn();
 
                 } else {

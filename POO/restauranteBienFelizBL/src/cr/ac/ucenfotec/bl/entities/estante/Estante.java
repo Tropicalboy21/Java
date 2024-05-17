@@ -14,9 +14,9 @@ public class Estante {
         ingredientes = new ArrayList<>();
     }
 
-    public Estante(String codigo, ArrayList<Ingrediente> ingredientes) {
+    public Estante(String codigo) {
         this.codigo = codigo;
-        this.ingredientes = ingredientes;
+        this.ingredientes = new ArrayList<>();
     }
 
     public String getCodigo() {
