@@ -1507,10 +1507,10 @@ class MainApplicationScreen extends JFrame {
             }
         });
 
-        button3.addActionListener(new ActionListener() {
+        button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                showEliminarAlmacen();
             }
         });
 
@@ -1525,6 +1525,73 @@ class MainApplicationScreen extends JFrame {
 
         getContentPane().remove(currentPanel);
         currentPanel = platillosMenuPanel;
+        getContentPane().add(currentPanel, BorderLayout.CENTER);
+
+        revalidate();
+        repaint();
+
+    }
+
+    public void showEliminarAlmacen(){
+        JPanel EliminarEmpleadoMenu = new JPanel();
+        EliminarEmpleadoMenu.setLayout(new BorderLayout());
+
+        JButton returnButton = new JButton("cancelar");
+        returnButton.setPreferredSize(new Dimension(100, 40));
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                superAdminPlatillosMenu();
+            }
+        });
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel label = new JLabel("codigo del almacen:");
+        inputPanel.add(label, gbc);
+
+        gbc.gridx = 1;
+        JTextField input = new JTextField(10);
+        input.setPreferredSize(new Dimension(200, 30));
+        inputPanel.add(input, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        inputPanel.add(returnButton, gbc);
+
+        gbc.gridx = 1;
+        JButton registrarCasaBtn = new JButton("Eliminar");
+        registrarCasaBtn.setPreferredSize(new Dimension(100, 40));
+        inputPanel.add(registrarCasaBtn, gbc);
+
+        registrarCasaBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                String codigoIn = input.getText();
+
+                String mensaje = almacenGestor.elminarAlmacen(codigoIn);
+
+                JOptionPane.showMessageDialog(MainApplicationScreen.this, mensaje, "Acción Existosa", JOptionPane.INFORMATION_MESSAGE);
+
+                revalidate();
+                repaint();
+
+                superAdminAlmacenesMenu();
+
+            }
+        });
+
+        EliminarEmpleadoMenu.add(inputPanel, BorderLayout.CENTER);
+
+        getContentPane().remove(currentPanel);
+        currentPanel = EliminarEmpleadoMenu;
         getContentPane().add(currentPanel, BorderLayout.CENTER);
 
         revalidate();

@@ -26,4 +26,9 @@ public class AlmacenGestor {
         }
         return infoAlmacenes;
     }
+
+    public String elminarAlmacen(String codigo){
+
+        return datos.eliminarAlmacen(codigo);
+    }
 }

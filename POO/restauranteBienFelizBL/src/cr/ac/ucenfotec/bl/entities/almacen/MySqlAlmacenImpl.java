@@ -43,4 +43,17 @@ public class MySqlAlmacenImpl  implements IAlmacenDAO{
         }
         return listaAlmacenes;
     }
+
+
+    public String eliminarAlmacen(String codigo){
+
+        sql=
+                "DELETE FROM ALMACEN WHERE CODIGO ='" + codigo + "'";
+
+        Conector.getConnector().ejecutarSQL(sql);
+
+        return
+                "El almacen con codigo " + codigo + "fue eliminardo del sistema";
+    }
+
 }

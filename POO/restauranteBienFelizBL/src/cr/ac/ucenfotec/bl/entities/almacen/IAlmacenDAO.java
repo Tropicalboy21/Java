@@ -7,4 +7,6 @@ public interface IAlmacenDAO {
     String registrarAlmacen(Almacen almacen);
 
     ArrayList<Almacen> listarAlmacenes();
+
+    String eliminarAlmacen(String codigo);
 }
