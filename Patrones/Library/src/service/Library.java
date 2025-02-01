@@ -61,9 +61,22 @@ public class Library {
         }
     }
 
-    public String showBorrowBooksByUser(String bookName, String userName) {
-        return
-                "Books Borrowed by:";
+    public String showBorrowBooksByUser(String userName) {
+        User user = searchUser(userName);
+        ArrayList<Book> borrowedBooks = user.getBorrowedBooks();
+
+        if (borrowedBooks.isEmpty()) {
+            return "El usuario " + userName + " no ha prestado libros.";
+        }
+
+        StringBuilder borrowedBooksList = new StringBuilder();
+        borrowedBooksList.append("Libros prestados por " + userName + ":\n");
+
+        for (Book book : borrowedBooks) {
+            borrowedBooksList.append("- " + book.getTitle() + "\n");
+        }
+
+        return borrowedBooksList.toString();
     }
 
     public User searchUser(String userName){

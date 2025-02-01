@@ -75,7 +75,20 @@ public class App {
         }
     }
     public static void librosPrestadosPorUsuario(){
+        System.out.printf("---------------------------------%n");
+        System.out.printf("  libros prestados por usuario   %n");
+        System.out.printf("---------------------------------%n");
+        System.out.print("Digite un nombre de usuario: ");
+        String userName =  sc.next();
 
+        Object userFound = gestor.searchUser(userName);
+
+        if(userFound != null){
+            String borrowedBooks = gestor.showBorrowBooksByUser(userName);
+            System.out.println(borrowedBooks);
+        } else {
+            System.out.println("Lo sentimos usuario no existe.");
+        }
     }
     public static void prestarLibro(){
         System.out.printf("---------------------------------%n");
@@ -93,7 +106,7 @@ public class App {
             Object bookFound = gestor.searchBook(bookName);
 
             if(bookFound != null) {
-                String msj = gestor.borrowBook(userName, bookName);
+                String msj = gestor.borrowBook(bookName, userName);
                 System.out.println(msj);
             } else {
                 System.out.println("Lo sentimos libro no existe.");
