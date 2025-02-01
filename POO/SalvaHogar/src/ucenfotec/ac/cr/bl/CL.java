@@ -39,12 +39,12 @@ public class CL {
         return "\nEl Vecino fue añadido con exito";
     }
 
-    public ArrayList<String> listarVecinos(){
+    public ArrayList<String> listarVecinos() {
         ArrayList<String> infoVecinos = new ArrayList<>();
-        for(Vecino vecinoTemp: vecinos){
+        for (Vecino vecinoTemp : vecinos) {
             infoVecinos.add(vecinoTemp.toString());
         }
-        return  infoVecinos;
+        return infoVecinos;
     }
 
     public int CalcularEdad(LocalDate dob)
