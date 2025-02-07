@@ -1,3 +1,5 @@
+package Creational;
+
 public class FactoryMethod {
     interface Product {
         void use();
