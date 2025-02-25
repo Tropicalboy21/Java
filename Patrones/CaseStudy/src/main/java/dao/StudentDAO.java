@@ -15,7 +15,7 @@ public class StudentDAO {
     }
 
     public void addStudent(Student NewStudent) throws SQLException {
-        String sqlQuery =  "INSERT INTO `estudiante`( `nombre`, `apellidos`, `fechanacimiento`, `carrera`) VALUES ( ?, ?, ?, ?)";
+        String sqlQuery =  "INSERT INTO `estudiantesLUA`( `nombre`, `apellidos`,, `identificacion`, `email`, `fechanacimiento`, `carrera`,`estatus`) VALUES ( ?, ?, ?, ?)";
 
         try (PreparedStatement setProperties = conn.prepareStatement(sqlQuery)){
             setProperties.setString(1, NewStudent.getName());
@@ -29,7 +29,7 @@ public class StudentDAO {
     public List<Student> getStudent() throws SQLException{
         List<Student> listaEstudiante = new ArrayList<>();
 
-        String sqlQuery = "SELECT `id`, `nombre`, `apellidos`, `fechanacimiento`, `carrera` FROM `estudiante`";
+        String sqlQuery = "SELECT `id`, `nombre`, `apellidos`, `identificacion`, `email`, `fechanacimiento`, `carrera`,`estatus` FROM `estudiantesLUA`";
         //Nos permite que creemos nuestros SP, desde la base de datos y los invoquemos.
         try (
                 Statement stmt = conn.createStatement();
@@ -42,9 +42,12 @@ public class StudentDAO {
                                 resultadoConsultado.getInt("id"),
                                 resultadoConsultado.getString("nombre"),
                                 resultadoConsultado.getString("apellidos"),
+                                resultadoConsultado.getString("identificacion"),
+                                resultadoConsultado.getString("email"),
                                 resultadoConsultado.getString("fechanacimiento"),
-                                resultadoConsultado.getString("carrera")
-                        )
+                                resultadoConsultado.getString("carrera"),
+                                resultadoConsultado.getBoolean("estatus")
+                                )
                 );
             }
         }
