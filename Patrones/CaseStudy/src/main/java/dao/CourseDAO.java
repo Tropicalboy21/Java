@@ -2,6 +2,7 @@ package dao;
 
 import model.Course;
 import model.Group;
+import model.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -50,4 +51,46 @@ public class CourseDAO {
 
         return listaCourse;
     }
+
+    public Course getCourseId(int id) throws SQLException {
+        String sqlQuery = "SELECT * FROM `cursosLUA` WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, id);
+            try (ResultSet resultado = stmt.executeQuery()) {
+                if (resultado.next()) {
+                    return new Course(
+                            resultado.getInt("id"),
+                            resultado.getString("nombre"),
+                            resultado.getString("descripción"),
+                            resultado.getBoolean("estatus")
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
+    public void updateCourse(Course course) throws SQLException{
+        String sqlQuery = "UPDATE `cursosLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `departamento` = ?, `estatus` = ? WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setString(1, course.getName());
+            stmt.setString(2, course.getDescription());
+            stmt.setBoolean(3, course.getStatus());
+            stmt.setInt(4, course.getId()); // The ID is used to update the correct professor
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deleteCourse(int id) throws SQLException {
+        String sqlQuery = "DELETE FROM `cursosLUA` WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
+
 }

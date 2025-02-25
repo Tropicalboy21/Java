@@ -5,6 +5,7 @@ import dao.ProfesorDAO;
 import model.ConnectionManager;
 import model.Group;
 import model.Profesor;
+import model.Student;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -55,6 +56,55 @@ public class GroupController {
             }
         }
         catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public Group getGroupById(int id) {
+        if(groupDAO == null){
+            System.err.println("Conexion no disponible");
+            return null;
+        }
+        try {
+            Group group = groupDAO.getGroupId(id);
+            if(group != null){
+                return group;
+            } else {
+                System.err.println("Profesor no encontrado.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public void updateGroup(Group group){
+        if(groupDAO == null){
+            System.err.println("Conexion no disponible");
+            return;
+        }
+        try {
+            groupDAO.updateGroup(group);
+            System.out.println("Profesor Actualizado con éxito");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteGroup(int id){
+        if(groupDAO == null){
+            System.err.println("Conexion no disponible");
+            return;
+        }
+        try {
+            groupDAO.deleteGroup(id);
+            System.out.println("Estudiante fue eliminado con éxito");
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }

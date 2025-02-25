@@ -1,5 +1,6 @@
 package dao;
 
+import model.Course;
 import model.Group;
 import model.Profesor;
 
@@ -49,5 +50,46 @@ public class GroupDAO {
         }
 
         return listaGrupos;
+    }
+
+
+    public Group getGroupId(int id) throws SQLException {
+        String sqlQuery = "SELECT * FROM `gruposLUA` WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, id);
+            try (ResultSet resultado = stmt.executeQuery()) {
+                if (resultado.next()) {
+                    return new Group(
+                            resultado.getInt("id"),
+                            resultado.getString("nombre"),
+                            resultado.getString("descripción"),
+                            resultado.getBoolean("estatus")
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
+    public void updateGroup(Group group) throws SQLException{
+        String sqlQuery = "UPDATE `gruposLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `departamento` = ?, `estatus` = ? WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setString(1, group.getName());
+            stmt.setString(2, group.getDescription());
+            stmt.setBoolean(3, group.getStatus());
+            stmt.setInt(4, group.getId()); // The ID is used to update the correct professor
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deleteGroup(int id) throws SQLException {
+        String sqlQuery = "DELETE FROM `grupodLUA` WHERE `id` = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
     }
 }

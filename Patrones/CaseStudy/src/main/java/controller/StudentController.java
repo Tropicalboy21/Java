@@ -2,6 +2,7 @@ package controller;
 
 import dao.StudentDAO;
 import model.ConnectionManager;
+import model.Profesor;
 import model.Student;
 
 import java.sql.Connection;
@@ -55,6 +56,54 @@ public class StudentController {
             }
         }
         catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public Student getStudentById(int id) {
+        if(studentDAO == null){
+            System.err.println("Conexion no disponible");
+            return null;
+        }
+        try {
+            Student student = studentDAO.getStudentById(id);
+            if(student != null){
+                return student;
+            } else {
+                System.err.println("Profesor no encontrado.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public void updateStudent(Student student){
+        if(studentDAO == null){
+            System.err.println("Conexion no disponible");
+            return;
+        }
+        try {
+            studentDAO.updateStudent(student);
+            System.out.println("Profesor Actualizado con éxito");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteStudent(int id){
+        if(studentDAO == null){
+            System.err.println("Conexion no disponible");
+            return;
+        }
+        try {
+            studentDAO.deleteStudent(id);
+            System.out.println("Estudiante fue eliminado con éxito");
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }
