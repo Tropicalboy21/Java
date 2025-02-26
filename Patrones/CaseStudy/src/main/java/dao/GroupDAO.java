@@ -63,7 +63,7 @@ public class GroupDAO {
                     return new Group(
                             resultado.getInt("id"),
                             resultado.getString("nombre"),
-                            resultado.getString("descripción"),
+                            resultado.getString("descripcion"),
                             resultado.getBoolean("estatus")
                     );
                 }
@@ -73,7 +73,7 @@ public class GroupDAO {
     }
 
     public void updateGroup(Group group) throws SQLException{
-        String sqlQuery = "UPDATE `gruposLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `departamento` = ?, `estatus` = ? WHERE `id` = ?";
+        String sqlQuery = "UPDATE `gruposLUA` SET `nombre` = ?, `descripcion` = ?, `estatus` = ? WHERE `id` = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
             stmt.setString(1, group.getName());
@@ -85,7 +85,7 @@ public class GroupDAO {
     }
 
     public void deleteGroup(int id) throws SQLException {
-        String sqlQuery = "DELETE FROM `grupodLUA` WHERE `id` = ?";
+        String sqlQuery = "DELETE FROM `gruposLUA` WHERE `id` = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
             stmt.setInt(1, id);

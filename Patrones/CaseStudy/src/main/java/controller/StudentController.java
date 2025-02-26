@@ -70,7 +70,7 @@ public class StudentController {
             if(student != null){
                 return student;
             } else {
-                System.err.println("Profesor no encontrado.");
+                System.err.println("Estudiante no encontrado.");
             }
         }
         catch (SQLException e) {
@@ -87,7 +87,7 @@ public class StudentController {
         }
         try {
             studentDAO.updateStudent(student);
-            System.out.println("Profesor Actualizado con éxito");
+            System.out.println("Estudiante Actualizado con éxito");
         }
         catch (SQLException e) {
             e.printStackTrace();

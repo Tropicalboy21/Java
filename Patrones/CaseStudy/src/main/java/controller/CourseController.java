@@ -52,7 +52,7 @@ public class CourseController {
             List<Course> courseList = courseDAO.getCourse();
 
             for (Course courses : courseList){
-                System.out.println( "Id: " + courses.getId() + " ,Nombre: " + courses.getName() + " ,Descripción: " + courses.getDescription() + " , Estatus" + courses.getStatus());
+                System.out.println( "Id: " + courses.getId() + " ,Nombre: " + courses.getName() + " ,Descripción: " + courses.getDescription() + " , Estatus: " + courses.getStatus());
             }
         }
         catch (SQLException e){

@@ -16,13 +16,16 @@ public class StudentDAO {
     }
 
     public void addStudent(Student NewStudent) throws SQLException {
-        String sqlQuery =  "INSERT INTO `estudiantesLUA`( `nombre`, `apellidos`,, `identificacion`, `email`, `fechanacimiento`, `carrera`,`estatus`) VALUES ( ?, ?, ?, ?)";
+        String sqlQuery =  "INSERT INTO `estudiantesLUA`( `nombre`, `apellidos`, `identificacion` , `email`, `fechanacimiento`, `carrera`,`estatus`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement setProperties = conn.prepareStatement(sqlQuery)){
             setProperties.setString(1, NewStudent.getName());
             setProperties.setString(2, NewStudent.getLastname());
-            setProperties.setString(3, NewStudent.getBirthdate());
-            setProperties.setString(4, NewStudent.getCareer());
+            setProperties.setString(3, NewStudent.getIdentification());
+            setProperties.setString(4, NewStudent.getEmail());
+            setProperties.setString(5, NewStudent.getBirthdate());
+            setProperties.setString(6, NewStudent.getCareer());
+            setProperties.setBoolean(7, NewStudent.getStatus());
             setProperties.executeUpdate();
         }
     }
@@ -80,7 +83,7 @@ public class StudentDAO {
     }
 
     public void updateStudent(Student student) throws SQLException{
-        String sqlQuery = "UPDATE `estudiantesLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `departamento` = ?, `estatus` = ? WHERE `id` = ?";
+        String sqlQuery = "UPDATE `estudiantesLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `carrera` = ?, `estatus` = ? WHERE `id` = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
             stmt.setString(1, student.getName());
@@ -103,6 +106,5 @@ public class StudentDAO {
             stmt.executeUpdate();
         }
     }
-
 
 }

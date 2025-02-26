@@ -62,7 +62,7 @@ public class CourseDAO {
                     return new Course(
                             resultado.getInt("id"),
                             resultado.getString("nombre"),
-                            resultado.getString("descripción"),
+                            resultado.getString("descripcion"),
                             resultado.getBoolean("estatus")
                     );
                 }
@@ -72,7 +72,7 @@ public class CourseDAO {
     }
 
     public void updateCourse(Course course) throws SQLException{
-        String sqlQuery = "UPDATE `cursosLUA` SET `nombre` = ?, `apellidos` = ?, `identificacion` = ?, `email` = ?, `fechanacimiento` = ?, `departamento` = ?, `estatus` = ? WHERE `id` = ?";
+        String sqlQuery = "UPDATE `cursosLUA` SET `nombre` = ?, `descripcion` = ?, `estatus` = ? WHERE `id` = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
             stmt.setString(1, course.getName());
