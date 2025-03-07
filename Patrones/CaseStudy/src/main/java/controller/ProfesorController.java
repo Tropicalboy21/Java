@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProfesorController {
 
-    public ProfesorDAO profesorDAO;
+    public static ProfesorDAO profesorDAO;
 
     public ProfesorController() {
 
@@ -40,7 +40,7 @@ public class ProfesorController {
         }
     }
 
-    public void  getProfesor() {
+    public static void  getProfesor() {
         if(profesorDAO == null){
             System.err.println("Conexion no disponible");
             return;

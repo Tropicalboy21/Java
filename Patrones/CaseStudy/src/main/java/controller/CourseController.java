@@ -61,7 +61,7 @@ public class CourseController {
     }
 
 
-    public Course getStudentById(int id) {
+    public Course getCourseById(int id) {
         if(courseDAO == null){
             System.err.println("Conexion no disponible");
             return null;
