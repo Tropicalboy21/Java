@@ -1,9 +1,5 @@
 package dao;
-
-import model.Course;
 import model.Group;
-import model.Profesor;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
