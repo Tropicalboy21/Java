@@ -26,6 +26,12 @@ public class CourseDAO extends BaseDAO<Course>{
         stmt.setString(1, course.getName());
         stmt.setString(2, course.getDescription());
         stmt.setBoolean(3, course.getStatus());
+
+        ParameterMetaData metaData = stmt.getParameterMetaData();
+        if (metaData.getParameterCount() == 4) {
+            stmt.setInt(4, course.getId());
+        }
+
     }
     public void addCourse(Course course) throws SQLException {
         String query = "INSERT INTO `cursosLUA`( `nombre`, `descripcion`, `estatus`) VALUES (?, ?, ?)";
@@ -47,4 +53,5 @@ public class CourseDAO extends BaseDAO<Course>{
         String query = "DELETE FROM `cursosLUA` WHERE `id` = ?";
         deleteEntity(id, query);
     }
+
 }

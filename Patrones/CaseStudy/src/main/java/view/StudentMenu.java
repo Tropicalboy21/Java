@@ -3,6 +3,7 @@ package view;
 import controller.StudentController;
 import model.Student;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentMenu {
@@ -107,6 +108,14 @@ public class StudentMenu {
         System.out.print("Nueva carrera: ");
         String nuevaCarrera = scanner.nextLine();
 
+        System.out.print("estado (activo o inactivo): ");
+        String nuevaEstado = scanner.nextLine();
+        boolean estadoActualizado = true;
+
+        if(nuevaEstado.equalsIgnoreCase("inactivo")){
+            estadoActualizado = false;
+        }
+
         Student studentUpdated = new Student(
                 studentId,
                 nuevoNombre.isEmpty() ? estudianteActual.getName() : nuevoNombre,
@@ -115,7 +124,7 @@ public class StudentMenu {
                 nuevoEmail.isEmpty() ? estudianteActual.getEmail() : nuevoEmail,
                 nuevaFechaNacimiento.isEmpty() ? estudianteActual.getBirthdate() : nuevaFechaNacimiento,
                 nuevaCarrera.isEmpty() ? estudianteActual.getCareer() : nuevaCarrera,
-                true
+                nuevaEstado.isEmpty() ? estudianteActual.getStatus(): estadoActualizado
         );
 
         studentController.updateStudent(studentUpdated);

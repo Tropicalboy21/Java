@@ -52,7 +52,7 @@ public class GroupController {
             List<Group> groupsList = groupDAO.getGroup();
 
             for (Group groups : groupsList){
-                System.out.println( "Id: " + groups.getId() + " ,Nombre: " + groups.getName() + " ,Apellidos: " + groups.getDescription() + " , Estatus: " + groups.getStatus());
+                System.out.println( "Id: " + groups.getId() + " ,Nombre: " + groups.getName() + " ,Descripción: " + groups.getDescription() + " , Estatus: " + groups.getStatus());
             }
         }
         catch (SQLException e){

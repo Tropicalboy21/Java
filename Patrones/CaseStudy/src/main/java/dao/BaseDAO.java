@@ -58,6 +58,5 @@ public abstract class BaseDAO<T> {
             stmt.executeUpdate();
         }
     }
-
     protected abstract void setEntityProperties(PreparedStatement stmt, T entity) throws SQLException;
 }
