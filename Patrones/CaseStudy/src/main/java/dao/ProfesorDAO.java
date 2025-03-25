@@ -34,7 +34,11 @@ public class ProfesorDAO extends BaseDAO<Profesor> {
         stmt.setString(5, profesor.getBirthdate());
         stmt.setString(6, profesor.getDepartment());
         stmt.setBoolean(7, profesor.getStatus());
-        stmt.setInt(8, profesor.getId());
+
+        ParameterMetaData metaData = stmt.getParameterMetaData();
+        if (metaData.getParameterCount() == 8) {
+            stmt.setInt(8, profesor.getId());
+        }
     }
     public void addProfesor(Profesor profesor) throws SQLException {
         String query = "INSERT INTO `profesoresLUA`( `nombre`, `apellidos`, `identificacion` , `email`, `fechanacimiento`, `departamento`, `estatus`) VALUES (?, ?, ?, ?, ?, ?, ?)";

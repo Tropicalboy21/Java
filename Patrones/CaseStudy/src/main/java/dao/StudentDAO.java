@@ -39,7 +39,11 @@ public class StudentDAO extends BaseDAO<Student> {
         stmt.setString(5, student.getBirthdate());
         stmt.setString(6, student.getCareer());
         stmt.setBoolean(7, student.getStatus());
-        stmt.setInt(8, student.getId());
+
+        ParameterMetaData metaData = stmt.getParameterMetaData();
+        if (metaData.getParameterCount() == 8) {
+            stmt.setInt(8, student.getId());
+        }
     }
 
     public void addStudent(Student student) throws SQLException {

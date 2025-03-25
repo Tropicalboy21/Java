@@ -26,6 +26,10 @@ public class GroupDAO extends BaseDAO<Group> {
         stmt.setString(2, group.getDescription());
         stmt.setBoolean(3, group.getStatus());
 
+        ParameterMetaData metaData = stmt.getParameterMetaData();
+        if (metaData.getParameterCount() == 4) {
+            stmt.setInt(4, group.getId());
+        }
     }
     public void addGroup(Group group) throws SQLException {
         String query = "INSERT INTO `gruposLUA`( `nombre`, `descripcion`, `estatus`) VALUES (?, ?, ?)";
