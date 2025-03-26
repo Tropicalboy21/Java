@@ -85,12 +85,20 @@ public class GroupMenu {
         System.out.print("Nueva descripción: ");
         String nuevaDescripcion = scanner.nextLine();
 
+        System.out.print("estado (activo o inactivo): ");
+        String nuevaEstado = scanner.nextLine();
+        boolean estadoActualizado = true;
+
+        if(nuevaEstado.equalsIgnoreCase("inactivo")){
+            estadoActualizado = false;
+        }
+
         if (grupoActual != null) {
             Group groupUpdated = new Group(
                     cursoId,
                     nuevoNombre.isEmpty() ? grupoActual.getName() : nuevoNombre,
                     nuevaDescripcion.isEmpty() ? grupoActual.getDescription() : nuevaDescripcion,
-                    true
+                    nuevaEstado.isEmpty() ? grupoActual.getStatus(): estadoActualizado
             );
             groupController.updateGroup(groupUpdated);
         } else {

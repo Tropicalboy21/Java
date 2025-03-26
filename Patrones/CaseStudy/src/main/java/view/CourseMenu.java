@@ -85,12 +85,21 @@ public class CourseMenu {
         System.out.print("Nueva descripción: ");
         String nuevaDescripcion = scanner.nextLine();
 
+        System.out.print("estado (activo o inactivo): ");
+        String nuevaEstado = scanner.nextLine();
+        boolean estadoActualizado = true;
+
+        if(nuevaEstado.equalsIgnoreCase("inactivo")){
+            estadoActualizado = false;
+        }
+
+
         if (cursoActual != null) {
             Course courseUpdated = new Course(
                     cursoId,
                     nuevoNombre.isEmpty() ? cursoActual.getName() : nuevoNombre,
                     nuevaDescripcion.isEmpty() ? cursoActual.getDescription() : nuevaDescripcion,
-                    true
+                    nuevaEstado.isEmpty() ? cursoActual.getStatus() : estadoActualizado
             );
             courseController.updateCourse(courseUpdated);
         } else {

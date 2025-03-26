@@ -108,6 +108,15 @@ public class ProfesorMenu {
         System.out.print("Nuevo departamento: ");
         String nuevaDepartamento = scanner.nextLine();
 
+        System.out.print("estado (activo o inactivo): ");
+        String nuevaEstado = scanner.nextLine();
+        boolean estadoActualizado = true;
+
+        if(nuevaEstado.equalsIgnoreCase("inactivo")){
+            estadoActualizado = false;
+        }
+
+
         Profesor profesorUpdated = new Profesor(
                 profesorId,
                 nuevoNombre.isEmpty() ? profesorActual.getName() : nuevoNombre,
@@ -116,7 +125,7 @@ public class ProfesorMenu {
                 nuevoEmail.isEmpty() ? profesorActual.getEmail() : nuevoEmail,
                 nuevaFechaNacimiento.isEmpty() ? profesorActual.getBirthdate() : nuevaFechaNacimiento,
                 nuevaDepartamento.isEmpty() ? profesorActual.getDepartment() : nuevaDepartamento,
-                true
+                nuevaEstado.isEmpty() ? profesorActual.getStatus(): estadoActualizado
         );
 
         profesorController.updateProfesor(profesorUpdated);
