@@ -1,11 +1,9 @@
 package controller;
 
 import dao.GroupDAO;
-import dao.ProfesorDAO;
 import model.ConnectionManager;
 import model.Group;
 import model.Profesor;
-import model.Student;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -52,7 +50,7 @@ public class GroupController {
             List<Group> groupsList = groupDAO.getGroup();
 
             for (Group groups : groupsList){
-                System.out.println( "Id: " + groups.getId() + " ,Nombre: " + groups.getName() + " ,Descripción: " + groups.getDescription() + " , Estatus: " + groups.getStatus());
+                System.out.println( "Id: " + groups.getId() + " ,Nombre: " + groups.getName() + " ,Descripción: " + groups.getDescription() + " ,Estatus: " + groups.getStatus());
             }
         }
         catch (SQLException e){
@@ -67,11 +65,11 @@ public class GroupController {
             return null;
         }
         try {
-            Group group = groupDAO.getGroupId(id);
+            Group group = groupDAO.getGroupById(id);
             if(group != null){
                 return group;
             } else {
-                System.err.println("Profesor no encontrado.");
+                System.err.println("Grupo no encontrado.");
             }
         }
         catch (SQLException e) {
@@ -88,7 +86,7 @@ public class GroupController {
         }
         try {
             groupDAO.updateGroup(group);
-            System.out.println("Profesor Actualizado con éxito");
+            System.out.println("Grupo Actualizado con éxito");
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -102,7 +100,7 @@ public class GroupController {
         }
         try {
             groupDAO.deleteGroup(id);
-            System.out.println("Estudiante fue eliminado con éxito");
+            System.out.println("Grupo fue eliminado con éxito");
         }
         catch (SQLException e) {
             e.printStackTrace();

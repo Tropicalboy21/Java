@@ -41,7 +41,7 @@ public class CourseDAO extends BaseDAO<Course>{
         String query = "SELECT `id`, `nombre`, `descripcion`, `estatus` FROM `cursosLUA`";
         return getEntities(query);
     }
-    public Course getCourseId(int id) throws SQLException {
+    public Course getCourseById(int id) throws SQLException {
         String query = "SELECT * FROM `cursosLUA` WHERE `id` = ?";
         return getEntityById(id, query);
     }

@@ -1,7 +1,6 @@
 package view;
 
 import controller.CourseController;
-import controller.ProfesorController;
 import model.Course;
 import model.Profesor;
 

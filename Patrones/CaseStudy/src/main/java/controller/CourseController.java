@@ -52,7 +52,7 @@ public class CourseController {
             List<Course> courseList = courseDAO.getCourse();
 
             for (Course courses : courseList){
-                System.out.println( "Id: " + courses.getId() + " ,Nombre: " + courses.getName() + " ,Descripción: " + courses.getDescription() + " , Estatus: " + courses.getStatus());
+                System.out.println( "Id: " + courses.getId() + " ,Nombre: " + courses.getName() + " ,Descripción: " + courses.getDescription() + " ,Estatus: " + courses.getStatus());
             }
         }
         catch (SQLException e){
@@ -67,11 +67,11 @@ public class CourseController {
             return null;
         }
         try {
-            Course course = courseDAO.getCourseId(id);
+            Course course = courseDAO.getCourseById(id);
             if(course != null){
                 return course;
             } else {
-                System.err.println("Profesor no encontrado.");
+                System.err.println("Curso no encontrado.");
             }
         }
         catch (SQLException e) {
@@ -102,7 +102,7 @@ public class CourseController {
         }
         try {
             courseDAO.deleteCourse(id);
-            System.out.println("Estudiante fue eliminado con éxito");
+            System.out.println("Curso fue eliminado con éxito");
         }
         catch (SQLException e) {
             e.printStackTrace();

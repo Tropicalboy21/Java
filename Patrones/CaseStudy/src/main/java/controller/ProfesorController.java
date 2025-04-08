@@ -49,7 +49,7 @@ public class ProfesorController {
             List<Profesor> profesorList = profesorDAO.getProfesor();
 
             for (Profesor profesors : profesorList){
-                System.out.println( "Id: " + profesors.getId() + " ,Nombre: " + profesors.getName() + " ,Apellidos: " + profesors.getLastname() + " ,Identificaión: " + profesors.getIdentification() + " ,Email: " + profesors.getEmail() + " ,Fecha: " + profesors.getBirthdate() + " ,Departamento: " + profesors.getDepartment() + " ,Status: " + profesors.getStatus());
+                System.out.println( "Id: " + profesors.getId() + " ,Nombre: " + profesors.getName() + " ,Apellidos: " + profesors.getLastname() + " ,Identificación: " + profesors.getIdentification() + " ,Email: " + profesors.getEmail() + " ,Fecha: " + profesors.getBirthdate() + " ,Departamento: " + profesors.getDepartment() + " ,Status: " + profesors.getStatus());
             }
         }
         catch (SQLException e){

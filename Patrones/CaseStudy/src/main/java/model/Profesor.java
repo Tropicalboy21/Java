@@ -4,7 +4,7 @@ public class Profesor extends User {
 
     private String department;
 
-    public Profesor(int id, String name, String lastname, String identification, String email, String department,  String birthdate, boolean status){
+    public Profesor(int id, String name, String lastname, String identification, String email, String birthdate, String department, boolean status){
         super(id, name, lastname, identification, email, birthdate, status);
         this.department = department;
     }

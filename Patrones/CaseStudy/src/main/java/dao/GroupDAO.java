@@ -39,7 +39,7 @@ public class GroupDAO extends BaseDAO<Group> {
         String query = "SELECT `id`, `nombre`, `descripcion`, `estatus` FROM `gruposLUA`";
         return getEntities(query);
     }
-    public Group getGroupId(int id) throws SQLException {
+    public Group getGroupById(int id) throws SQLException {
         String query = "SELECT * FROM `gruposLUA` WHERE `id` = ?";
         return getEntityById(id, query);
     }

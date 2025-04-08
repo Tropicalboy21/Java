@@ -51,7 +51,7 @@ public class StudentController {
             List<Student> studentList = studentDAO.getStudent();
 
             for (Student students : studentList){
-                System.out.println( "Id: " + students.getId() + " ,Nombre: " + students.getName() + " ,Apellidos: " + students.getLastname() + " ,Identificaión: " + students.getIdentification() + " ,Email: " + students.getEmail() + " ,Fecha: " + students.getBirthdate() + " ,Carerra: " + students.getCareer());
+                System.out.println( "Id: " + students.getId() + " ,Nombre: " + students.getName() + " ,Apellidos: " + students.getLastname() + " ,Identificación: " + students.getIdentification() + " ,Email: " + students.getEmail() + " ,Fecha: " + students.getBirthdate() + " ,Carrera: " + students.getCareer());
 
             }
         }
